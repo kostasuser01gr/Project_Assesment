@@ -9,13 +9,15 @@ import prettier from 'eslint-config-prettier'
 
 export default [
   {
-    ignores: ['dist', 'node_modules', 'build', 'coverage', '.vite'],
+    ignores: ['dist', 'node_modules', 'build', 'coverage', '.vite', '**/*.BACKUP.*', '**/*.OLD.*'],
   },
   {
     files: ['**/*.{ts,tsx}'],
     languageOptions: {
       ecmaVersion: 2020,
-      globals: globals.browser,
+      globals: {
+        ...globals.browser,
+      },
       parser: tsParser,
       parserOptions: {
         ecmaVersion: 'latest',
@@ -48,8 +50,37 @@ export default [
         { argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
       ],
       '@typescript-eslint/no-explicit-any': 'warn',
+      'react/no-unescaped-entities': 'off',  // Allow apostrophes in JSX
+      'no-undef': 'off',  // TypeScript handles this better
       'react/prop-types': 'off',
       'react/react-in-jsx-scope': 'off',
+    },
+  },
+  // Node.js config files need Node globals
+  {
+    files: ['playwright.config.ts', 'vite.config.ts', 'postcss.config.mjs'],
+    languageOptions: {
+      globals: {
+        ...globals.node,
+      },
+    },
+  },
+  // Figma plugin files have their own globals
+  {
+    files: ['figma-plugin/**/*.ts'],
+    languageOptions: {
+      globals: {
+        figma: 'readonly',
+        __html__: 'readonly',
+        PageNode: 'readonly',
+        FrameNode: 'readonly',
+        TextNode: 'readonly',
+        RectangleNode: 'readonly',
+        FontName: 'readonly',
+        LineHeight: 'readonly',
+        RGB: 'readonly',
+        RGBA: 'readonly',
+      },
     },
   },
   prettier,

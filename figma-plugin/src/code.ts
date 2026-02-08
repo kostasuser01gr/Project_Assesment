@@ -264,7 +264,7 @@ async function buildComponents(page: PageNode): Promise<void> {
     page.appendChild(frame);
     
     // Create component from frame
-    const component = figma.createComponentFromNode(frame);
+    const _component = figma.createComponentFromNode(frame);
     
     // Layout management
     yOffset += spec.height + 40;

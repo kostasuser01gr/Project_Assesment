@@ -76,7 +76,7 @@ export function observePerformance() {
         }
       })
       longTaskObserver.observe({ entryTypes: ['longtask'] })
-    } catch (e) {
+    } catch {
       console.log('Long task observer not supported')
     }
 
@@ -90,7 +90,7 @@ export function observePerformance() {
         }
       })
       layoutShiftObserver.observe({ entryTypes: ['layout-shift'] })
-    } catch (e) {
+    } catch {
       console.log('Layout shift observer not supported')
     }
   }
