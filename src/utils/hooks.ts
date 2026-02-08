@@ -1,6 +1,6 @@
 // Custom React hooks for common patterns
 
-import { useState, useEffect, useRef, useCallback } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 
 // Hook for media queries
 export function useMediaQuery(query: string): boolean {
@@ -116,10 +116,7 @@ export function usePrevious<T>(value: T): T | undefined {
 }
 
 // Hook for async function
-export function useAsync<T, E = string>(
-  asyncFunction: () => Promise<T>,
-  immediate = true
-) {
+export function useAsync<T, E = string>(asyncFunction: () => Promise<T>, immediate = true) {
   const [status, setStatus] = useState<'idle' | 'pending' | 'success' | 'error'>('idle')
   const [value, setValue] = useState<T | null>(null)
   const [error, setError] = useState<E | null>(null)

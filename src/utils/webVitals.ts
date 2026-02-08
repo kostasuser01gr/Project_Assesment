@@ -1,5 +1,5 @@
 // Web Vitals monitoring for Core Web Vitals
-import { onCLS, onFID, onFCP, onLCP, onTTFB, onINP, type Metric } from 'web-vitals'
+import { onCLS, onFCP, onFID, onINP, onLCP, onTTFB, type Metric } from 'web-vitals'
 
 const WEB_VITALS_ENDPOINT = import.meta.env.VITE_WEB_VITALS_ENDPOINT
 
@@ -65,7 +65,7 @@ export function observePerformance() {
       const longTaskObserver = new PerformanceObserver((list) => {
         for (const entry of list.getEntries()) {
           console.warn('Long task detected:', entry.duration, entry)
-          
+
           if (window.gtag) {
             window.gtag('event', 'long_task', {
               value: Math.round(entry.duration),

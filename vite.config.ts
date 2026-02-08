@@ -1,7 +1,7 @@
-import { defineConfig } from 'vite'
-import path from 'path'
 import tailwindcss from '@tailwindcss/vite'
 import react from '@vitejs/plugin-react'
+import path from 'path'
+import { defineConfig } from 'vite'
 // import { VitePWA } from 'vite-plugin-pwa'  // Temporarily disabled - Vite 6 compatibility pending
 import viteCompression from 'vite-plugin-compression'
 
@@ -14,7 +14,7 @@ export default defineConfig({
       fastRefresh: true,
     }),
     tailwindcss(),
-    
+
     // Gzip and Brotli compression
     viteCompression({
       algorithm: 'gzip',
@@ -25,7 +25,7 @@ export default defineConfig({
       ext: '.br',
     }),
   ],
-  
+
   resolve: {
     alias: {
       // Alias @ to the src directory
@@ -35,7 +35,7 @@ export default defineConfig({
 
   // File types to support raw imports. Never add .css, .tsx, or .ts files to this.
   assetsInclude: ['**/*.svg', '**/*.csv'],
-  
+
   // Build optimizations
   build: {
     target: 'esnext',
@@ -66,7 +66,7 @@ export default defineConfig({
     cssCodeSplit: true,
     sourcemap: true,
   },
-  
+
   // Server configuration
   server: {
     port: 3000,
@@ -74,7 +74,7 @@ export default defineConfig({
     host: true,
     open: true,
   },
-  
+
   // Preview configuration
   preview: {
     port: 4173,
@@ -82,7 +82,7 @@ export default defineConfig({
     host: true,
     open: true,
   },
-  
+
   // Performance optimizations
   optimizeDeps: {
     include: [

@@ -3,6 +3,7 @@
 ## Prerequisites
 
 Before deploying, ensure you have:
+
 - [ ] Configured all environment variables
 - [ ] Generated PWA icons (192x192 and 512x512)
 - [ ] Added OG images for social sharing
@@ -39,16 +40,19 @@ VITE_STRIPE_PUBLIC_KEY=pk_live_xxxxx
 ### Option 1: Vercel (Recommended for Quick Deploy)
 
 1. **Install Vercel CLI**
+
    ```bash
    npm install -g vercel
    ```
 
 2. **Login to Vercel**
+
    ```bash
    vercel login
    ```
 
 3. **Deploy**
+
    ```bash
    vercel --prod
    ```
@@ -58,21 +62,25 @@ VITE_STRIPE_PUBLIC_KEY=pk_live_xxxxx
 ### Option 2: Netlify
 
 1. **Install Netlify CLI**
+
    ```bash
    npm install -g netlify-cli
    ```
 
 2. **Build the project**
+
    ```bash
    npm run build
    ```
 
 3. **Deploy**
+
    ```bash
    netlify deploy --prod --dir=dist
    ```
 
 4. **Configure in `netlify.toml`**:
+
    ```toml
    [build]
      command = "npm run build"
@@ -94,11 +102,13 @@ VITE_STRIPE_PUBLIC_KEY=pk_live_xxxxx
 ### Option 3: Docker (Self-Hosted)
 
 1. **Build Docker Image**
+
    ```bash
    docker build -t sun-ninja:latest .
    ```
 
 2. **Run Container**
+
    ```bash
    docker run -d \
      -p 80:80 \
@@ -108,11 +118,13 @@ VITE_STRIPE_PUBLIC_KEY=pk_live_xxxxx
    ```
 
 3. **Or use Docker Compose**
+
    ```bash
    docker-compose up -d
    ```
 
 4. **For HTTPS**, set up Let's Encrypt:
+
    ```bash
    # Install certbot
    sudo apt-get install certbot python3-certbot-nginx
@@ -124,16 +136,19 @@ VITE_STRIPE_PUBLIC_KEY=pk_live_xxxxx
 ### Option 4: AWS (S3 + CloudFront)
 
 1. **Build the project**
+
    ```bash
    npm run build
    ```
 
 2. **Create S3 Bucket**
+
    ```bash
    aws s3 mb s3://sunninja-production
    ```
 
 3. **Upload to S3**
+
    ```bash
    aws s3 sync dist/ s3://sunninja-production
    ```
@@ -161,6 +176,7 @@ VITE_STRIPE_PUBLIC_KEY=pk_live_xxxxx
 ## Post-Deployment Checklist
 
 ### Testing
+
 - [ ] Test the deployed application
 - [ ] Verify all pages load correctly
 - [ ] Test PWA installation
@@ -170,6 +186,7 @@ VITE_STRIPE_PUBLIC_KEY=pk_live_xxxxx
 - [ ] Check error tracking
 
 ### Performance
+
 - [ ] Run Lighthouse audit (aim for 90+ scores)
 - [ ] Test loading speed from different locations
 - [ ] Verify asset compression (Gzip/Brotli)
@@ -177,6 +194,7 @@ VITE_STRIPE_PUBLIC_KEY=pk_live_xxxxx
 - [ ] Test PWA offline functionality
 
 ### SEO
+
 - [ ] Submit sitemap to Google Search Console
 - [ ] Verify meta tags with social media debuggers
   - Facebook: https://developers.facebook.com/tools/debug/
@@ -186,6 +204,7 @@ VITE_STRIPE_PUBLIC_KEY=pk_live_xxxxx
 - [ ] Test structured data with Google's Rich Results Tool
 
 ### Security
+
 - [ ] Enable HTTPS/SSL
 - [ ] Verify security headers
 - [ ] Test CORS configuration
@@ -194,6 +213,7 @@ VITE_STRIPE_PUBLIC_KEY=pk_live_xxxxx
 - [ ] Set up firewall rules
 
 ### Monitoring
+
 - [ ] Verify Sentry error tracking
 - [ ] Check Google Analytics data flow
 - [ ] Set up uptime monitoring (UptimeRobot, Pingdom)
@@ -210,6 +230,7 @@ The project includes GitHub Actions workflows:
 2. **Push to `main`** → Deploy to Production
 
 Configure secrets in GitHub:
+
 - `VERCEL_TOKEN` or `NETLIFY_AUTH_TOKEN`
 - `SENTRY_AUTH_TOKEN`
 - Other deployment credentials
@@ -239,6 +260,7 @@ echo "✅ Deployment complete!"
 ```
 
 Make it executable:
+
 ```bash
 chmod +x deploy.sh
 ./deploy.sh
@@ -249,10 +271,12 @@ chmod +x deploy.sh
 If deployment fails:
 
 ### Vercel/Netlify
+
 - Use dashboard to rollback to previous deployment
 - Or redeploy previous commit
 
 ### Docker
+
 ```bash
 # Stop current container
 docker stop sun-ninja
@@ -262,6 +286,7 @@ docker run -d --name sun-ninja sun-ninja:previous-tag
 ```
 
 ### Manual
+
 ```bash
 # Revert to previous commit
 git revert HEAD
@@ -285,6 +310,7 @@ After deployment, consider:
 1. **Purchase Domain** (GoDaddy, Namecheap, etc.)
 
 2. **Configure DNS**:
+
    ```
    A     @     <your-server-ip>
    CNAME www   <your-domain>
@@ -297,6 +323,7 @@ After deployment, consider:
 ## Support
 
 If you encounter issues:
+
 - Check deployment logs
 - Verify environment variables
 - Review error tracking (Sentry)

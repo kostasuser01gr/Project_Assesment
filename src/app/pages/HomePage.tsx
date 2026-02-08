@@ -1,17 +1,38 @@
-import { Link } from 'react-router';
-import { Star, Shield, Package, Users, ArrowRight, Sparkles, Sun, Wind, Heart, Award, TrendingUp, Clock, Zap, CheckCircle2 } from 'lucide-react';
-import { motion } from 'motion/react';
-import { Button } from '../components/ui/button';
-import { ReviewCard } from '../components/ReviewCard';
-import { TrustBadge } from '../components/TrustBadge';
-import { getHeroPhotos, getGalleryPhotos, getProductPhotos, getSetupPhotos, getUGCPhotos } from '../../utils/photoManager';
+import {
+  ArrowRight,
+  Award,
+  CheckCircle2,
+  Clock,
+  Heart,
+  Package,
+  Shield,
+  Sparkles,
+  Star,
+  Sun,
+  TrendingUp,
+  Users,
+  Wind,
+  Zap,
+} from 'lucide-react'
+import { motion } from 'motion/react'
+import { Link } from 'react-router'
+import {
+  getGalleryPhotos,
+  getHeroPhotos,
+  getProductPhotos,
+  getSetupPhotos,
+  getUGCPhotos,
+} from '../../utils/photoManager'
+import { ReviewCard } from '../components/ReviewCard'
+import { TrustBadge } from '../components/TrustBadge'
+import { Button } from '../components/ui/button'
 
 export function HomePage() {
-  const heroPhoto = getHeroPhotos()[0];
-  const setupPhotos = getSetupPhotos();
-  const ugcPhotos = getUGCPhotos();
-  const galleryPhotos = getGalleryPhotos(6);
-  const productPhotos = getProductPhotos();
+  const heroPhoto = getHeroPhotos()[0]
+  const setupPhotos = getSetupPhotos()
+  const ugcPhotos = getUGCPhotos()
+  const galleryPhotos = getGalleryPhotos(6)
+  const productPhotos = getProductPhotos()
 
   return (
     <div className="min-h-screen bg-[#FFFBF5]">
@@ -24,11 +45,7 @@ export function HomePage() {
           transition={{ duration: 1.2, ease: 'easeOut' }}
           className="absolute inset-0 z-0"
         >
-          <img
-            src={heroPhoto.src}
-            alt={heroPhoto.alt}
-            className="w-full h-full object-cover"
-          />
+          <img src={heroPhoto.src} alt={heroPhoto.alt} className="w-full h-full object-cover" />
           {/* Premium Ocean → Coral Gradient from Figma Brief */}
           <div className="absolute inset-0 bg-gradient-to-br from-[#0EA5E9]/60 via-[#0EA5E9]/40 to-[#FF6B6B]/50"></div>
           <div className="absolute inset-0 holographic-overlay opacity-20"></div>
@@ -93,7 +110,7 @@ export function HomePage() {
                     <ArrowRight className="ml-2 w-5 h-5" />
                   </Button>
                 </Link>
-                
+
                 <div className="aurora-gradient px-6 py-3 rounded-full glasier-ultra">
                   <span className="font-semibold text-white text-lg">🔥 35% OFF Today Only</span>
                 </div>
@@ -170,7 +187,8 @@ export function HomePage() {
               </div>
               <h3 className="font-display text-2xl mb-3 holographic-text">UPF 50+ Protection</h3>
               <p className="text-muted-foreground leading-relaxed">
-                Blocks 98% of harmful UV rays. Dermatologist-recommended fabric keeps your family safe.
+                Blocks 98% of harmful UV rays. Dermatologist-recommended fabric keeps your family
+                safe.
               </p>
               <div className="mt-6 quantum-glass inline-block px-4 py-2 rounded-full">
                 <span className="font-bold text-3xl holographic-text">98%</span>
@@ -214,9 +232,7 @@ export function HomePage() {
               <Clock className="w-4 h-4 text-[#0EA5E9]" />
               <span className="text-sm font-medium">Setup in 60 Seconds</span>
             </div>
-            <h2 className="font-display text-5xl mb-4 holographic-text">
-              How It Works
-            </h2>
+            <h2 className="font-display text-5xl mb-4 holographic-text">How It Works</h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               Three simple steps from car to shade
             </p>
@@ -239,11 +255,7 @@ export function HomePage() {
 
                 {/* Setup Photo */}
                 <div className="relative h-64 overflow-hidden">
-                  <img
-                    src={photo.src}
-                    alt={photo.alt}
-                    className="w-full h-full object-cover"
-                  />
+                  <img src={photo.src} alt={photo.alt} className="w-full h-full object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                 </div>
 
@@ -253,11 +265,13 @@ export function HomePage() {
                     {['Unpack', 'Pop Up', 'Secure'][index]}
                   </h3>
                   <p className="text-muted-foreground leading-relaxed">
-                    {[
-                      'Remove from compact carry bag. Lightweight at just 4.8 lbs.',
-                      'Frame auto-expands with pop-up mechanism. No assembly required.',
-                      'Anchor with sand pockets and stakes. Ready for all-day use.',
-                    ][index]}
+                    {
+                      [
+                        'Remove from compact carry bag. Lightweight at just 4.8 lbs.',
+                        'Frame auto-expands with pop-up mechanism. No assembly required.',
+                        'Anchor with sand pockets and stakes. Ready for all-day use.',
+                      ][index]
+                    }
                   </p>
                 </div>
               </motion.div>
@@ -273,7 +287,9 @@ export function HomePage() {
           >
             <div className="inline-flex items-center gap-3 px-8 py-4 crystalline-surface rounded-full quantum-shadow">
               <Zap className="w-6 h-6 text-[#FFD700]" />
-              <span className="font-semibold text-lg">Average setup time: <span className="holographic-text">47 seconds</span></span>
+              <span className="font-semibold text-lg">
+                Average setup time: <span className="holographic-text">47 seconds</span>
+              </span>
             </div>
           </motion.div>
         </div>
@@ -300,7 +316,7 @@ export function HomePage() {
                   <span className="font-bold text-white">BEST SELLER</span>
                 </div>
               </div>
-              
+
               {/* Floating Stats */}
               <motion.div
                 initial={{ y: 20, opacity: 0 }}
@@ -330,12 +346,11 @@ export function HomePage() {
                 <span className="text-sm font-medium">Premium Edition</span>
               </div>
 
-              <h2 className="font-display text-5xl mb-6 holographic-text">
-                Sun Ninja Beach Tent
-              </h2>
+              <h2 className="font-display text-5xl mb-6 holographic-text">Sun Ninja Beach Tent</h2>
 
               <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-                The only beach tent you'll ever need. Premium materials, thoughtful design, and unbeatable protection—all in a package that weighs less than 5 pounds.
+                The only beach tent you'll ever need. Premium materials, thoughtful design, and
+                unbeatable protection—all in a package that weighs less than 5 pounds.
               </p>
 
               {/* Feature List */}
@@ -424,7 +439,9 @@ export function HomePage() {
                   <div className="absolute bottom-3 left-3 right-3">
                     <div className="flex items-center gap-2 text-white">
                       <Heart className="w-4 h-4 fill-white" />
-                      <span className="text-xs font-medium">{Math.floor(Math.random() * 500) + 100} likes</span>
+                      <span className="text-xs font-medium">
+                        {Math.floor(Math.random() * 500) + 100} likes
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -461,12 +478,8 @@ export function HomePage() {
               <Star className="w-5 h-5 fill-yellow-400 text-yellow-400" />
               <span className="font-semibold">Rated 4.9/5 by 2,847 customers</span>
             </div>
-            <h2 className="font-display text-5xl mb-4 holographic-text">
-              Loved by Beach-Goers
-            </h2>
-            <p className="text-xl text-muted-foreground">
-              Real reviews from real families
-            </p>
+            <h2 className="font-display text-5xl mb-4 holographic-text">Loved by Beach-Goers</h2>
+            <p className="text-xl text-muted-foreground">Real reviews from real families</p>
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-6">
@@ -604,7 +617,11 @@ export function HomePage() {
       <section className="py-12 bg-white border-t border-border">
         <div className="container-custom max-w-6xl mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <TrustBadge icon={Shield} title="Lifetime Warranty" description="Quality guaranteed forever" />
+            <TrustBadge
+              icon={Shield}
+              title="Lifetime Warranty"
+              description="Quality guaranteed forever"
+            />
             <TrustBadge icon={Package} title="Free Shipping" description="On all orders" />
             <TrustBadge icon={Users} title="30-Day Returns" description="No questions asked" />
             <TrustBadge icon={Award} title="Made in USA" description="Premium quality" />
@@ -612,5 +629,5 @@ export function HomePage() {
         </div>
       </section>
     </div>
-  );
+  )
 }

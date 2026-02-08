@@ -19,22 +19,16 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    
+
     /* Path mapping */
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
     },
-    
+
     /* Testing */
     "types": ["vite/client", "vitest/globals", "@testing-library/jest-dom"]
   },
   "include": ["src"],
-  "exclude": [
-    "node_modules",
-    "dist",
-    "**/*.BACKUP.*",
-    "**/*.OLD.*",
-    "**/*.BACKUP2.*"
-  ]
+  "exclude": ["node_modules", "dist", "**/*.BACKUP.*", "**/*.OLD.*", "**/*.BACKUP2.*"]
 }

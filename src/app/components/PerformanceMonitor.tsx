@@ -1,6 +1,6 @@
 // Performance monitoring component
 import { useEffect } from 'react'
-import { onCLS, onFID, onFCP, onLCP, onTTFB, type Metric } from 'web-vitals'
+import { onCLS, onFCP, onFID, onLCP, onTTFB, type Metric } from 'web-vitals'
 
 interface PerformanceMonitorProps {
   onMetric?: (metric: Metric) => void
@@ -44,8 +44,8 @@ export function PerformanceMonitor({ onMetric, debug = false }: PerformanceMonit
 }
 
 // Error Boundary component
-import { Component, type ReactNode, type ErrorInfo } from 'react'
 import { captureException } from '@/utils/errorTracking'
+import { Component, type ErrorInfo, type ReactNode } from 'react'
 
 interface Props {
   children: ReactNode

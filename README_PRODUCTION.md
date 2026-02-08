@@ -9,6 +9,7 @@ Premium sun protection products e-commerce platform built with modern web techno
 ## 🚀 Features
 
 ### Core Features
+
 - ⚡ **Lightning Fast** - Vite-powered development and optimized production builds
 - 📱 **Progressive Web App** - Installable, works offline, app-like experience
 - 🎨 **Modern UI** - Radix UI components with Tailwind CSS
@@ -21,6 +22,7 @@ Premium sun protection products e-commerce platform built with modern web techno
 - 🎯 **State Management** - Custom Context + Reducer implementation
 
 ### Developer Experience
+
 - 🎨 **Code Quality** - ESLint, Prettier, and Husky git hooks
 - 🚢 **CI/CD Ready** - GitHub Actions for testing and deployment
 - 🐳 **Docker Support** - Multi-stage builds with Nginx
@@ -45,6 +47,7 @@ Premium sun protection products e-commerce platform built with modern web techno
 ## 🏃 Quick Start
 
 ### Prerequisites
+
 - Node.js 20+
 - npm, pnpm, or yarn
 - Docker (optional, for containerized deployment)
@@ -71,6 +74,7 @@ Visit `http://localhost:3000` to see your application.
 ## 📜 Available Scripts
 
 ### Development
+
 ```bash
 npm run dev          # Start development server
 npm run build        # Build for production
@@ -78,6 +82,7 @@ npm run preview      # Preview production build
 ```
 
 ### Testing
+
 ```bash
 npm run test         # Run unit tests
 npm run test:ui      # Run tests with UI
@@ -87,6 +92,7 @@ npm run e2e:ui       # Run E2E tests with UI
 ```
 
 ### Code Quality
+
 ```bash
 npm run lint         # Lint code
 npm run lint:fix     # Fix linting issues
@@ -96,6 +102,7 @@ npm run type-check   # TypeScript type checking
 ```
 
 ### Git Hooks
+
 ```bash
 npm run prepare      # Set up Husky git hooks
 ```
@@ -195,6 +202,7 @@ VITE_STRIPE_PUBLIC_KEY=pk_live_xxxxx
 ### Build Configuration
 
 The Vite configuration includes:
+
 - Code splitting for optimal loading
 - Compression (Gzip + Brotli)
 - PWA support with service workers
@@ -222,6 +230,7 @@ describe('App', () => {
 ```
 
 Run tests:
+
 ```bash
 npm run test          # Watch mode
 npm run test:coverage # With coverage
@@ -242,6 +251,7 @@ test('should load home page', async ({ page }) => {
 ```
 
 Run E2E tests:
+
 ```bash
 npm run e2e      # Headless mode
 npm run e2e:ui   # UI mode
@@ -279,6 +289,7 @@ trackEvent('button_click', {
 ### Web Vitals
 
 Web Vitals are automatically tracked and sent to analytics:
+
 - LCP (Largest Contentful Paint)
 - FID (First Input Delay)
 - CLS (Cumulative Layout Shift)
@@ -313,11 +324,13 @@ npm run build
 ### CI/CD Pipeline
 
 The project includes GitHub Actions workflows for:
+
 - **Continuous Integration**: Linting, testing, and building
 - **Docker**: Building and pushing container images
 - **Security**: Dependency and code security scanning
 
 Workflows run on:
+
 - Push to `main` or `develop` branches
 - Pull requests to `main`
 
@@ -333,6 +346,7 @@ Workflows run on:
 ## 🎨 UI Components
 
 The project uses Radix UI primitives with Tailwind CSS for styling. All components are:
+
 - Fully accessible (ARIA compliant)
 - Keyboard navigable
 - Screen reader friendly
@@ -340,6 +354,7 @@ The project uses Radix UI primitives with Tailwind CSS for styling. All componen
 - Themeable
 
 Example components available:
+
 - Buttons, Cards, Dialogs
 - Dropdowns, Modals, Tooltips
 - Forms, Inputs, Selects
@@ -349,6 +364,7 @@ Example components available:
 ## 📈 Performance
 
 Performance optimizations include:
+
 - Code splitting by route
 - Lazy loading for heavy components
 - Image optimization

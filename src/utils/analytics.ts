@@ -75,7 +75,12 @@ export function trackPurchase(transactionId: string, value: number, items: any[]
   })
 }
 
-export function trackAddToCart(item: { id: string; name: string; price: number; quantity: number }) {
+export function trackAddToCart(item: {
+  id: string
+  name: string
+  price: number
+  quantity: number
+}) {
   trackEvent('add_to_cart', {
     currency: 'USD',
     value: item.price * item.quantity,

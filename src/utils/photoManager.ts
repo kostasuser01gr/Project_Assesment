@@ -4,13 +4,13 @@
  */
 
 export interface Photo {
-  id: string;
-  src: string;
-  alt: string;
-  width: number;
-  height: number;
-  category: 'hero' | 'lifestyle' | 'product' | 'setup' | 'ugc' | 'gallery';
-  orientation: 'landscape' | 'portrait' | 'square';
+  id: string
+  src: string
+  alt: string
+  width: number
+  height: number
+  category: 'hero' | 'lifestyle' | 'product' | 'setup' | 'ugc' | 'gallery'
+  orientation: 'landscape' | 'portrait' | 'square'
 }
 
 /**
@@ -238,41 +238,41 @@ export const PHOTO_LIBRARY: Photo[] = [
     category: 'ugc',
     orientation: 'landscape',
   },
-];
+]
 
 export const getPhotosByCategory = (category: Photo['category']): Photo[] => {
-  return PHOTO_LIBRARY.filter((p) => p.category === category);
-};
+  return PHOTO_LIBRARY.filter((p) => p.category === category)
+}
 
 export const getPhotoById = (id: string): Photo | undefined => {
-  return PHOTO_LIBRARY.find((p) => p.id === id);
-};
+  return PHOTO_LIBRARY.find((p) => p.id === id)
+}
 
 export const getHeroPhotos = (): Photo[] => {
-  return getPhotosByCategory('hero');
-};
+  return getPhotosByCategory('hero')
+}
 
 export const getGalleryPhotos = (count?: number): Photo[] => {
-  const photos = getPhotosByCategory('gallery');
-  return count ? photos.slice(0, count) : photos;
-};
+  const photos = getPhotosByCategory('gallery')
+  return count ? photos.slice(0, count) : photos
+}
 
 export const getProductPhotos = (): Photo[] => {
-  return getPhotosByCategory('product');
-};
+  return getPhotosByCategory('product')
+}
 
 export const getSetupPhotos = (): Photo[] => {
-  return getPhotosByCategory('setup');
-};
+  return getPhotosByCategory('setup')
+}
 
 export const getUGCPhotos = (): Photo[] => {
-  return getPhotosByCategory('ugc');
-};
+  return getPhotosByCategory('ugc')
+}
 
 export const getLandscapePhotos = (): Photo[] => {
-  return PHOTO_LIBRARY.filter((p) => p.orientation === 'landscape');
-};
+  return PHOTO_LIBRARY.filter((p) => p.orientation === 'landscape')
+}
 
 export const getPortraitPhotos = (): Photo[] => {
-  return PHOTO_LIBRARY.filter((p) => p.orientation === 'portrait');
-};
+  return PHOTO_LIBRARY.filter((p) => p.orientation === 'portrait')
+}

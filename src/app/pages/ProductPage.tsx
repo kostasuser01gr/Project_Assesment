@@ -1,40 +1,45 @@
-import { useState } from 'react';
-import { motion } from 'motion/react';
-import { Header } from '../components/Header';
-import { Footer } from '../components/Footer';
-import { StickyCartBar } from '../components/StickyCartBar';
-import { StarRating } from '../components/StarRating';
-import { ReviewCard } from '../components/ReviewCard';
-import { BenefitCard } from '../components/BenefitCard';
-import { TrustBadge } from '../components/TrustBadge';
-import { ProductBadge } from '../components/ProductBadge';
-import { Button } from '../components/ui/button';
-import { 
-  ShoppingCart, 
-  Truck, 
-  RotateCcw, 
-  Shield, 
-  Sun, 
-  Wind, 
-  Zap, 
-  Heart,
+import {
+  CheckCircle2,
   ChevronDown,
+  Heart,
   Play,
-  CheckCircle2
-} from 'lucide-react';
+  RotateCcw,
+  Shield,
+  ShoppingCart,
+  Sun,
+  Truck,
+  Wind,
+  Zap,
+} from 'lucide-react'
+import { motion } from 'motion/react'
+import { useState } from 'react'
+import { toast } from 'sonner'
+import {
+  getGalleryPhotos,
+  getProductPhotos,
+  getSetupPhotos,
+  getUGCPhotos,
+} from '../../utils/photoManager'
+import { BenefitCard } from '../components/BenefitCard'
+import { Footer } from '../components/Footer'
+import { Header } from '../components/Header'
+import { ProductBadge } from '../components/ProductBadge'
+import { ReviewCard } from '../components/ReviewCard'
+import { StarRating } from '../components/StarRating'
+import { StickyCartBar } from '../components/StickyCartBar'
+import { TrustBadge } from '../components/TrustBadge'
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "../components/ui/accordion";
-import { toast } from 'sonner';
-import { getProductPhotos, getGalleryPhotos, getSetupPhotos, getUGCPhotos } from '../../utils/photoManager';
+} from '../components/ui/accordion'
+import { Button } from '../components/ui/button'
 
-const productPhotos = getProductPhotos();
-const galleryPhotos = getGalleryPhotos(4);
-const setupPhotos = getSetupPhotos();
-const ugcPhotos = getUGCPhotos();
+const productPhotos = getProductPhotos()
+const galleryPhotos = getGalleryPhotos(4)
+const setupPhotos = getSetupPhotos()
+const ugcPhotos = getUGCPhotos()
 
 const productImages = [
   productPhotos[0]?.src || '/images/beach/product-beach-01.jpg',
@@ -43,17 +48,17 @@ const productImages = [
   galleryPhotos[0]?.src || '/images/beach/gallery-ocean-waves.jpg',
   galleryPhotos[1]?.src || '/images/beach/gallery-beach-scene.jpg',
   galleryPhotos[2]?.src || '/images/beach/gallery-sunny-day.jpg',
-];
+]
 
 export function ProductPage() {
-  const [selectedImage, setSelectedImage] = useState(0);
-  const [quantity, setQuantity] = useState(1);
+  const [selectedImage, setSelectedImage] = useState(0)
+  const [quantity, setQuantity] = useState(1)
 
   const handleAddToCart = () => {
     toast.success('Added to cart!', {
       description: `${quantity} Sun Ninja Beach Tent${quantity > 1 ? 's' : ''} added to your cart.`,
-    });
-  };
+    })
+  }
 
   return (
     <div className="min-h-screen bg-background">
@@ -63,17 +68,17 @@ export function ProductPage() {
       <section className="container mx-auto px-4 py-8 md:py-12">
         <div className="grid md:grid-cols-2 gap-8 md:gap-12">
           {/* Product Gallery - Premium Diamond Card */}
-          <motion.div 
+          <motion.div
             className="space-y-4"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
           >
             <div className="aspect-square rounded-2xl overflow-hidden bg-muted diamond-card quantum-shadow transform-3d">
-              <motion.img 
+              <motion.img
                 key={selectedImage}
-                src={productImages[selectedImage]} 
-                alt="Sun Ninja Beach Tent" 
+                src={productImages[selectedImage]}
+                alt="Sun Ninja Beach Tent"
                 className="w-full h-full object-cover"
                 initial={{ opacity: 0, scale: 1.1 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -86,8 +91,8 @@ export function ProductPage() {
                   key={idx}
                   onClick={() => setSelectedImage(idx)}
                   className={`aspect-square rounded-lg overflow-hidden border-2 transition-all hover-lift crystalline-surface ${
-                    selectedImage === idx 
-                      ? 'border-[#0EA5E9] shadow-md quantum-glass' 
+                    selectedImage === idx
+                      ? 'border-[#0EA5E9] shadow-md quantum-glass'
                       : 'border-border hover:border-[#FF6B6B]/50'
                   }`}
                 >
@@ -98,15 +103,19 @@ export function ProductPage() {
           </motion.div>
 
           {/* Product Info */}
-          <motion.div 
+          <motion.div
             className="space-y-6"
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
             <div className="flex flex-wrap gap-2">
-              <ProductBadge variant="primary" className="glasier-ultra">UPF 50+ Protection</ProductBadge>
-              <ProductBadge variant="accent" className="glasier-ultra">Best Seller</ProductBadge>
+              <ProductBadge variant="primary" className="glasier-ultra">
+                UPF 50+ Protection
+              </ProductBadge>
+              <ProductBadge variant="accent" className="glasier-ultra">
+                Best Seller
+              </ProductBadge>
             </div>
 
             <div>
@@ -114,7 +123,8 @@ export function ProductPage() {
                 Sun Ninja Beach Tent
               </h1>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                Your ultimate beach companion. Premium shade protection with instant setup and superior ventilation.
+                Your ultimate beach companion. Premium shade protection with instant setup and
+                superior ventilation.
               </p>
             </div>
 
@@ -131,21 +141,21 @@ export function ProductPage() {
             {/* Quantity & Add to Cart */}
             <div className="flex gap-3">
               <div className="flex items-center border border-border rounded-lg">
-                <button 
+                <button
                   onClick={() => setQuantity(Math.max(1, quantity - 1))}
                   className="px-4 py-3 hover:bg-muted transition-colors"
                 >
                   −
                 </button>
                 <span className="px-6 py-3 border-x border-border font-medium">{quantity}</span>
-                <button 
+                <button
                   onClick={() => setQuantity(quantity + 1)}
                   className="px-4 py-3 hover:bg-muted transition-colors"
                 >
                   +
                 </button>
               </div>
-              <Button 
+              <Button
                 onClick={handleAddToCart}
                 className="flex-1 text-black font-semibold py-6 text-lg gap-2 quantum-button magnetic-quantum"
               >
@@ -154,36 +164,17 @@ export function ProductPage() {
               </Button>
             </div>
 
-            <Button 
-              variant="outline" 
-              className="w-full py-6 gap-2"
-            >
+            <Button variant="outline" className="w-full py-6 gap-2">
               <Play className="w-5 h-5" />
               Watch Setup Video
             </Button>
 
             {/* Trust Row */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-6 border-t border-border">
-              <TrustBadge 
-                icon={Truck} 
-                title="Free Shipping" 
-                description="Orders over $50"
-              />
-              <TrustBadge 
-                icon={RotateCcw} 
-                title="30-Day Returns" 
-                description="Hassle-free"
-              />
-              <TrustBadge 
-                icon={Shield} 
-                title="2-Year Warranty" 
-                description="Quality guaranteed"
-              />
-              <TrustBadge 
-                icon={Sun} 
-                title="UPF 50+" 
-                description="Max protection"
-              />
+              <TrustBadge icon={Truck} title="Free Shipping" description="Orders over $50" />
+              <TrustBadge icon={RotateCcw} title="30-Day Returns" description="Hassle-free" />
+              <TrustBadge icon={Shield} title="2-Year Warranty" description="Quality guaranteed" />
+              <TrustBadge icon={Sun} title="UPF 50+" description="Max protection" />
             </div>
           </motion.div>
         </div>
@@ -202,19 +193,19 @@ export function ProductPage() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">
-            <BenefitCard 
+            <BenefitCard
               icon={Sun}
               title="Maximum Sun Protection"
               description="UPF 50+ rated fabric blocks 98% of harmful UV rays, keeping you and your family safe all day long."
               image={productPhotos[0]?.src || '/images/beach/product-beach-01.jpg'}
             />
-            <BenefitCard 
+            <BenefitCard
               icon={Zap}
               title="60-Second Setup"
               description="Pop-up design means you go from bag to shade in under a minute. No poles, no stress, just instant comfort."
               image={setupPhotos[0]?.src || '/images/beach/setup-beach-umbrella.jpg'}
             />
-            <BenefitCard 
+            <BenefitCard
               icon={Wind}
               title="Superior Ventilation"
               description="Strategic mesh windows and extended back flap create a cooling cross-breeze while maintaining privacy."
@@ -238,13 +229,12 @@ export function ProductPage() {
 
           <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             {setupPhotos.map((photo, index) => (
-              <div key={photo.id} className="text-center space-y-4 hover-lift diamond-card p-6 transform-3d">
+              <div
+                key={photo.id}
+                className="text-center space-y-4 hover-lift diamond-card p-6 transform-3d"
+              >
                 <div className="relative aspect-video rounded-xl overflow-hidden mb-4 crystalline-surface quantum-shadow">
-                  <img
-                    src={photo.src}
-                    alt={photo.alt}
-                    className="w-full h-full object-cover"
-                  />
+                  <img src={photo.src} alt={photo.alt} className="w-full h-full object-cover" />
                   <div className="absolute top-3 left-3 w-12 h-12 rounded-full bg-gradient-to-br from-[#0EA5E9] to-[#FF6B6B] text-white text-xl font-bold flex items-center justify-center quantum-shadow">
                     {index + 1}
                   </div>
@@ -253,11 +243,13 @@ export function ProductPage() {
                   {['Remove from Bag', 'Pop & Unfold', 'Secure with Stakes'][index]}
                 </h3>
                 <p className="text-muted-foreground">
-                  {[
-                    'Pull the tent out of its compact carrying bag',
-                    'Release the strap and let it spring into shape',
-                    'Anchor with included stakes and sandbags',
-                  ][index]}
+                  {
+                    [
+                      'Pull the tent out of its compact carrying bag',
+                      'Release the strap and let it spring into shape',
+                      'Anchor with included stakes and sandbags',
+                    ][index]
+                  }
                 </p>
               </div>
             ))}
@@ -317,16 +309,14 @@ export function ProductPage() {
             <div className="flex items-center justify-center gap-3 mb-4">
               <StarRating rating={4.8} count={2847} size="lg" />
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Loved by Beach Enthusiasts
-            </h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Loved by Beach Enthusiasts</h2>
             <p className="text-lg text-muted-foreground">
               Join thousands of happy customers enjoying perfect beach days
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-            <ReviewCard 
+            <ReviewCard
               name="Sarah M."
               rating={5}
               date="2 weeks ago"
@@ -335,7 +325,7 @@ export function ProductPage() {
               verified
               location="Miami, FL"
             />
-            <ReviewCard 
+            <ReviewCard
               name="Michael R."
               rating={5}
               date="1 month ago"
@@ -344,7 +334,7 @@ export function ProductPage() {
               verified
               location="San Diego, CA"
             />
-            <ReviewCard 
+            <ReviewCard
               name="Jennifer K."
               rating={4}
               date="3 weeks ago"
@@ -367,9 +357,7 @@ export function ProductPage() {
       {/* Specs & What's Included */}
       <section className="py-16 md:py-24 scroll-fade-in">
         <div className="container mx-auto px-4 max-w-4xl">
-          <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
-            Specifications
-          </h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">Specifications</h2>
 
           <div className="grid md:grid-cols-2 gap-8 mb-12">
             <div className="space-y-4">
@@ -462,7 +450,9 @@ export function ProductPage() {
                 How long does setup really take?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground">
-                The Sun Ninja Tent features a true pop-up design. Once you release it from the bag, it takes about 30-60 seconds to fully expand and secure with stakes. First-time users typically complete setup in under 2 minutes.
+                The Sun Ninja Tent features a true pop-up design. Once you release it from the bag,
+                it takes about 30-60 seconds to fully expand and secure with stakes. First-time
+                users typically complete setup in under 2 minutes.
               </AccordionContent>
             </AccordionItem>
 
@@ -471,7 +461,9 @@ export function ProductPage() {
                 Will it stay secure in windy conditions?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground">
-                Yes! When properly anchored with the included stakes and sandbags, the tent is stable in winds up to 25 mph. For extra security in very windy conditions, we recommend filling all four sandbag anchors with sand or water.
+                Yes! When properly anchored with the included stakes and sandbags, the tent is
+                stable in winds up to 25 mph. For extra security in very windy conditions, we
+                recommend filling all four sandbag anchors with sand or water.
               </AccordionContent>
             </AccordionItem>
 
@@ -480,7 +472,9 @@ export function ProductPage() {
                 How many people does it fit?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground">
-                The tent comfortably accommodates 4-5 adults with room for beach chairs, coolers, and bags. The interior dimensions are approximately 94" x 94" with 59" of headroom at the peak.
+                The tent comfortably accommodates 4-5 adults with room for beach chairs, coolers,
+                and bags. The interior dimensions are approximately 94" x 94" with 59" of headroom
+                at the peak.
               </AccordionContent>
             </AccordionItem>
 
@@ -489,7 +483,9 @@ export function ProductPage() {
                 What's your return policy?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground">
-                We offer a 30-day money-back guarantee. If you're not completely satisfied, return the tent in its original condition for a full refund. We also include a 2-year warranty covering manufacturing defects.
+                We offer a 30-day money-back guarantee. If you're not completely satisfied, return
+                the tent in its original condition for a full refund. We also include a 2-year
+                warranty covering manufacturing defects.
               </AccordionContent>
             </AccordionItem>
 
@@ -498,7 +494,8 @@ export function ProductPage() {
                 Is it really UPF 50+?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground">
-                Absolutely. Our fabric is independently tested and certified to block 98% of harmful UVA and UVB rays. This is the highest rating available for sun protection fabrics.
+                Absolutely. Our fabric is independently tested and certified to block 98% of harmful
+                UVA and UVB rays. This is the highest rating available for sun protection fabrics.
               </AccordionContent>
             </AccordionItem>
 
@@ -507,7 +504,9 @@ export function ProductPage() {
                 Can it be used in light rain?
               </AccordionTrigger>
               <AccordionContent className="text-muted-foreground">
-                Yes, the fabric is water-resistant and will handle light rain or ocean spray. However, it's designed primarily as a sun shelter, not a rain tent. We don't recommend using it in heavy rain or storms.
+                Yes, the fabric is water-resistant and will handle light rain or ocean spray.
+                However, it's designed primarily as a sun shelter, not a rain tent. We don't
+                recommend using it in heavy rain or storms.
               </AccordionContent>
             </AccordionItem>
           </Accordion>
@@ -524,7 +523,7 @@ export function ProductPage() {
             <p className="text-lg mb-8 text-white/90">
               Join 50,000+ happy customers. Free shipping on all orders over $50.
             </p>
-            <Button 
+            <Button
               onClick={handleAddToCart}
               size="lg"
               className="text-black font-semibold text-lg px-8 py-6 gap-2 quantum-button magnetic-quantum"
@@ -553,12 +552,12 @@ export function ProductPage() {
       <Footer />
 
       {/* Mobile Sticky Cart Bar */}
-      <StickyCartBar 
+      <StickyCartBar
         price="$129.99"
         rating={4.8}
         reviewCount={2847}
         onAddToCart={handleAddToCart}
       />
     </div>
-  );
+  )
 }

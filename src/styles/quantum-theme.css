@@ -6,19 +6,20 @@
 
 /* Quantum Glow Effects - Figma Palette */
 @keyframes quantum-glow {
-  0%, 100% {
-    box-shadow: 
-      0 0 20px rgba(14, 165, 233, 0.4),  /* Ocean */
-      0 0 40px rgba(255, 107, 107, 0.3),  /* Coral */
-      0 0 60px rgba(255, 215, 0, 0.2),    /* Gold */
-      inset 0 0 20px rgba(255, 255, 255, 0.1);
+  0%,
+  100% {
+    box-shadow:
+      0 0 20px rgba(14, 165, 233, 0.4),
+      /* Ocean */ 0 0 40px rgba(255, 107, 107, 0.3),
+      /* Coral */ 0 0 60px rgba(255, 215, 0, 0.2),
+      /* Gold */ inset 0 0 20px rgba(255, 255, 255, 0.1);
   }
   50% {
-    box-shadow: 
-      0 0 40px rgba(14, 165, 233, 0.6),  /* Ocean */
-      0 0 80px rgba(255, 107, 107, 0.5),  /* Coral */
-      0 0 120px rgba(255, 215, 0, 0.4),   /* Gold */
-      inset 0 0 40px rgba(255, 255, 255, 0.2);
+    box-shadow:
+      0 0 40px rgba(14, 165, 233, 0.6),
+      /* Ocean */ 0 0 80px rgba(255, 107, 107, 0.5),
+      /* Coral */ 0 0 120px rgba(255, 215, 0, 0.4),
+      /* Gold */ inset 0 0 40px rgba(255, 255, 255, 0.2);
   }
 }
 
@@ -44,7 +45,8 @@
 }
 
 @keyframes diamond-shimmer {
-  0%, 100% {
+  0%,
+  100% {
     transform: scale(1) rotate(0deg);
     filter: brightness(1);
   }
@@ -55,7 +57,8 @@
 }
 
 @keyframes particle-float {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0) translateX(0);
     opacity: 0.3;
   }
@@ -74,17 +77,18 @@
 }
 
 @keyframes crystalline-pulse {
-  0%, 100% {
+  0%,
+  100% {
     transform: scale(1);
     filter: brightness(1) contrast(1);
-    box-shadow: 0 10px 40px rgba(14, 165, 233, 0.2);  /* Ocean */
+    box-shadow: 0 10px 40px rgba(14, 165, 233, 0.2); /* Ocean */
   }
   50% {
     transform: scale(1.02);
     filter: brightness(1.1) contrast(1.05);
-    box-shadow: 
-      0 20px 60px rgba(14, 165, 233, 0.3),  /* Ocean */
-      0 0 100px rgba(255, 107, 107, 0.2);   /* Coral */
+    box-shadow:
+      0 20px 60px rgba(14, 165, 233, 0.3),
+      /* Ocean */ 0 0 100px rgba(255, 107, 107, 0.2); /* Coral */
   }
 }
 
@@ -107,7 +111,7 @@
   backdrop-filter: blur(32px) saturate(250%);
   -webkit-backdrop-filter: blur(32px) saturate(250%);
   border: 1px solid rgba(255, 255, 255, 0.3);
-  box-shadow: 
+  box-shadow:
     0 8px 32px 0 rgba(15, 59, 76, 0.37),
     inset 0 0 20px rgba(255, 255, 255, 0.1),
     0 0 60px rgba(255, 107, 90, 0.15);
@@ -124,7 +128,7 @@
   backdrop-filter: blur(40px) saturate(300%) brightness(1.1);
   -webkit-backdrop-filter: blur(40px) saturate(300%) brightness(1.1);
   border: 2px solid rgba(255, 255, 255, 0.4);
-  box-shadow: 
+  box-shadow:
     0 8px 32px rgba(15, 59, 76, 0.3),
     0 16px 64px rgba(255, 107, 90, 0.2),
     inset 0 1px 0 rgba(255, 255, 255, 0.5),
@@ -151,14 +155,7 @@
 }
 
 .aurora-gradient {
-  background: linear-gradient(
-    -45deg,
-    #0F3B4C,
-    #FF6B5A,
-    #FFB84D,
-    #0F3B4C,
-    #FF6B5A
-  );
+  background: linear-gradient(-45deg, #0f3b4c, #ff6b5a, #ffb84d, #0f3b4c, #ff6b5a);
   background-size: 400% 400%;
   animation: aurora-shift 10s ease infinite;
 }
@@ -166,11 +163,11 @@
 .holographic-text {
   background: linear-gradient(
     90deg,
-    #0F3B4C 0%,
-    #FF6B5A 25%,
-    #FFB84D 50%,
-    #FF6B5A 75%,
-    #0F3B4C 100%
+    #0f3b4c 0%,
+    #ff6b5a 25%,
+    #ffb84d 50%,
+    #ff6b5a 75%,
+    #0f3b4c 100%
   );
   background-size: 200% auto;
   -webkit-background-clip: text;
@@ -182,15 +179,11 @@
 
 .diamond-card {
   position: relative;
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.15) 0%,
-    rgba(255, 255, 255, 0.05) 100%
-  );
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.05) 100%);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
   border: 1px solid rgba(255, 255, 255, 0.3);
-  box-shadow: 
+  box-shadow:
     0 20px 60px rgba(15, 59, 76, 0.3),
     0 0 80px rgba(255, 107, 90, 0.15),
     inset 0 1px 1px rgba(255, 255, 255, 0.6);
@@ -200,7 +193,7 @@
 
 .diamond-card:hover {
   transform: translateY(-12px) scale(1.02);
-  box-shadow: 
+  box-shadow:
     0 30px 90px rgba(15, 59, 76, 0.4),
     0 0 120px rgba(255, 107, 90, 0.3),
     inset 0 1px 1px rgba(255, 255, 255, 0.8);
@@ -216,7 +209,7 @@
   );
   backdrop-filter: blur(20px) brightness(1.2);
   -webkit-backdrop-filter: blur(20px) brightness(1.2);
-  box-shadow: 
+  box-shadow:
     0 8px 32px rgba(15, 59, 76, 0.2),
     inset 0 1px 0 rgba(255, 255, 255, 0.4),
     inset 0 -1px 0 rgba(0, 0, 0, 0.1);
@@ -225,9 +218,9 @@
 
 .quantum-button {
   position: relative;
-  background: linear-gradient(135deg, #FF6B5A 0%, #FFB84D 100%);
+  background: linear-gradient(135deg, #ff6b5a 0%, #ffb84d 100%);
   border: none;
-  box-shadow: 
+  box-shadow:
     0 10px 40px rgba(255, 107, 90, 0.4),
     0 0 60px rgba(255, 184, 77, 0.3),
     inset 0 1px 0 rgba(255, 255, 255, 0.3);
@@ -254,7 +247,7 @@
 
 .quantum-button:hover {
   transform: translateY(-4px) scale(1.05);
-  box-shadow: 
+  box-shadow:
     0 20px 60px rgba(255, 107, 90, 0.6),
     0 0 100px rgba(255, 184, 77, 0.5),
     inset 0 1px 0 rgba(255, 255, 255, 0.5);
@@ -279,13 +272,7 @@
   content: '';
   position: absolute;
   inset: -2px;
-  background: linear-gradient(
-    45deg,
-    #0F3B4C,
-    #FF6B5A,
-    #FFB84D,
-    #0F3B4C
-  );
+  background: linear-gradient(45deg, #0f3b4c, #ff6b5a, #ffb84d, #0f3b4c);
   border-radius: inherit;
   z-index: -1;
   animation: aurora-shift 6s linear infinite;
@@ -353,7 +340,7 @@
 
 /* Quantum Shadow */
 .quantum-shadow {
-  box-shadow: 
+  box-shadow:
     0 2px 8px rgba(15, 59, 76, 0.08),
     0 8px 24px rgba(15, 59, 76, 0.12),
     0 16px 48px rgba(255, 107, 90, 0.15),
@@ -370,7 +357,7 @@
 .magnetic-quantum:hover {
   transform: translateY(-8px) scale(1.08);
   filter: brightness(1.2) saturate(1.3);
-  box-shadow: 
+  box-shadow:
     0 20px 60px rgba(255, 107, 90, 0.4),
     0 0 100px rgba(255, 184, 77, 0.3);
   animation: quantum-glow 2s ease-in-out infinite;
@@ -378,7 +365,7 @@
 
 /* Ultra-Premium Text Effects */
 .quantum-text-glow {
-  text-shadow: 
+  text-shadow:
     0 0 10px rgba(255, 107, 90, 0.5),
     0 0 20px rgba(255, 184, 77, 0.3),
     0 0 30px rgba(15, 59, 76, 0.2),
@@ -403,7 +390,7 @@
   backdrop-filter: blur(50px) saturate(400%) contrast(1.2);
   -webkit-backdrop-filter: blur(50px) saturate(400%) contrast(1.2);
   border: 1px solid rgba(255, 255, 255, 0.4);
-  box-shadow: 
+  box-shadow:
     0 8px 32px rgba(15, 59, 76, 0.25),
     inset 0 1px 0 rgba(255, 255, 255, 0.6),
     0 0 80px rgba(255, 107, 90, 0.1);
@@ -417,7 +404,7 @@
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
   }
-  
+
   .magnetic-quantum:hover {
     transform: translateY(-4px) scale(1.03);
   }
@@ -438,7 +425,7 @@
   .aurora-gradient {
     animation: none !important;
   }
-  
+
   .transform-3d:hover {
     transform: none;
   }

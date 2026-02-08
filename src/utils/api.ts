@@ -18,22 +18,19 @@ interface RequestConfig extends RequestInit {
   retryDelay?: number
 }
 
-async function fetchWithRetry(
-  url: string,
-  config: RequestConfig = {}
-): Promise<Response> {
+async function fetchWithRetry(url: string, config: RequestConfig = {}): Promise<Response> {
   const { retries = 3, retryDelay = 1000, ...fetchConfig } = config
   let lastError: Error | null = null
 
   for (let i = 0; i < retries; i++) {
     try {
       const response = await fetch(url, fetchConfig)
-      
+
       // Don't retry on client errors (4xx)
       if (response.status >= 400 && response.status < 500) {
         return response
       }
-      
+
       // Retry on server errors (5xx) or network errors
       if (response.ok || i === retries - 1) {
         return response
@@ -48,12 +45,9 @@ async function fetchWithRetry(
   throw lastError || new Error('Request failed after retries')
 }
 
-async function request<T>(
-  endpoint: string,
-  config: RequestConfig = {}
-): Promise<T> {
+async function request<T>(endpoint: string, config: RequestConfig = {}): Promise<T> {
   const url = `${API_BASE_URL}${endpoint}`
-  
+
   const defaultConfig: RequestConfig = {
     headers: {
       'Content-Type': 'application/json',

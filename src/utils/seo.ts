@@ -55,11 +55,7 @@ export function updateSEO(config: SEOConfig) {
   }
 }
 
-function updateMetaTag(
-  name: string,
-  content: string,
-  attributeName: 'name' | 'property' = 'name'
-) {
+function updateMetaTag(name: string, content: string, attributeName: 'name' | 'property' = 'name') {
   let element = document.querySelector(`meta[${attributeName}="${name}"]`)
 
   if (!element) {
