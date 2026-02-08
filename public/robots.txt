@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# Disallow admin or internal pages
+Disallow: /admin/
+Disallow: /api/
+Disallow: /.well-known/
+
+# Sitemap
+Sitemap: https://sunninja.com/sitemap.xml

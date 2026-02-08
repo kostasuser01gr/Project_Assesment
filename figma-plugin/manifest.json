@@ -1,0 +1,13 @@
+{
+  "name": "Sun Ninja Scaffold Generator",
+  "id": "sun-ninja-scaffold-dev",
+  "api": "1.0.0",
+  "main": "dist/code.js",
+  "ui": "ui.html",
+  "editorType": [
+    "figma"
+  ],
+  "networkAccess": {
+    "allowedDomains": ["none"]
+  }
+}
