@@ -1,10 +1,9 @@
 import { Link } from 'react-router';
-import { Star, Shield, Package, Users, ArrowRight, Sparkles, Sun, Wind, Umbrella, Heart, Award, TrendingUp, Clock, Zap, CheckCircle2 } from 'lucide-react';
+import { Star, Shield, Package, Users, ArrowRight, Sparkles, Sun, Wind, Heart, Award, TrendingUp, Clock, Zap, CheckCircle2 } from 'lucide-react';
 import { motion } from 'motion/react';
 import { Button } from '../components/ui/button';
 import { ReviewCard } from '../components/ReviewCard';
 import { TrustBadge } from '../components/TrustBadge';
-import { StarRating } from '../components/StarRating';
 import { getHeroPhotos, getGalleryPhotos, getProductPhotos, getSetupPhotos, getUGCPhotos } from '../../utils/photoManager';
 
 export function HomePage() {

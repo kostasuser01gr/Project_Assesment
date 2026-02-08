@@ -17,9 +17,7 @@ import {
   Sun, 
   Wind, 
   Zap, 
-  Users, 
-  Package,
-  Timer,
+  Heart,
   ChevronDown,
   Play,
   CheckCircle2

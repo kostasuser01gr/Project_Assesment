@@ -1,6 +1,6 @@
 /**
- * Photo Manager - Centralized system for managing 298 beach photos
- * Provides type-safe access to real photos from the user's library
+ * Photo Manager - Centralized system for managing beach photos
+ * Provides type-safe access to real photos from FIGMA_IMPORT library
  */
 
 export interface Photo {
@@ -9,288 +9,270 @@ export interface Photo {
   alt: string;
   width: number;
   height: number;
-  category: 'hero' | 'lifestyle' | 'product' | 'setup' | 'ugc' | 'detail' | 'gallery';
+  category: 'hero' | 'lifestyle' | 'product' | 'setup' | 'ugc' | 'gallery';
   orientation: 'landscape' | 'portrait' | 'square';
 }
 
 /**
- * Photo Library - Curated selection from 298 real beach photos
- * Each photo is optimized for specific use cases
+ * Photo Library - Real beach photos from Premium Figma Brief
  */
 export const PHOTO_LIBRARY: Photo[] = [
-  // HERO PHOTOS - Dramatic wide shots for hero sections
+  // HERO PHOTOS
   {
-    id: 'hero-main',
-    src: '/images/beach/hero-main.jpg',
-    alt: 'Family enjoying beach day under Sun Ninja tent',
-    width: 6000,
-    height: 4000,
+    id: 'hero-family-beach',
+    src: '/images/beach/hero-family-beach.jpg',
+    alt: 'Family enjoying beautiful beach day with Sun Ninja protection',
+    width: 4032,
+    height: 3024,
     category: 'hero',
     orientation: 'landscape',
   },
   {
-    id: 'hero-sunset',
-    src: '/images/beach/hero-sunset.jpg',
-    alt: 'Sun Ninja tent at golden hour beach sunset',
-    width: 6000,
-    height: 4000,
+    id: 'hero-ocean-sunset',
+    src: '/images/beach/hero-ocean-sunset.jpg',
+    alt: 'Stunning ocean sunset with premium beach setup',
+    width: 4032,
+    height: 3024,
     category: 'hero',
     orientation: 'landscape',
   },
+  // PRODUCT PHOTOS
   {
-    id: 'hero-family',
-    src: '/images/beach/hero-family.jpg',
-    alt: 'Multi-generational family relaxing under beach tent',
-    width: 6000,
-    height: 4000,
-    category: 'hero',
-    orientation: 'landscape',
-  },
-
-  // PRODUCT PHOTOS - Close-ups of tent details
-  {
-    id: 'product-main',
-    src: '/images/beach/product-main.jpg',
-    alt: 'Sun Ninja beach tent full view on sandy beach',
-    width: 5000,
-    height: 3500,
+    id: 'product-beach-01',
+    src: '/images/beach/product-beach-01.jpg',
+    alt: 'Sun Ninja product on pristine beach',
+    width: 4032,
+    height: 3024,
     category: 'product',
     orientation: 'landscape',
   },
   {
-    id: 'product-detail-upf',
-    src: '/images/beach/product-detail-upf.jpg',
-    alt: 'UPF 50+ fabric detail close-up',
-    width: 4000,
-    height: 6000,
-    category: 'product',
-    orientation: 'portrait',
-  },
-  {
-    id: 'product-stakes',
-    src: '/images/beach/product-stakes.jpg',
-    alt: 'Beach tent stakes securing tent in sand',
-    width: 6000,
-    height: 4000,
+    id: 'product-beach-02',
+    src: '/images/beach/product-beach-02.jpg',
+    alt: 'Premium sun protection product detail',
+    width: 4032,
+    height: 3024,
     category: 'product',
     orientation: 'landscape',
   },
   {
-    id: 'product-packed',
-    src: '/images/beach/product-packed.jpg',
-    alt: 'Sun Ninja tent in compact carry bag',
-    width: 4000,
-    height: 6000,
+    id: 'product-beach-03',
+    src: '/images/beach/product-beach-03.jpg',
+    alt: 'Sun Ninja beach essentials',
+    width: 4032,
+    height: 3024,
     category: 'product',
-    orientation: 'portrait',
+    orientation: 'landscape',
   },
-
-  // LIFESTYLE PHOTOS - People using the tent
+  // GALLERY PHOTOS
   {
-    id: 'lifestyle-1',
-    src: '/images/beach/lifestyle-1.jpg',
-    alt: 'Kids playing beach games with tent shade',
-    width: 6000,
-    height: 4000,
-    category: 'lifestyle',
+    id: 'gallery-ocean-waves',
+    src: '/images/beach/gallery-ocean-waves.jpg',
+    alt: 'Beautiful ocean waves',
+    width: 4032,
+    height: 3024,
+    category: 'gallery',
     orientation: 'landscape',
   },
   {
-    id: 'lifestyle-2',
-    src: '/images/beach/lifestyle-2.jpg',
-    alt: 'Mother applying sunscreen to child under tent',
-    width: 6000,
-    height: 4000,
-    category: 'lifestyle',
+    id: 'gallery-beach-scene',
+    src: '/images/beach/gallery-beach-scene.jpg',
+    alt: 'Idyllic beach scene',
+    width: 4032,
+    height: 3024,
+    category: 'gallery',
     orientation: 'landscape',
   },
   {
-    id: 'lifestyle-3',
-    src: '/images/beach/lifestyle-3.jpg',
-    alt: 'Couple reading books in beach tent shade',
-    width: 6000,
-    height: 4000,
-    category: 'lifestyle',
+    id: 'gallery-sunny-day',
+    src: '/images/beach/gallery-sunny-day.jpg',
+    alt: 'Perfect sunny day',
+    width: 4032,
+    height: 3024,
+    category: 'gallery',
     orientation: 'landscape',
   },
   {
-    id: 'lifestyle-4',
-    src: '/images/beach/lifestyle-4.jpg',
-    alt: 'Beach picnic setup under Sun Ninja tent',
-    width: 6000,
-    height: 4000,
-    category: 'lifestyle',
+    id: 'gallery-sand-beach',
+    src: '/images/beach/gallery-sand-beach.jpg',
+    alt: 'Golden sand beach',
+    width: 4032,
+    height: 3024,
+    category: 'gallery',
     orientation: 'landscape',
   },
   {
-    id: 'lifestyle-5',
-    src: '/images/beach/lifestyle-5.jpg',
-    alt: 'Teenager using laptop in tent shade',
-    width: 6000,
-    height: 4000,
-    category: 'lifestyle',
+    id: 'gallery-coastal-view',
+    src: '/images/beach/gallery-coastal-view.jpg',
+    alt: 'Stunning coastal view',
+    width: 4032,
+    height: 3024,
+    category: 'gallery',
     orientation: 'landscape',
   },
-
-  // SETUP PHOTOS - Installation process
   {
-    id: 'setup-1',
-    src: '/images/beach/setup-1.jpg',
-    alt: 'Person setting up beach tent - step 1',
-    width: 6000,
-    height: 4000,
+    id: 'gallery-beach-relaxation',
+    src: '/images/beach/gallery-beach-relaxation.jpg',
+    alt: 'Beach relaxation',
+    width: 4032,
+    height: 3024,
+    category: 'gallery',
+    orientation: 'landscape',
+  },
+  {
+    id: 'gallery-ocean-panorama',
+    src: '/images/beach/gallery-ocean-panorama.jpg',
+    alt: 'Ocean panorama',
+    width: 4032,
+    height: 3024,
+    category: 'gallery',
+    orientation: 'landscape',
+  },
+  {
+    id: 'gallery-sunny-shore',
+    src: '/images/beach/gallery-sunny-shore.jpg',
+    alt: 'Sunny shoreline',
+    width: 4032,
+    height: 3024,
+    category: 'gallery',
+    orientation: 'landscape',
+  },
+  {
+    id: 'gallery-beach-lifestyle',
+    src: '/images/beach/gallery-beach-lifestyle.jpg',
+    alt: 'Beach lifestyle',
+    width: 4032,
+    height: 3024,
+    category: 'gallery',
+    orientation: 'landscape',
+  },
+  {
+    id: 'gallery-waterside',
+    src: '/images/beach/gallery-waterside.jpg',
+    alt: 'Waterside paradise',
+    width: 4032,
+    height: 3024,
+    category: 'gallery',
+    orientation: 'landscape',
+  },
+  // SETUP PHOTOS
+  {
+    id: 'setup-beach-umbrella',
+    src: '/images/beach/setup-beach-umbrella.jpg',
+    alt: 'Easy setup demonstration',
+    width: 4032,
+    height: 3024,
     category: 'setup',
     orientation: 'landscape',
   },
   {
-    id: 'setup-2',
-    src: '/images/beach/setup-2.jpg',
-    alt: 'Easy tent assembly in under 3 minutes',
-    width: 6000,
-    height: 4000,
+    id: 'setup-installation',
+    src: '/images/beach/setup-installation.jpg',
+    alt: 'Simple installation process',
+    width: 4032,
+    height: 3024,
     category: 'setup',
     orientation: 'landscape',
   },
-
-  // GALLERY PHOTOS - Mixed lifestyle shots
   {
-    id: 'gallery-1',
-    src: '/images/beach/gallery-1.jpg',
-    alt: 'Beach tent at sunrise with calm waves',
-    width: 6000,
-    height: 4000,
-    category: 'gallery',
+    id: 'setup-ready-to-use',
+    src: '/images/beach/setup-ready-to-use.jpg',
+    alt: 'Fully set up and ready',
+    width: 4032,
+    height: 3024,
+    category: 'setup',
+    orientation: 'landscape',
+  },
+  // UGC PHOTOS
+  {
+    id: 'ugc-family-enjoying',
+    src: '/images/beach/ugc-family-enjoying.jpg',
+    alt: 'Real family enjoying beach',
+    width: 4032,
+    height: 3024,
+    category: 'ugc',
     orientation: 'landscape',
   },
   {
-    id: 'gallery-2',
-    src: '/images/beach/gallery-2.jpg',
-    alt: 'Kids building sandcastle near tent',
-    width: 6000,
-    height: 4000,
-    category: 'gallery',
+    id: 'ugc-kids-playing',
+    src: '/images/beach/ugc-kids-playing.jpg',
+    alt: 'Kids playing safely',
+    width: 4032,
+    height: 3024,
+    category: 'ugc',
     orientation: 'landscape',
   },
   {
-    id: 'gallery-3',
-    src: '/images/beach/gallery-3.jpg',
-    alt: 'Beach volleyball game with tent in background',
-    width: 6000,
-    height: 4000,
-    category: 'gallery',
+    id: 'ugc-beach-day',
+    src: '/images/beach/ugc-beach-day.jpg',
+    alt: 'Perfect beach day',
+    width: 4032,
+    height: 3024,
+    category: 'ugc',
     orientation: 'landscape',
   },
   {
-    id: 'gallery-4',
-    src: '/images/beach/gallery-4.jpg',
-    alt: 'Family enjoying snacks in tent shade',
-    width: 6000,
-    height: 4000,
-    category: 'gallery',
+    id: 'ugc-summer-fun',
+    src: '/images/beach/ugc-summer-fun.jpg',
+    alt: 'Summer fun',
+    width: 4032,
+    height: 3024,
+    category: 'ugc',
     orientation: 'landscape',
   },
   {
-    id: 'gallery-5',
-    src: '/images/beach/gallery-5.jpg',
-    alt: 'Dog resting in cool tent shade',
-    width: 6000,
-    height: 4000,
-    category: 'gallery',
+    id: 'ugc-relaxing',
+    src: '/images/beach/ugc-relaxing.jpg',
+    alt: 'Relaxing beach moments',
+    width: 4032,
+    height: 3024,
+    category: 'ugc',
     orientation: 'landscape',
   },
   {
-    id: 'gallery-6',
-    src: '/images/beach/gallery-6.jpg',
-    alt: 'Beach tent protecting against wind',
-    width: 6000,
-    height: 4000,
-    category: 'gallery',
-    orientation: 'landscape',
-  },
-
-  // DETAIL PHOTOS - Close-ups of features
-  {
-    id: 'detail-mesh-windows',
-    src: '/images/beach/detail-mesh-windows.jpg',
-    alt: 'Breathable mesh windows close-up',
-    width: 4000,
-    height: 6000,
-    category: 'detail',
-    orientation: 'portrait',
-  },
-  {
-    id: 'detail-sand-pockets',
-    src: '/images/beach/detail-sand-pockets.jpg',
-    alt: 'Sand pocket weight system detail',
-    width: 6000,
-    height: 4000,
-    category: 'detail',
+    id: 'ugc-lifestyle-beach',
+    src: '/images/beach/ugc-lifestyle-beach.jpg',
+    alt: 'Authentic beach lifestyle',
+    width: 4032,
+    height: 3024,
+    category: 'ugc',
     orientation: 'landscape',
   },
 ];
 
-/**
- * Get photos by category
- */
 export const getPhotosByCategory = (category: Photo['category']): Photo[] => {
   return PHOTO_LIBRARY.filter((p) => p.category === category);
 };
 
-/**
- * Get photo by ID
- */
 export const getPhotoById = (id: string): Photo | undefined => {
   return PHOTO_LIBRARY.find((p) => p.id === id);
 };
 
-/**
- * Get random hero photo
- */
-export const getHeroPhoto = (): Photo => {
-  const heroPhotos = getPhotosByCategory('hero');
-  return heroPhotos[0]; // Return main hero by default
+export const getHeroPhotos = (): Photo[] => {
+  return getPhotosByCategory('hero');
 };
 
-/**
- * Get gallery photos (limited count)
- */
-export const getGalleryPhotos = (count: number = 6): Photo[] => {
-  const galleryPhotos = getPhotosByCategory('gallery');
-  return galleryPhotos.slice(0, count);
+export const getGalleryPhotos = (count?: number): Photo[] => {
+  const photos = getPhotosByCategory('gallery');
+  return count ? photos.slice(0, count) : photos;
 };
 
-/**
- * Get lifestyle photos for homepage
- */
-export const getLifestylePhotos = (count: number = 5): Photo[] => {
-  const lifestylePhotos = getPhotosByCategory('lifestyle');
-  return lifestylePhotos.slice(0, count);
-};
-
-/**
- * Get product photos for product page gallery
- */
 export const getProductPhotos = (): Photo[] => {
   return getPhotosByCategory('product');
 };
 
-/**
- * Get setup/how-to photos
- */
 export const getSetupPhotos = (): Photo[] => {
   return getPhotosByCategory('setup');
 };
 
-/**
- * Get all landscape photos
- */
+export const getUGCPhotos = (): Photo[] => {
+  return getPhotosByCategory('ugc');
+};
+
 export const getLandscapePhotos = (): Photo[] => {
   return PHOTO_LIBRARY.filter((p) => p.orientation === 'landscape');
 };
 
-/**
- * Get all portrait photos
- */
 export const getPortraitPhotos = (): Photo[] => {
   return PHOTO_LIBRARY.filter((p) => p.orientation === 'portrait');
 };
