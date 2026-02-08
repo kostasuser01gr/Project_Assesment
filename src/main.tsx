@@ -1,7 +1,7 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import App from './app/App.tsx'
-import { AppProvider } from './utils/store.ts'
+import { AppProvider } from './utils/store'
 import { initErrorTracking } from './utils/errorTracking.ts'
 import { initAnalytics } from './utils/analytics.ts'
 import { initWebVitals, observePerformance } from './utils/webVitals.ts'
