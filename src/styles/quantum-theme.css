@@ -1,22 +1,23 @@
 /* ========================================
    GLASIER PREMIUM QUANTUM THEME
    Ultra-premium holographic effects
+   Updated with Figma Premium Palette
    ======================================== */
 
-/* Quantum Glow Effects */
+/* Quantum Glow Effects - Figma Palette */
 @keyframes quantum-glow {
   0%, 100% {
     box-shadow: 
-      0 0 20px rgba(15, 59, 76, 0.4),
-      0 0 40px rgba(255, 107, 90, 0.3),
-      0 0 60px rgba(255, 184, 77, 0.2),
+      0 0 20px rgba(14, 165, 233, 0.4),  /* Ocean */
+      0 0 40px rgba(255, 107, 107, 0.3),  /* Coral */
+      0 0 60px rgba(255, 215, 0, 0.2),    /* Gold */
       inset 0 0 20px rgba(255, 255, 255, 0.1);
   }
   50% {
     box-shadow: 
-      0 0 40px rgba(15, 59, 76, 0.6),
-      0 0 80px rgba(255, 107, 90, 0.5),
-      0 0 120px rgba(255, 184, 77, 0.4),
+      0 0 40px rgba(14, 165, 233, 0.6),  /* Ocean */
+      0 0 80px rgba(255, 107, 107, 0.5),  /* Coral */
+      0 0 120px rgba(255, 215, 0, 0.4),   /* Gold */
       inset 0 0 40px rgba(255, 255, 255, 0.2);
   }
 }
@@ -76,14 +77,14 @@
   0%, 100% {
     transform: scale(1);
     filter: brightness(1) contrast(1);
-    box-shadow: 0 10px 40px rgba(15, 59, 76, 0.2);
+    box-shadow: 0 10px 40px rgba(14, 165, 233, 0.2);  /* Ocean */
   }
   50% {
     transform: scale(1.02);
     filter: brightness(1.1) contrast(1.05);
     box-shadow: 
-      0 20px 60px rgba(15, 59, 76, 0.3),
-      0 0 100px rgba(255, 107, 90, 0.2);
+      0 20px 60px rgba(14, 165, 233, 0.3),  /* Ocean */
+      0 0 100px rgba(255, 107, 107, 0.2);   /* Coral */
   }
 }
 

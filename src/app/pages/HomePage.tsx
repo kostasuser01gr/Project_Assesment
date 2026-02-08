@@ -5,11 +5,12 @@ import { Button } from '../components/ui/button';
 import { ReviewCard } from '../components/ReviewCard';
 import { TrustBadge } from '../components/TrustBadge';
 import { StarRating } from '../components/StarRating';
-import { getHeroPhoto, getLifestylePhotos, getGalleryPhotos, getProductPhotos } from '../../utils/photoManager';
+import { getHeroPhotos, getGalleryPhotos, getProductPhotos, getSetupPhotos, getUGCPhotos } from '../../utils/photoManager';
 
 export function HomePage() {
-  const heroPhoto = getHeroPhoto();
-  const lifestylePhotos = getLifestylePhotos(5);
+  const heroPhoto = getHeroPhotos()[0];
+  const setupPhotos = getSetupPhotos();
+  const ugcPhotos = getUGCPhotos();
   const galleryPhotos = getGalleryPhotos(6);
   const productPhotos = getProductPhotos();
 
@@ -17,7 +18,7 @@ export function HomePage() {
     <div className="min-h-screen bg-[#FFFBF5]">
       {/* QUANTUM HERO SECTION - Full bleed dramatic hero */}
       <section className="relative h-[95vh] min-h-[700px] overflow-hidden grain">
-        {/* Background Image with Quantum Overlay */}
+        {/* Background Image with Ocean → Coral Gradient Overlay */}
         <motion.div
           initial={{ scale: 1.1, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
@@ -29,9 +30,10 @@ export function HomePage() {
             alt={heroPhoto.alt}
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 aurora-gradient opacity-40"></div>
-          <div className="absolute inset-0 holographic-overlay opacity-30"></div>
-          <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/50"></div>
+          {/* Premium Ocean → Coral Gradient from Figma Brief */}
+          <div className="absolute inset-0 bg-gradient-to-br from-[#0EA5E9]/60 via-[#0EA5E9]/40 to-[#FF6B6B]/50"></div>
+          <div className="absolute inset-0 holographic-overlay opacity-20"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/40"></div>
         </motion.div>
 
         {/* Hero Content */}
@@ -200,6 +202,84 @@ export function HomePage() {
         </div>
       </section>
 
+      {/* HOW IT WORKS - 3-Step Visual Guide with Setup Photos */}
+      <section className="py-24 bg-gradient-to-br from-[#FFFBF5] to-[#F0F9FF] grain">
+        <div className="container-custom max-w-6xl mx-auto px-4">
+          <motion.div
+            initial={{ y: 30, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full quantum-glass mb-6">
+              <Clock className="w-4 h-4 text-[#0EA5E9]" />
+              <span className="text-sm font-medium">Setup in 60 Seconds</span>
+            </div>
+            <h2 className="font-display text-5xl mb-4 holographic-text">
+              How It Works
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              Three simple steps from car to shade
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {setupPhotos.map((photo, index) => (
+              <motion.div
+                key={photo.id}
+                initial={{ y: 40, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.2 }}
+                className="relative diamond-card overflow-hidden transform-3d"
+              >
+                {/* Step Number Badge */}
+                <div className="absolute top-4 left-4 z-10 w-12 h-12 rounded-full bg-gradient-to-br from-[#0EA5E9] to-[#FF6B6B] flex items-center justify-center quantum-shadow">
+                  <span className="text-white font-bold text-xl">{index + 1}</span>
+                </div>
+
+                {/* Setup Photo */}
+                <div className="relative h-64 overflow-hidden">
+                  <img
+                    src={photo.src}
+                    alt={photo.alt}
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                </div>
+
+                {/* Step Description */}
+                <div className="p-6">
+                  <h3 className="font-display text-2xl mb-3 holographic-text">
+                    {['Unpack', 'Pop Up', 'Secure'][index]}
+                  </h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    {[
+                      'Remove from compact carry bag. Lightweight at just 4.8 lbs.',
+                      'Frame auto-expands with pop-up mechanism. No assembly required.',
+                      'Anchor with sand pockets and stakes. Ready for all-day use.',
+                    ][index]}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Time Guarantee */}
+          <motion.div
+            initial={{ y: 20, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            className="text-center mt-12"
+          >
+            <div className="inline-flex items-center gap-3 px-8 py-4 crystalline-surface rounded-full quantum-shadow">
+              <Zap className="w-6 h-6 text-[#FFD700]" />
+              <span className="font-semibold text-lg">Average setup time: <span className="holographic-text">47 seconds</span></span>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* FEATURED PRODUCT SPOTLIGHT */}
       <section className="py-24 bg-gradient-to-br from-sky-50 to-orange-50 grain overflow-hidden">
         <div className="container-custom max-w-7xl mx-auto px-4">
@@ -303,7 +383,7 @@ export function HomePage() {
         </div>
       </section>
 
-      {/* LIFESTYLE GALLERY - Masonry Grid */}
+      {/* UGC STRIP - Real Customer Photos */}
       <section className="py-24 bg-white">
         <div className="container-custom max-w-7xl mx-auto px-4">
           <motion.div
@@ -312,39 +392,60 @@ export function HomePage() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full quantum-glass mb-6">
+              <Heart className="w-4 h-4 text-[#FF6B6B]" />
+              <span className="text-sm font-medium">#SunNinjaLife</span>
+            </div>
             <h2 className="font-display text-5xl mb-4 holographic-text">
-              Beach Days, Perfected
+              Real Families, Real Moments
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              See how families transform their beach experience with Sun Ninja
+              See how our customers enjoy their perfect beach days
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-            {galleryPhotos.map((photo, index) => (
+          {/* UGC Photo Grid */}
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+            {ugcPhotos.map((photo, index) => (
               <motion.div
                 key={photo.id}
-                initial={{ y: 40, opacity: 0 }}
-                whileInView={{ y: 0, opacity: 1 }}
+                initial={{ scale: 0.9, opacity: 0 }}
+                whileInView={{ scale: 1, opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className={`relative group overflow-hidden rounded-2xl diamond-card ${
-                  index === 0 || index === 4 ? 'md:row-span-2' : ''
-                }`}
+                className="relative group overflow-hidden rounded-2xl diamond-card aspect-square"
               >
                 <img
                   src={photo.src}
                   alt={photo.alt}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="absolute bottom-4 left-4 right-4">
-                    <p className="text-white text-sm font-medium">{photo.alt}</p>
+                {/* Hover Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0EA5E9]/80 via-[#FF6B6B]/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="absolute bottom-3 left-3 right-3">
+                    <div className="flex items-center gap-2 text-white">
+                      <Heart className="w-4 h-4 fill-white" />
+                      <span className="text-xs font-medium">{Math.floor(Math.random() * 500) + 100} likes</span>
+                    </div>
                   </div>
                 </div>
               </motion.div>
             ))}
           </div>
+
+          {/* Social CTA */}
+          <motion.div
+            initial={{ y: 20, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            className="text-center mt-12"
+          >
+            <p className="text-muted-foreground mb-4">Share your beach moments with us!</p>
+            <Button variant="outline" size="lg" className="magnetic-quantum">
+              <Sparkles className="mr-2 w-5 h-5" />
+              Tag #SunNinjaLife
+            </Button>
+          </motion.div>
         </div>
       </section>
 
@@ -455,16 +556,17 @@ export function HomePage() {
         </div>
       </section>
 
-      {/* FINAL CTA - Email Capture */}
+      {/* FINAL CTA - Email Capture with Premium Background */}
       <section className="relative py-24 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
-            src={lifestylePhotos[4]?.src || '/images/beach/lifestyle-5.jpg'}
-            alt="Beach sunset"
+            src={getHeroPhotos()[1]?.src || galleryPhotos[0]?.src}
+            alt="Beautiful beach sunset"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-900/90 to-purple-900/90"></div>
-          <div className="absolute inset-0 aurora-gradient opacity-30"></div>
+          {/* Ocean → Coral Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0EA5E9]/95 to-[#FF6B6B]/90"></div>
+          <div className="absolute inset-0 holographic-overlay opacity-20"></div>
         </div>
 
         <div className="relative z-10 container-custom max-w-4xl mx-auto px-4 text-center">

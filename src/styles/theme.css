@@ -4,33 +4,38 @@
   --font-size: 16px;
   
   /* ========================================
-     PREMIUM COASTAL PALETTE - Sun Ninja
+     GLASIER PREMIUM QUANTUM FIGMA PALETTE
+     Official colors from Premium Quantum Brief
      ======================================== */
   
   /* Main Background Colors */
-  --background: #FFFBF5; /* Warm cream for premium feel */
+  --background: #FFFBF5; /* Sand - Warm cream for premium feel */
   --foreground: #1C1F24; /* Charcoal for strong contrast */
   
-  /* Primary Brand - Ocean Deep */
-  --primary: #0F3B4C;
+  /* Primary Brand - Ocean (Figma: #0EA5E9) */
+  --primary: #0EA5E9;
   --primary-foreground: #ffffff;
-  --primary-light: #1A5470;
+  --primary-light: #38BDF8;
   
-  /* Secondary - Coral Energy */
-  --secondary: #FF6B5A;
+  /* Secondary - Coral (Figma: #FF6B6B) */
+  --secondary: #FF6B6B;
   --secondary-foreground: #ffffff;
-  --secondary-hover: #FF5544;
+  --secondary-hover: #FF5555;
   
-  /* Accent - Sunlit Gold */
-  --accent: #FFB84D;
+  /* Accent - Gold (Figma: #FFD700) */
+  --accent: #FFD700;
   --accent-foreground: #1C1F24;
-  --accent-hover: #FF9F1C;
+  --accent-hover: #FFC700;
   
-  /* Coastal Tones */
-  --sand: #F6E8D5;
+  /* Figma Palette - Official Colors */
+  --ocean: #0EA5E9;    /* Ocean blue - primary actions, links */
+  --coral: #FF6B6B;    /* Coral pink - secondary accents, CTAs */
+  --gold: #FFD700;     /* Gold yellow - premium highlights */
+  --sand: #FFFBF5;     /* Sand cream - backgrounds */
+  --sky: #0EA5E9;      /* Sky blue - same as ocean */
+  
+  /* Legacy Support (for existing components) */
   --sand-dark: #E8D4BA;
-  --sky: #DDEFF5;
-  --ocean: #0F3B4C;
   --cream: #FFFBF5;
   
   /* Neutrals Scale */
@@ -72,17 +77,18 @@
   --font-weight-bold: 700;
   --font-weight-extrabold: 800;
   
-  /* Font Families */
-  --font-display: 'Playfair Display', Georgia, serif;
-  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  /* Font Families - Figma Typography */
+  --font-display: 'Playfair Display', Georgia, serif;  /* Headings */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;  /* Body */
   
-  --ring: #FFB84D;
+  --ring: #FFD700;
   
-  --chart-1: #FFB84D;
-  --chart-2: #FF6B5A;
-  --chart-3: #0F3B4C;
-  --chart-4: #DDEFF5;
-  --chart-5: #F6E8D5;
+  /* Chart Colors - Updated with Figma Palette */
+  --chart-1: #FFD700;  /* Gold */
+  --chart-2: #FF6B6B;  /* Coral */
+  --chart-3: #0EA5E9;  /* Ocean */
+  --chart-4: #38BDF8;  /* Light Sky */
+  --chart-5: #FFFBF5;  /* Sand */
   
   --radius: 0.75rem;
   --radius-sm: 0.375rem;

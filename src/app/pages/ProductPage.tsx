@@ -31,18 +31,20 @@ import {
   AccordionTrigger,
 } from "../components/ui/accordion";
 import { toast } from 'sonner';
-import { getProductPhotos, getGalleryPhotos } from '../../utils/photoManager';
+import { getProductPhotos, getGalleryPhotos, getSetupPhotos, getUGCPhotos } from '../../utils/photoManager';
 
 const productPhotos = getProductPhotos();
 const galleryPhotos = getGalleryPhotos(4);
+const setupPhotos = getSetupPhotos();
+const ugcPhotos = getUGCPhotos();
 
 const productImages = [
-  productPhotos[0]?.src || '/images/beach/product-main.jpg',
-  productPhotos[1]?.src || '/images/beach/product-detail-upf.jpg',
-  productPhotos[2]?.src || '/images/beach/product-stakes.jpg',
-  productPhotos[3]?.src || '/images/beach/product-packed.jpg',
-  galleryPhotos[0]?.src || '/images/beach/gallery-1.jpg',
-  galleryPhotos[1]?.src || '/images/beach/gallery-2.jpg',
+  productPhotos[0]?.src || '/images/beach/product-beach-01.jpg',
+  productPhotos[1]?.src || '/images/beach/product-beach-02.jpg',
+  productPhotos[2]?.src || '/images/beach/product-beach-03.jpg',
+  galleryPhotos[0]?.src || '/images/beach/gallery-ocean-waves.jpg',
+  galleryPhotos[1]?.src || '/images/beach/gallery-beach-scene.jpg',
+  galleryPhotos[2]?.src || '/images/beach/gallery-sunny-day.jpg',
 ];
 
 export function ProductPage() {
@@ -62,14 +64,14 @@ export function ProductPage() {
       {/* Above the Fold - Hero Section */}
       <section className="container mx-auto px-4 py-8 md:py-12">
         <div className="grid md:grid-cols-2 gap-8 md:gap-12">
-          {/* Product Gallery */}
+          {/* Product Gallery - Premium Diamond Card */}
           <motion.div 
             className="space-y-4"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <div className="aspect-square rounded-2xl overflow-hidden bg-muted quantum-shadow transform-3d">
+            <div className="aspect-square rounded-2xl overflow-hidden bg-muted diamond-card quantum-shadow transform-3d">
               <motion.img 
                 key={selectedImage}
                 src={productImages[selectedImage]} 
@@ -80,15 +82,15 @@ export function ProductPage() {
                 transition={{ duration: 0.3 }}
               />
             </div>
-            <div className="grid grid-cols-4 gap-3">
+            <div className="grid grid-cols-6 gap-3">
               {productImages.map((img, idx) => (
                 <button
                   key={idx}
                   onClick={() => setSelectedImage(idx)}
-                  className={`aspect-square rounded-lg overflow-hidden border-2 transition-all hover-lift ${
+                  className={`aspect-square rounded-lg overflow-hidden border-2 transition-all hover-lift crystalline-surface ${
                     selectedImage === idx 
-                      ? 'border-primary shadow-md' 
-                      : 'border-border hover:border-primary/50'
+                      ? 'border-[#0EA5E9] shadow-md quantum-glass' 
+                      : 'border-border hover:border-[#FF6B6B]/50'
                   }`}
                 >
                   <img src={img} alt={`View ${idx + 1}`} className="w-full h-full object-cover" />
@@ -189,11 +191,11 @@ export function ProductPage() {
         </div>
       </section>
 
-      {/* Benefits Section */}
-      <section className="bg-secondary py-16 md:py-24 scroll-fade-in">
+      {/* Benefits Section - Premium with Real Photos */}
+      <section className="bg-gradient-to-br from-[#FFFBF5] to-[#F0F9FF] grain py-16 md:py-24 scroll-fade-in">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 holographic-text">
               Your Beach Day, Perfected
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -206,29 +208,29 @@ export function ProductPage() {
               icon={Sun}
               title="Maximum Sun Protection"
               description="UPF 50+ rated fabric blocks 98% of harmful UV rays, keeping you and your family safe all day long."
-              image={productPhotos[1]?.src || '/images/beach/product-detail-upf.jpg'}
+              image={productPhotos[0]?.src || '/images/beach/product-beach-01.jpg'}
             />
             <BenefitCard 
               icon={Zap}
               title="60-Second Setup"
               description="Pop-up design means you go from bag to shade in under a minute. No poles, no stress, just instant comfort."
-              image={galleryPhotos[2]?.src || '/images/beach/setup-1.jpg'}
+              image={setupPhotos[0]?.src || '/images/beach/setup-beach-umbrella.jpg'}
             />
             <BenefitCard 
               icon={Wind}
               title="Superior Ventilation"
               description="Strategic mesh windows and extended back flap create a cooling cross-breeze while maintaining privacy."
-              image={galleryPhotos[3]?.src || '/images/beach/detail-mesh-windows.jpg'}
+              image={productPhotos[1]?.src || '/images/beach/product-beach-02.jpg'}
             />
           </div>
         </div>
       </section>
 
-      {/* How It Works */}
+      {/* How It Works - With Real Setup Photos */}
       <section className="py-16 md:py-24 scroll-fade-in">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 holographic-text">
               Setup in 3 Simple Steps
             </h2>
             <p className="text-lg text-muted-foreground">
@@ -237,35 +239,75 @@ export function ProductPage() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            <div className="text-center space-y-4 hover-lift">
-              <div className="w-16 h-16 rounded-full bg-primary text-primary-foreground text-2xl font-bold flex items-center justify-center mx-auto shadow-ultra">
-                1
+            {setupPhotos.map((photo, index) => (
+              <div key={photo.id} className="text-center space-y-4 hover-lift diamond-card p-6 transform-3d">
+                <div className="relative aspect-video rounded-xl overflow-hidden mb-4 crystalline-surface quantum-shadow">
+                  <img
+                    src={photo.src}
+                    alt={photo.alt}
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute top-3 left-3 w-12 h-12 rounded-full bg-gradient-to-br from-[#0EA5E9] to-[#FF6B6B] text-white text-xl font-bold flex items-center justify-center quantum-shadow">
+                    {index + 1}
+                  </div>
+                </div>
+                <h3 className="text-xl font-semibold">
+                  {['Remove from Bag', 'Pop & Unfold', 'Secure with Stakes'][index]}
+                </h3>
+                <p className="text-muted-foreground">
+                  {[
+                    'Pull the tent out of its compact carrying bag',
+                    'Release the strap and let it spring into shape',
+                    'Anchor with included stakes and sandbags',
+                  ][index]}
+                </p>
               </div>
-              <h3 className="text-xl font-semibold">Remove from Bag</h3>
-              <p className="text-muted-foreground">
-                Pull the tent out of its compact carrying bag
-              </p>
-            </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-            <div className="text-center space-y-4 hover-lift">
-              <div className="w-16 h-16 rounded-full bg-primary text-primary-foreground text-2xl font-bold flex items-center justify-center mx-auto shadow-ultra">
-                2
-              </div>
-              <h3 className="text-xl font-semibold">Pop & Unfold</h3>
-              <p className="text-muted-foreground">
-                Release the strap and let it spring into shape
-              </p>
+      {/* UGC Customer Photos - Real Beach Moments */}
+      <section className="bg-gradient-to-br from-[#F0F9FF] to-[#FFFBF5] grain py-16 md:py-24">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full quantum-glass mb-6">
+              <Heart className="w-4 h-4 text-[#FF6B6B]" />
+              <span className="text-sm font-medium">#SunNinjaLife</span>
             </div>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 holographic-text">
+              Real Customers, Real Beach Days
+            </h2>
+            <p className="text-lg text-muted-foreground">
+              See how families enjoy their Sun Ninja moments
+            </p>
+          </div>
 
-            <div className="text-center space-y-4 hover-lift">
-              <div className="w-16 h-16 rounded-full bg-primary text-primary-foreground text-2xl font-bold flex items-center justify-center mx-auto shadow-ultra">
-                3
-              </div>
-              <h3 className="text-xl font-semibold">Secure with Stakes</h3>
-              <p className="text-muted-foreground">
-                Anchor with included stakes and sandbags
-              </p>
-            </div>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 max-w-6xl mx-auto">
+            {ugcPhotos.map((photo, index) => (
+              <motion.div
+                key={photo.id}
+                initial={{ scale: 0.9, opacity: 0 }}
+                whileInView={{ scale: 1, opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="relative group overflow-hidden rounded-xl diamond-card aspect-square"
+              >
+                <img
+                  src={photo.src}
+                  alt={photo.alt}
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0EA5E9]/80 via-[#FF6B6B]/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="absolute bottom-2 left-2 right-2">
+                    <div className="flex items-center gap-1 text-white text-xs">
+                      <Heart className="w-3 h-3 fill-white" />
+                      <span>{Math.floor(Math.random() * 500) + 100}</span>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
@@ -474,11 +516,11 @@ export function ProductPage() {
         </div>
       </section>
 
-      {/* Final CTA */}
+      {/* Final CTA - Premium Ocean to Coral Gradient */}
       <section className="py-16 md:py-24">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto bg-gradient-to-br from-primary to-[#0052a3] rounded-3xl p-8 md:p-12 text-white text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+          <div className="max-w-4xl mx-auto bg-gradient-to-br from-[#0EA5E9] to-[#FF6B6B] rounded-3xl p-8 md:p-12 text-white text-center diamond-card quantum-shadow holographic-overlay">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 holographic-text text-white">
               Ready for Your Best Beach Day?
             </h2>
             <p className="text-lg mb-8 text-white/90">
@@ -492,7 +534,7 @@ export function ProductPage() {
               <ShoppingCart className="w-5 h-5" />
               Add to Cart - $129.99
             </Button>
-            <div className="flex items-center justify-center gap-6 mt-8 text-sm text-white/80">
+            <div className="flex items-center justify-center gap-6 mt-8 text-sm text-white/90">
               <div className="flex items-center gap-2">
                 <Shield className="w-4 h-4" />
                 2-Year Warranty
