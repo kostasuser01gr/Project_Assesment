@@ -52,8 +52,8 @@ export function generateId(prefix: string = ''): string {
  */
 export function deepClone<T>(obj: T): T {
   if (obj === null || typeof obj !== 'object') return obj
-  if (obj instanceof Date) return new Date(obj.getTime()) as any
-  if (obj instanceof Array) return obj.map((item) => deepClone(item)) as any
+  if (obj instanceof Date) return new Date(obj.getTime()) as T
+  if (obj instanceof Array) return obj.map((item) => deepClone(item)) as T
   if (obj instanceof Object) {
     const clonedObj = {} as T
     for (const key in obj) {
@@ -69,7 +69,7 @@ export function deepClone<T>(obj: T): T {
 /**
  * Check if object is empty
  */
-export function isEmpty(obj: any): boolean {
+export function isEmpty(obj: unknown): boolean {
   if (obj == null) return true
   if (Array.isArray(obj) || typeof obj === 'string') return obj.length === 0
   if (obj instanceof Map || obj instanceof Set) return obj.size === 0
@@ -86,6 +86,7 @@ export function sleep(ms: number): Promise<void> {
 /**
  * Debounce function
  */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function debounce<T extends (...args: any[]) => any>(
   func: T,
   wait: number
@@ -108,6 +109,7 @@ export function debounce<T extends (...args: any[]) => any>(
 /**
  * Throttle function
  */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function throttle<T extends (...args: any[]) => any>(
   func: T,
   limit: number

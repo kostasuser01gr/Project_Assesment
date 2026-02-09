@@ -1,8 +1,11 @@
 // Analytics utility for Google Analytics and custom events
+type GtagCommand = 'config' | 'event' | 'js' | 'set'
+type GtagParams = Record<string, unknown>
+
 declare global {
   interface Window {
-    gtag?: (...args: any[]) => void
-    dataLayer?: any[]
+    gtag?: (command: GtagCommand, ...args: (string | Date | GtagParams)[]) => void
+    dataLayer?: unknown[]
   }
 }
 
@@ -23,8 +26,8 @@ export function initAnalytics() {
 
   // Initialize gtag
   window.dataLayer = window.dataLayer || []
-  window.gtag = function gtag(...args: any[]) {
-    window.dataLayer!.push(args)
+  window.gtag = function gtag(command: GtagCommand, ...args: (string | Date | Record<string, unknown>)[]) {
+    window.dataLayer!.push([command, ...args])
   }
   window.gtag('js', new Date())
   window.gtag('config', GA_MEASUREMENT_ID, {
@@ -43,22 +46,21 @@ export function trackPageView(path: string, title?: string) {
 
 export function trackEvent(
   eventName: string,
-  params?: {
-    category?: string
-    label?: string
-    value?: number
-    [key: string]: any
-  }
+  params?: Record<string, string | number | boolean | unknown>
 ) {
   if (!ENABLE_ANALYTICS || !window.gtag) {
     console.log('Event:', eventName, params)
     return
   }
 
-  window.gtag('event', eventName, params)
+  if (params) {
+    window.gtag('event', eventName, params)
+  } else {
+    window.gtag('event', eventName)
+  }
 }
 
-export function trackClick(elementName: string, additionalData?: Record<string, any>) {
+export function trackClick(elementName: string, additionalData?: Record<string, unknown>) {
   trackEvent('click', {
     category: 'engagement',
     label: elementName,
@@ -66,7 +68,7 @@ export function trackClick(elementName: string, additionalData?: Record<string, 
   })
 }
 
-export function trackPurchase(transactionId: string, value: number, items: any[]) {
+export function trackPurchase(transactionId: string, value: number, items: Array<Record<string, unknown>>) {
   trackEvent('purchase', {
     transaction_id: transactionId,
     value,

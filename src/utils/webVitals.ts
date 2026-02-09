@@ -84,7 +84,8 @@ export function observePerformance() {
     try {
       const layoutShiftObserver = new PerformanceObserver((list) => {
         for (const entry of list.getEntries()) {
-          if (!(entry as any).hadRecentInput) {
+          const layoutShift = entry as PerformanceEntry & { hadRecentInput?: boolean }
+          if (!layoutShift.hadRecentInput) {
             console.warn('Layout shift detected:', entry)
           }
         }

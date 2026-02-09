@@ -6,7 +6,7 @@ export class APIError extends Error {
   constructor(
     public status: number,
     message: string,
-    public data?: any
+    public data?: unknown
   ) {
     super(message)
     this.name = 'APIError'
@@ -74,21 +74,21 @@ export const api = {
   get: <T>(endpoint: string, config?: RequestConfig) =>
     request<T>(endpoint, { ...config, method: 'GET' }),
 
-  post: <T>(endpoint: string, data?: any, config?: RequestConfig) =>
+  post: <T>(endpoint: string, data?: unknown, config?: RequestConfig) =>
     request<T>(endpoint, {
       ...config,
       method: 'POST',
       body: JSON.stringify(data),
     }),
 
-  put: <T>(endpoint: string, data?: any, config?: RequestConfig) =>
+  put: <T>(endpoint: string, data?: unknown, config?: RequestConfig) =>
     request<T>(endpoint, {
       ...config,
       method: 'PUT',
       body: JSON.stringify(data),
     }),
 
-  patch: <T>(endpoint: string, data?: any, config?: RequestConfig) =>
+  patch: <T>(endpoint: string, data?: unknown, config?: RequestConfig) =>
     request<T>(endpoint, {
       ...config,
       method: 'PATCH',

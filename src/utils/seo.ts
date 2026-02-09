@@ -80,7 +80,7 @@ function updateLinkTag(rel: string, href: string) {
 }
 
 // Structured data / JSON-LD
-export function addStructuredData(data: Record<string, any>) {
+export function addStructuredData(data: Record<string, unknown>) {
   const script = document.createElement('script')
   script.type = 'application/ld+json'
   script.text = JSON.stringify(data)

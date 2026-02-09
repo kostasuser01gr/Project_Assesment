@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router";
 import { HomePage } from "./pages/HomePage";
 import { ProductPage } from "./pages/ProductPage";
 import HomePageWOW from "./pages/HomePage.WOW";
+import HomePageELITE from "./pages/HomePage.ELITE";
 
 export const router = createBrowserRouter([
   {
@@ -11,6 +12,10 @@ export const router = createBrowserRouter([
   {
     path: "/wow",
     Component: HomePageWOW,
+  },
+  {
+    path: "/elite",
+    Component: HomePageELITE,
   },
   {
     path: "/products/sun-ninja-tents",

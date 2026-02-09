@@ -38,7 +38,7 @@ export function initErrorTracking() {
   })
 }
 
-export function captureException(error: Error, context?: Record<string, any>) {
+export function captureException(error: Error, context?: Record<string, unknown>) {
   if (ENABLE_ERROR_TRACKING) {
     Sentry.captureException(error, { extra: context })
   } else {

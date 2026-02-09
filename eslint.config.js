@@ -41,7 +41,7 @@ export default [
       ...react.configs['jsx-runtime'].rules,
       ...reactHooks.configs.recommended.rules,
 
-      'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
+      'react-refresh/only-export-components': ['warn', { allowConstantExport: true, allowExportNames: ['metadata'] }],
       '@typescript-eslint/no-unused-vars': [
         'error',
         { argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
@@ -51,6 +51,13 @@ export default [
       'no-undef': 'off', // TypeScript handles this better
       'react/prop-types': 'off',
       'react/react-in-jsx-scope': 'off',
+    },
+  },
+  // Disable react-refresh warnings for UI library components and utility files
+  {
+    files: ['src/app/components/ui/**/*.tsx', 'src/app/components/ui/**/*.ts', 'src/utils/store.tsx'],
+    rules: {
+      'react-refresh/only-export-components': 'off',
     },
   },
   // Node.js config files need Node globals
