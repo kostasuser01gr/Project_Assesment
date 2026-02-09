@@ -230,7 +230,7 @@ const UGCPhotoCard = ({
 }
 
 const LiveCounter = ({ target }: { target: number }) => {
-  const [count, setCount] = useState(target)
+  const [count] = useState(target)
 
   return (
     <motion.span

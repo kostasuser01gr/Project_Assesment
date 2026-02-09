@@ -2,7 +2,6 @@ import { Package, Zap, Cloud, Users, CheckCircle, Star } from 'lucide-react'
 import { useNavigate } from 'react-router'
 import {
   getHeroPhotos,
-  getGalleryPhotos,
   getSetupPhotos,
   getUGCPhotos,
 } from '../../utils/photoManager'
@@ -205,21 +204,24 @@ export function HomePage() {
                 name: 'Sarah M.',
                 rating: 5,
                 date: 'March 15, 2024',
-                comment: "Game-changer for our family beach days! Sets up in literally 2 minutes and stays put even when it's windy. Our kids love the extra space.",
+                title: 'Game-changer for family beach days!',
+                content: "Sets up in literally 2 minutes and stays put even when it's windy. Our kids love the extra space.",
                 verified: true
               },
               {
                 name: 'David K.',
                 rating: 5,
                 date: 'March 22, 2024',
-                comment: "Best beach tent we've ever owned. The ventilation is incredible—no more sweating under a hot canopy. Would buy again in a heartbeat.",
+                title: 'Best beach tent we\'ve ever owned',
+                content: "The ventilation is incredible—no more sweating under a hot canopy. Would buy again in a heartbeat.",
                 verified: true
               },
               {
                 name: 'Emily R.',
                 rating: 5,
                 date: 'April 2, 2024',
-                comment: 'Worth every penny. The UV protection gives me peace of mind with my toddler, and the setup is actually as easy as they claim. Highly recommend!',
+                title: 'Worth every penny!',
+                content: 'The UV protection gives me peace of mind with my toddler, and the setup is actually as easy as they claim. Highly recommend!',
                 verified: true
               }
             ].map((review, index) => (
@@ -322,3 +324,5 @@ export function HomePage() {
     </div>
   )
 }
+
+export default HomePage

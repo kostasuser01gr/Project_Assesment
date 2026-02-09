@@ -20,9 +20,8 @@ export const Product3DViewer = ({ images, alt, colors }: Product3DViewerProps) =
   const rotateX = useTransform(y, [-100, 100], [10, -10])
   const rotateY = useTransform(x, [-100, 100], [-10, 10])
 
-  const handleDrag = (_: any, info: any) => {
+  const handleDrag = (_event: MouseEvent | TouchEvent | PointerEvent, info: { offset: { x: number; y: number } }) => {
     const deltaX = info.offset.x
-    const sensitivity = 0.5
     const imageChange = Math.floor(Math.abs(deltaX) / 50)
     
     if (deltaX > 0) {
