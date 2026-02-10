@@ -9,6 +9,7 @@
 When you click "Generate Scaffold", this plugin automatically creates:
 
 ### Pages (8 total)
+
 - `00_Cover` — Project title page with navigation
 - `01_Quick_Audit` — Current site analysis template
 - `02_Style_Direction` — Mood board / style exploration
@@ -20,6 +21,7 @@ When you click "Generate Scaffold", this plugin automatically creates:
 - `08_Rationale_Notes` — Design decisions documentation
 
 ### Design System (in page 07)
+
 - **14 Color Styles** (Primary, Secondary, Accent, Neutral scale)
 - **8 Text Styles** (H1-H3, Body L/M/S, UI Label/Button)
 - **Spacing Scale** (4/8/12/16/24/32/48/64px with visual reference)
@@ -34,6 +36,7 @@ When you click "Generate Scaffold", this plugin automatically creates:
   - Icon Sample
 
 ### Artboards
+
 - Pre-sized frames in each design page with correct dimensions
 - Desktop: 1440px wide
 - Mobile: 390px wide
@@ -116,53 +119,61 @@ figma-plugin/
 
 ## 🎨 Color Palette Reference
 
-| Name | Hex | Usage |
-|------|-----|-------|
-| Primary | `#0F3B4C` | Ocean (trust, calm) |
-| Secondary | `#FF6B5A` | Coral (energy, CTA) |
-| Accent | `#FFB84D` | Gold (highlight, sun) |
-| Neutral/0-900 | Various | Grayscale system |
+| Name          | Hex       | Usage                 |
+| ------------- | --------- | --------------------- |
+| Primary       | `#0F3B4C` | Ocean (trust, calm)   |
+| Secondary     | `#FF6B5A` | Coral (energy, CTA)   |
+| Accent        | `#FFB84D` | Gold (highlight, sun) |
+| Neutral/0-900 | Various   | Grayscale system      |
 
 ---
 
 ## 📐 Typography Scale
 
-| Style | Size | Weight | Usage |
-|-------|------|--------|-------|
-| H1 / Display | 56px | Bold | Hero headlines |
-| H2 / Title | 40px | Bold | Section titles |
-| H3 / Subtitle | 28px | SemiBold | Subsections |
-| Body / Large | 18px | Regular | Intro copy |
-| Body / Medium | 16px | Regular | Standard copy |
-| Body / Small | 14px | Regular | Captions |
-| UI / Label | 14px | Medium | Form labels |
-| UI / Button | 16px | SemiBold | CTAs |
+| Style         | Size | Weight   | Usage          |
+| ------------- | ---- | -------- | -------------- |
+| H1 / Display  | 56px | Bold     | Hero headlines |
+| H2 / Title    | 40px | Bold     | Section titles |
+| H3 / Subtitle | 28px | SemiBold | Subsections    |
+| Body / Large  | 18px | Regular  | Intro copy     |
+| Body / Medium | 16px | Regular  | Standard copy  |
+| Body / Small  | 14px | Regular  | Captions       |
+| UI / Label    | 14px | Medium   | Form labels    |
+| UI / Button   | 16px | SemiBold | CTAs           |
 
 ---
 
 ## 🐛 Troubleshooting
 
 ### "Page limit reached" error
+
 **Solution**: You're in a Starter team file. Create a **Draft file** instead:
+
 1. Click your profile in top-left
 2. Select **Drafts**
 3. Create new file there
 4. Run plugin again
 
 ### Plugin doesn't appear in menu
+
 **Solution**:
+
 1. Make sure you ran `npm run build`
 2. Check that `dist/code.js` exists
 3. In Figma, go to **Plugins → Development → Reload** the plugin
 
 ### Fonts look wrong
+
 **Solution**: The plugin uses "Inter" font. If not installed:
+
 1. Download from [Google Fonts](https://fonts.google.com/specimen/Inter)
 2. Install on your system
 3. Restart Figma
 
 ### Build errors
+
 **Solution**:
+
 ```bash
 # Clean install
 rm -rf node_modules package-lock.json
@@ -195,10 +206,11 @@ Dev tool for internal use. Not for distribution.
 ## 🤝 Support
 
 If you encounter issues:
+
 1. Check the troubleshooting section above
 2. Review Figma Plugin API docs: https://www.figma.com/plugin-docs/
 3. Verify you're using Figma Desktop (not browser version)
 
 ---
 
-**Built with ❤️ for Sun Ninja redesign assignment**
+**Created by Konstantinos Foskolakis — Full Stack Web Engineer**

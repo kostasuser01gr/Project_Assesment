@@ -1,13 +1,4 @@
 // Analytics utility for Google Analytics and custom events
-type GtagCommand = 'config' | 'event' | 'js' | 'set'
-type GtagParams = Record<string, unknown>
-
-declare global {
-  interface Window {
-    gtag?: (command: GtagCommand, ...args: (string | Date | GtagParams)[]) => void
-    dataLayer?: unknown[]
-  }
-}
 
 const GA_MEASUREMENT_ID = import.meta.env.VITE_GA_MEASUREMENT_ID
 const ENABLE_ANALYTICS = import.meta.env.VITE_ENABLE_ANALYTICS === 'true'
@@ -26,11 +17,12 @@ export function initAnalytics() {
 
   // Initialize gtag
   window.dataLayer = window.dataLayer || []
-  window.gtag = function gtag(command: GtagCommand, ...args: (string | Date | Record<string, unknown>)[]) {
-    window.dataLayer!.push([command, ...args])
+  const gtagFn = function gtag(...args: unknown[]) {
+    window.dataLayer!.push(args)
   }
-  window.gtag('js', new Date())
-  window.gtag('config', GA_MEASUREMENT_ID, {
+  ;(window as Window & { gtag?: (...args: unknown[]) => void }).gtag = gtagFn
+  gtagFn('js', new Date())
+  gtagFn('config', GA_MEASUREMENT_ID, {
     send_page_view: false, // We'll handle page views manually
   })
 }
@@ -68,7 +60,11 @@ export function trackClick(elementName: string, additionalData?: Record<string, 
   })
 }
 
-export function trackPurchase(transactionId: string, value: number, items: Array<Record<string, unknown>>) {
+export function trackPurchase(
+  transactionId: string,
+  value: number,
+  items: Array<Record<string, unknown>>
+) {
   trackEvent('purchase', {
     transaction_id: transactionId,
     value,

@@ -546,6 +546,6 @@ Your project is now:
 
 ---
 
-**Built with ❤️ for scalability and performance**
+**Created by Konstantinos Foskolakis — Full Stack Web Engineer**
 
 Last Updated: February 8, 2026

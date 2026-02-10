@@ -250,4 +250,4 @@ For issues or questions, check:
 
 ---
 
-**Built with ❤️ for production-ready applications**
+**Created by Konstantinos Foskolakis — Full Stack Web Engineer**

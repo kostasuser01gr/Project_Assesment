@@ -14,7 +14,10 @@ interface WeatherAwareHeroProps {
   fallbackLocation?: string
 }
 
-export const WeatherAwareHero = ({ children, fallbackLocation = 'Beach Paradise' }: WeatherAwareHeroProps) => {
+export const WeatherAwareHero = ({
+  children,
+  fallbackLocation = 'Beach Paradise',
+}: WeatherAwareHeroProps) => {
   const [weather, setWeather] = useState<WeatherData | null>(null)
   const [isLoading, setIsLoading] = useState(true)
 
@@ -27,15 +30,17 @@ export const WeatherAwareHero = ({ children, fallbackLocation = 'Beach Paradise'
           navigator.geolocation.getCurrentPosition(
             async (position) => {
               const { latitude, longitude } = position.coords
-              
+
               // Mock weather data (in production, use OpenWeatherMap or similar API)
               const mockWeather: WeatherData = {
                 location: await getLocationName(latitude, longitude),
                 temperature: Math.round(20 + Math.random() * 15), // 20-35°C
-                condition: ['sunny', 'cloudy', 'windy'][Math.floor(Math.random() * 3)] as WeatherData['condition'],
-                timestamp: Date.now()
+                condition: ['sunny', 'cloudy', 'windy'][
+                  Math.floor(Math.random() * 3)
+                ] as WeatherData['condition'],
+                timestamp: Date.now(),
               }
-              
+
               setWeather(mockWeather)
               setIsLoading(false)
             },
@@ -45,7 +50,7 @@ export const WeatherAwareHero = ({ children, fallbackLocation = 'Beach Paradise'
                 location: fallbackLocation,
                 temperature: 28,
                 condition: 'sunny',
-                timestamp: Date.now()
+                timestamp: Date.now(),
               })
               setIsLoading(false)
             }
@@ -56,7 +61,7 @@ export const WeatherAwareHero = ({ children, fallbackLocation = 'Beach Paradise'
             location: fallbackLocation,
             temperature: 28,
             condition: 'sunny',
-            timestamp: Date.now()
+            timestamp: Date.now(),
           })
           setIsLoading(false)
         }
@@ -77,10 +82,14 @@ export const WeatherAwareHero = ({ children, fallbackLocation = 'Beach Paradise'
 
   const getWeatherIcon = (condition: WeatherData['condition']) => {
     switch (condition) {
-      case 'sunny': return <Sun className="w-5 h-5" />
-      case 'cloudy': return <Cloud className="w-5 h-5" />
-      case 'rainy': return <CloudRain className="w-5 h-5" />
-      case 'windy': return <Wind className="w-5 h-5" />
+      case 'sunny':
+        return <Sun className="w-5 h-5" />
+      case 'cloudy':
+        return <Cloud className="w-5 h-5" />
+      case 'rainy':
+        return <CloudRain className="w-5 h-5" />
+      case 'windy':
+        return <Wind className="w-5 h-5" />
     }
   }
 
@@ -90,12 +99,13 @@ export const WeatherAwareHero = ({ children, fallbackLocation = 'Beach Paradise'
     const { temperature, condition, location } = weather
 
     const messages = {
-      sunny: temperature > 30 
-        ? `${temperature}°C in ${location} today—stay cool under Sun Ninja! ☀️`
-        : `Perfect ${temperature}°C beach weather in ${location}! 🏖️`,
+      sunny:
+        temperature > 30
+          ? `${temperature}°C in ${location} today—stay cool under Sun Ninja! ☀️`
+          : `Perfect ${temperature}°C beach weather in ${location}! 🏖️`,
       cloudy: `${temperature}°C and cloudy in ${location}—still perfect for the beach! ⛅`,
       rainy: `Rainy in ${location}? Our tent keeps you dry between showers! 🌧️`,
-      windy: `Windy day in ${location}—good thing Sun Ninja stays anchored! 💨`
+      windy: `Windy day in ${location}—good thing Sun Ninja stays anchored! 💨`,
     }
 
     return messages[condition]
@@ -121,7 +131,9 @@ export const WeatherAwareHero = ({ children, fallbackLocation = 'Beach Paradise'
   }
 
   return (
-    <div className={`relative bg-gradient-to-br ${getBackgroundGradient()} transition-all duration-1000`}>
+    <div
+      className={`relative bg-gradient-to-br ${getBackgroundGradient()} transition-all duration-1000`}
+    >
       {/* Weather Badge */}
       {!isLoading && weather && (
         <motion.div
@@ -132,14 +144,14 @@ export const WeatherAwareHero = ({ children, fallbackLocation = 'Beach Paradise'
         >
           <MapPin className="w-4 h-4 text-cyan-400" />
           <span className="text-white/80 text-sm">{weather.location}</span>
-          
+
           <div className="w-px h-4 bg-white/20" />
-          
+
           <Thermometer className="w-4 h-4 text-coral-400" />
           <span className="text-white font-semibold">{weather.temperature}°C</span>
-          
+
           <div className="w-px h-4 bg-white/20" />
-          
+
           <span className="text-white/60">{getWeatherIcon(weather.condition)}</span>
         </motion.div>
       )}
@@ -152,9 +164,7 @@ export const WeatherAwareHero = ({ children, fallbackLocation = 'Beach Paradise'
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.8 }}
         >
-          <p className="text-white text-center font-medium">
-            {getWeatherMessage()}
-          </p>
+          <p className="text-white text-center font-medium">{getWeatherMessage()}</p>
         </motion.div>
       )}
 
@@ -167,17 +177,17 @@ export const WeatherAwareHero = ({ children, fallbackLocation = 'Beach Paradise'
               className="absolute w-0.5 h-8 bg-white/30"
               style={{
                 left: `${Math.random() * 100}%`,
-                top: -20
+                top: -20,
               }}
               animate={{
                 y: ['0vh', '110vh'],
-                opacity: [0.6, 0]
+                opacity: [0.6, 0],
               }}
               transition={{
                 duration: 1 + Math.random() * 0.5,
                 repeat: Infinity,
                 delay: Math.random() * 2,
-                ease: 'linear'
+                ease: 'linear',
               }}
             />
           ))}
@@ -192,17 +202,17 @@ export const WeatherAwareHero = ({ children, fallbackLocation = 'Beach Paradise'
               className="absolute text-4xl opacity-20"
               style={{
                 left: -50,
-                top: `${Math.random() * 100}%`
+                top: `${Math.random() * 100}%`,
               }}
               animate={{
                 x: ['0vw', '110vw'],
-                y: [0, Math.random() * 40 - 20]
+                y: [0, Math.random() * 40 - 20],
               }}
               transition={{
                 duration: 3 + Math.random() * 2,
                 repeat: Infinity,
                 delay: Math.random() * 3,
-                ease: 'linear'
+                ease: 'linear',
               }}
             >
               💨

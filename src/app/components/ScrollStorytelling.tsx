@@ -25,21 +25,23 @@ export const ScrollStorytelling = ({ steps }: ScrollStorytellingProps) => {
             className="absolute"
             style={{
               left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`
+              top: `${Math.random() * 100}%`,
             }}
             animate={{
               y: [0, -30, 0],
               x: [0, Math.random() * 20 - 10, 0],
-              rotate: [0, Math.random() * 360, 0]
+              rotate: [0, Math.random() * 360, 0],
             }}
             transition={{
               duration: Math.random() * 10 + 10,
               repeat: Infinity,
               ease: 'easeInOut',
-              delay: Math.random() * 5
+              delay: Math.random() * 5,
             }}
           >
-            <div className={`w-${Math.floor(Math.random() * 20 + 10)} h-${Math.floor(Math.random() * 20 + 10)} opacity-10`}>
+            <div
+              className={`w-${Math.floor(Math.random() * 20 + 10)} h-${Math.floor(Math.random() * 20 + 10)} opacity-10`}
+            >
               {i % 3 === 0 ? '🐚' : i % 3 === 1 ? '⭐' : '🌊'}
             </div>
           </motion.div>
@@ -75,14 +77,18 @@ const StoryStepSection = ({ step, index }: { step: StoryStep; index: number }) =
         {/* Icon with pulse */}
         <motion.div
           className={`inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br ${step.color} shadow-2xl`}
-          animate={isInView ? {
-            scale: [1, 1.1, 1],
-            boxShadow: [
-              '0 10px 40px rgba(0,0,0,0.2)',
-              '0 15px 50px rgba(0,0,0,0.3)',
-              '0 10px 40px rgba(0,0,0,0.2)'
-            ]
-          } : {}}
+          animate={
+            isInView
+              ? {
+                  scale: [1, 1.1, 1],
+                  boxShadow: [
+                    '0 10px 40px rgba(0,0,0,0.2)',
+                    '0 15px 50px rgba(0,0,0,0.3)',
+                    '0 10px 40px rgba(0,0,0,0.2)',
+                  ],
+                }
+              : {}
+          }
           transition={{ duration: 2, repeat: Infinity }}
         >
           <step.icon className="w-10 h-10 text-white" />
@@ -130,31 +136,35 @@ const StoryStepSection = ({ step, index }: { step: StoryStep; index: number }) =
       {/* Illustration */}
       <motion.div
         initial={{ opacity: 0, scale: 0.8, rotate: isEven ? -10 : 10 }}
-        animate={isInView ? { opacity: 1, scale: 1, rotate: 0 } : { opacity: 0, scale: 0.8, rotate: isEven ? -10 : 10 }}
+        animate={
+          isInView
+            ? { opacity: 1, scale: 1, rotate: 0 }
+            : { opacity: 0, scale: 0.8, rotate: isEven ? -10 : 10 }
+        }
         transition={{ delay: 0.3, duration: 0.8 }}
         className="flex-1 relative"
       >
         {/* Glowing orb background */}
         <motion.div
           className={`absolute inset-0 bg-gradient-to-br ${step.color} opacity-20 blur-3xl`}
-          animate={isInView ? {
-            scale: [1, 1.2, 1],
-            opacity: [0.2, 0.3, 0.2]
-          } : {}}
+          animate={
+            isInView
+              ? {
+                  scale: [1, 1.2, 1],
+                  opacity: [0.2, 0.3, 0.2],
+                }
+              : {}
+          }
           transition={{ duration: 4, repeat: Infinity }}
         />
 
         {/* Image container with glass effect */}
         <div className="relative aspect-square rounded-3xl overflow-hidden shadow-2xl border border-white/20 backdrop-blur-xl">
-          <img
-            src={step.illustration}
-            alt={step.title}
-            className="w-full h-full object-cover"
-          />
-          
+          <img src={step.illustration} alt={step.title} className="w-full h-full object-cover" />
+
           {/* Holographic overlay */}
           <div className="absolute inset-0 bg-gradient-to-tr from-cyan-400/10 via-transparent to-purple-400/10" />
-          
+
           {/* Edge glow */}
           <div className={`absolute inset-0 shadow-inner-glow-${step.color}`} />
         </div>
@@ -167,7 +177,9 @@ const StoryStepSection = ({ step, index }: { step: StoryStep; index: number }) =
           transition={{ delay: 0.8 }}
         >
           <div className="flex items-center gap-3">
-            <div className={`w-12 h-12 rounded-full bg-gradient-to-br ${step.color} flex items-center justify-center`}>
+            <div
+              className={`w-12 h-12 rounded-full bg-gradient-to-br ${step.color} flex items-center justify-center`}
+            >
               <step.icon className="w-6 h-6 text-white" />
             </div>
             <div>
@@ -175,11 +187,9 @@ const StoryStepSection = ({ step, index }: { step: StoryStep; index: number }) =
               <div className="text-sm text-slate-500">In Progress</div>
             </div>
           </div>
-          
+
           {/* Progress bar */}
-          <motion.div
-            className="mt-4 h-2 bg-slate-100 rounded-full overflow-hidden"
-          >
+          <motion.div className="mt-4 h-2 bg-slate-100 rounded-full overflow-hidden">
             <motion.div
               className={`h-full bg-gradient-to-r ${step.color}`}
               initial={{ width: '0%' }}

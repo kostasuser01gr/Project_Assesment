@@ -1,4 +1,4 @@
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { motion, useScroll, useTransform } from 'motion/react'
 import { useState, useEffect, useRef } from 'react'
 import { Star, ShoppingCart, Shield, Truck, RotateCcw } from 'lucide-react'
 
@@ -19,13 +19,13 @@ export const CinematicHero = ({
   rating,
   reviews,
   images,
-  onCTAClick
+  onCTAClick,
 }: CinematicHeroProps) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const heroRef = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({
     target: heroRef,
-    offset: ['start start', 'end start']
+    offset: ['start start', 'end start'],
   })
 
   const y = useTransform(scrollYProgress, [0, 1], ['0%', '50%'])
@@ -42,13 +42,10 @@ export const CinematicHero = ({
   return (
     <div ref={heroRef} className="relative h-screen overflow-hidden">
       {/* Parallax Background */}
-      <motion.div 
-        className="absolute inset-0"
-        style={{ y }}
-      >
+      <motion.div className="absolute inset-0" style={{ y }}>
         {/* Animated gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-br from-sky-400/90 via-sky-500/85 to-rose-400/90 animate-gradient-shift" />
-        
+
         {/* Hero image carousel */}
         <div className="absolute inset-0">
           {images.map((image, index) => (
@@ -69,40 +66,40 @@ export const CinematicHero = ({
             <motion.div
               key={i}
               className="absolute w-1 h-1 bg-white/30 rounded-full"
-              initial={{ 
+              initial={{
                 x: Math.random() * window.innerWidth,
-                y: -10 
+                y: -10,
               }}
               animate={{
                 y: window.innerHeight + 10,
-                x: Math.random() * window.innerWidth
+                x: Math.random() * window.innerWidth,
               }}
               transition={{
                 duration: Math.random() * 10 + 15,
                 repeat: Infinity,
                 ease: 'linear',
-                delay: Math.random() * 5
+                delay: Math.random() * 5,
               }}
             />
           ))}
         </div>
 
         {/* Aurora gradient overlay */}
-        <motion.div 
+        <motion.div
           className="absolute inset-0 bg-gradient-to-tr from-purple-500/20 via-transparent to-cyan-500/20"
           animate={{
-            opacity: [0.3, 0.6, 0.3]
+            opacity: [0.3, 0.6, 0.3],
           }}
           transition={{
             duration: 8,
             repeat: Infinity,
-            ease: 'easeInOut'
+            ease: 'easeInOut',
           }}
         />
       </motion.div>
 
       {/* Content */}
-      <motion.div 
+      <motion.div
         className="relative z-10 h-full flex items-center justify-center"
         style={{ opacity }}
       >
@@ -134,7 +131,7 @@ export const CinematicHero = ({
             transition={{ delay: 0.5 }}
             className="text-7xl md:text-8xl font-bold mb-6 bg-gradient-to-r from-white via-cyan-100 to-white bg-clip-text text-transparent drop-shadow-2xl"
             style={{
-              textShadow: '0 0 40px rgba(255,255,255,0.5), 0 0 80px rgba(14,165,233,0.3)'
+              textShadow: '0 0 40px rgba(255,255,255,0.5), 0 0 80px rgba(14,165,233,0.3)',
             }}
           >
             {title}
@@ -157,9 +154,7 @@ export const CinematicHero = ({
             className="mb-10"
           >
             <div className="inline-block relative">
-              <div className="text-6xl font-bold text-white mb-2">
-                {price}
-              </div>
+              <div className="text-6xl font-bold text-white mb-2">{price}</div>
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-shimmer" />
             </div>
             <div className="text-white/70 text-lg">Limited Time Offer - Save 25%</div>
@@ -183,7 +178,7 @@ export const CinematicHero = ({
               whileHover={{ x: '0%' }}
               transition={{ duration: 0.5 }}
             />
-            
+
             {/* Holographic sweep */}
             <motion.div
               className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent"
@@ -205,16 +200,16 @@ export const CinematicHero = ({
                   className="absolute w-1 h-1 bg-white rounded-full"
                   style={{
                     left: `${Math.random() * 100}%`,
-                    top: `${Math.random() * 100}%`
+                    top: `${Math.random() * 100}%`,
                   }}
                   animate={{
                     scale: [0, 1, 0],
-                    opacity: [0, 1, 0]
+                    opacity: [0, 1, 0],
                   }}
                   transition={{
                     duration: 1,
                     repeat: Infinity,
-                    delay: i * 0.2
+                    delay: i * 0.2,
                   }}
                 />
               ))}
@@ -231,13 +226,9 @@ export const CinematicHero = ({
             {[
               { icon: Shield, text: '1-Year Warranty' },
               { icon: RotateCcw, text: '30-Day Returns' },
-              { icon: Star, text: 'UPF 50+ Protection' }
+              { icon: Star, text: 'UPF 50+ Protection' },
             ].map((item, i) => (
-              <motion.div
-                key={i}
-                className="flex items-center gap-2"
-                whileHover={{ scale: 1.1 }}
-              >
+              <motion.div key={i} className="flex items-center gap-2" whileHover={{ scale: 1.1 }}>
                 <item.icon className="w-5 h-5" />
                 <span className="text-sm font-medium">{item.text}</span>
               </motion.div>

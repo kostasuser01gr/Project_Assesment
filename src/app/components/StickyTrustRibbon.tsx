@@ -1,4 +1,4 @@
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { motion, useScroll, useTransform } from 'motion/react'
 import { Shield, Truck, RotateCcw, Award, Heart, Zap } from 'lucide-react'
 
 const trustBadges = [
@@ -7,7 +7,7 @@ const trustBadges = [
   { icon: RotateCcw, text: '30-Day Returns', color: 'from-purple-400 to-purple-600' },
   { icon: Award, text: '1-Year Warranty', color: 'from-yellow-400 to-yellow-600' },
   { icon: Heart, text: '10K+ Happy Families', color: 'from-rose-400 to-rose-600' },
-  { icon: Zap, text: '60-Second Setup', color: 'from-cyan-400 to-cyan-600' }
+  { icon: Zap, text: '60-Second Setup', color: 'from-cyan-400 to-cyan-600' },
 ]
 
 export const StickyTrustRibbon = () => {
@@ -17,7 +17,7 @@ export const StickyTrustRibbon = () => {
 
   return (
     <motion.div
-      className="fixed bottom-0 left-0 right-0 z-40 pointer-events-none"
+      className="fixed bottom-0 left-0 right-0 z-40 pointer-events-none hidden md:block"
       style={{ opacity, y }}
     >
       <div className="relative overflow-hidden">
@@ -28,7 +28,7 @@ export const StickyTrustRibbon = () => {
         <motion.div
           className="absolute inset-0 bg-gradient-to-r from-cyan-400/10 via-purple-400/10 to-rose-400/10"
           animate={{
-            backgroundPosition: ['0% 50%', '100% 50%', '0% 50%']
+            backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
           }}
           transition={{ duration: 10, repeat: Infinity, ease: 'linear' }}
           style={{ backgroundSize: '200% 100%' }}
@@ -55,8 +55,8 @@ export const StickyTrustRibbon = () => {
                       boxShadow: [
                         '0 4px 12px rgba(0,0,0,0.15)',
                         '0 6px 20px rgba(0,0,0,0.25)',
-                        '0 4px 12px rgba(0,0,0,0.15)'
-                      ]
+                        '0 4px 12px rgba(0,0,0,0.15)',
+                      ],
                     }}
                     transition={{ duration: 2, repeat: Infinity, delay: index * 0.2 }}
                   >
@@ -69,9 +69,7 @@ export const StickyTrustRibbon = () => {
                   </span>
 
                   {/* Separator */}
-                  {index < trustBadges.length - 1 && (
-                    <div className="w-px h-6 bg-slate-200" />
-                  )}
+                  {index < trustBadges.length - 1 && <div className="w-px h-6 bg-slate-200" />}
                 </motion.div>
               ))}
             </div>

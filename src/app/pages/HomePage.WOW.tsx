@@ -1,10 +1,6 @@
 import { Package, Zap, Cloud, Users, CheckCircle, Star } from 'lucide-react'
 import { useNavigate } from 'react-router'
-import {
-  getHeroPhotos,
-  getSetupPhotos,
-  getUGCPhotos,
-} from '../../utils/photoManager'
+import { getHeroPhotos, getSetupPhotos, getUGCPhotos } from '../../utils/photoManager'
 import { CinematicHero } from '../components/CinematicHero'
 import { ScrollStorytelling } from '../components/ScrollStorytelling'
 import { UGCGalleryPremium } from '../components/UGCGalleryPremium'
@@ -17,22 +13,36 @@ export function HomePage() {
   const heroPhotos = getHeroPhotos()
   const setupPhotos = getSetupPhotos()
   const ugcPhotosRaw = getUGCPhotos()
-  
+
   // Transform UGC photos for premium gallery
   const ugcPhotos = ugcPhotosRaw.map((photo, index) => ({
     id: photo.id,
     src: photo.src,
     likes: Math.floor(Math.random() * 500) + 200,
-    author: ['beachfamily', 'sunsetlover', 'coastalvibes', 'summerdreams', 'oceanbreeze', 'beachlife'][index % 6],
+    author: [
+      'beachfamily',
+      'sunsetlover',
+      'coastalvibes',
+      'summerdreams',
+      'oceanbreeze',
+      'beachlife',
+    ][index % 6],
     caption: [
       'Best beach tent ever! Our kids love it 🏖️',
       'Game changer for our family beach days',
       'Setup was literally 60 seconds. Amazing!',
       'The shade and UV protection are incredible',
       'Perfect for windy beach days 💨',
-      'Worth every penny. Highly recommend!'
+      'Worth every penny. Highly recommend!',
     ][index % 6],
-    date: ['2 days ago', '1 week ago', '3 weeks ago', '1 month ago', '2 months ago', '3 months ago'][index % 6]
+    date: [
+      '2 days ago',
+      '1 week ago',
+      '3 weeks ago',
+      '1 month ago',
+      '2 months ago',
+      '3 months ago',
+    ][index % 6],
   }))
 
   // Story steps for scroll storytelling
@@ -40,24 +50,27 @@ export function HomePage() {
     {
       icon: Package,
       title: 'Unpack & Unfold',
-      description: 'Your Sun Ninja arrives compact and lightweight. Simply remove from the carry bag and unfold the pre-assembled frame. No complicated parts, no confusing instructions.',
+      description:
+        'Your Sun Ninja arrives compact and lightweight. Simply remove from the carry bag and unfold the pre-assembled frame. No complicated parts, no confusing instructions.',
       illustration: setupPhotos[0]?.src || heroPhotos[0].src,
-      color: 'from-cyan-400 to-blue-600'
+      color: 'from-cyan-400 to-blue-600',
     },
     {
       icon: Zap,
       title: 'Secure & Anchor',
-      description: 'Pop up the frame in seconds with our patented quick-release mechanism. Secure with 8 sand anchors and 4 ground stakes. Built-in pockets keep everything organized.',
+      description:
+        'Pop up the frame in seconds with our patented quick-release mechanism. Secure with 8 sand anchors and 4 ground stakes. Built-in pockets keep everything organized.',
       illustration: setupPhotos[1]?.src || heroPhotos[0].src,
-      color: 'from-purple-400 to-pink-600'
+      color: 'from-purple-400 to-pink-600',
     },
     {
       icon: Cloud,
       title: 'Enjoy the Shade',
-      description: 'Relax under premium UPF 50+ protection with 360° ventilation. Spacious enough for the whole family, weather-resistant, and backed by our 1-year warranty.',
+      description:
+        'Relax under premium UPF 50+ protection with 360° ventilation. Spacious enough for the whole family, weather-resistant, and backed by our 1-year warranty.',
       illustration: setupPhotos[2]?.src || heroPhotos[0].src,
-      color: 'from-yellow-400 to-orange-600'
-    }
+      color: 'from-yellow-400 to-orange-600',
+    },
   ]
 
   return (
@@ -69,7 +82,7 @@ export function HomePage() {
         price="$149.99"
         rating={4.9}
         reviews={2847}
-        images={heroPhotos.map(p => p.src)}
+        images={heroPhotos.map((p) => p.src)}
         onCTAClick={() => navigate('/product')}
       />
 
@@ -86,7 +99,8 @@ export function HomePage() {
               Why Families Choose Sun Ninja
             </h2>
             <p className="text-xl text-slate-600 max-w-2xl mx-auto">
-              Premium protection meets effortless convenience. Every detail designed for your perfect beach day.
+              Premium protection meets effortless convenience. Every detail designed for your
+              perfect beach day.
             </p>
           </motion.div>
 
@@ -97,29 +111,29 @@ export function HomePage() {
                 title: 'UPF 50+ Protection',
                 description: 'Medical-grade UV protection blocks 98% harmful rays',
                 color: 'from-cyan-400 to-blue-600',
-                stat: '98%'
+                stat: '98%',
               },
               {
                 icon: Zap,
                 title: '60-Second Setup',
                 description: 'Pop-up design with pre-assembled frame',
                 color: 'from-purple-400 to-pink-600',
-                stat: '1 min'
+                stat: '1 min',
               },
               {
                 icon: Package,
                 title: 'Weather Resistant',
                 description: 'Windproof anchors + waterproof 210D fabric',
                 color: 'from-yellow-400 to-orange-600',
-                stat: '35mph'
+                stat: '35mph',
               },
               {
                 icon: Users,
                 title: 'Family Sized',
                 description: '10×10ft space fits 6 people + gear comfortably',
                 color: 'from-emerald-400 to-green-600',
-                stat: '6 ppl'
-              }
+                stat: '6 ppl',
+              },
             ].map((benefit, index) => (
               <motion.div
                 key={index}
@@ -127,10 +141,10 @@ export function HomePage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                whileHover={{ 
+                whileHover={{
                   scale: 1.05,
                   rotateY: 5,
-                  z: 50
+                  z: 50,
                 }}
                 className="relative group"
                 style={{ transformStyle: 'preserve-3d' }}
@@ -152,15 +166,13 @@ export function HomePage() {
                   </motion.div>
 
                   {/* Content */}
-                  <h3 className="text-2xl font-bold text-slate-800 mb-3">
-                    {benefit.title}
-                  </h3>
-                  <p className="text-slate-600 mb-4">
-                    {benefit.description}
-                  </p>
+                  <h3 className="text-2xl font-bold text-slate-800 mb-3">{benefit.title}</h3>
+                  <p className="text-slate-600 mb-4">{benefit.description}</p>
 
                   {/* Stat badge */}
-                  <div className={`inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r ${benefit.color} text-white font-bold text-sm`}>
+                  <div
+                    className={`inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r ${benefit.color} text-white font-bold text-sm`}
+                  >
                     {benefit.stat}
                   </div>
 
@@ -205,25 +217,28 @@ export function HomePage() {
                 rating: 5,
                 date: 'March 15, 2024',
                 title: 'Game-changer for family beach days!',
-                content: "Sets up in literally 2 minutes and stays put even when it's windy. Our kids love the extra space.",
-                verified: true
+                content:
+                  "Sets up in literally 2 minutes and stays put even when it's windy. Our kids love the extra space.",
+                verified: true,
               },
               {
                 name: 'David K.',
                 rating: 5,
                 date: 'March 22, 2024',
-                title: 'Best beach tent we\'ve ever owned',
-                content: "The ventilation is incredible—no more sweating under a hot canopy. Would buy again in a heartbeat.",
-                verified: true
+                title: "Best beach tent we've ever owned",
+                content:
+                  'The ventilation is incredible—no more sweating under a hot canopy. Would buy again in a heartbeat.',
+                verified: true,
               },
               {
                 name: 'Emily R.',
                 rating: 5,
                 date: 'April 2, 2024',
                 title: 'Worth every penny!',
-                content: 'The UV protection gives me peace of mind with my toddler, and the setup is actually as easy as they claim. Highly recommend!',
-                verified: true
-              }
+                content:
+                  'The UV protection gives me peace of mind with my toddler, and the setup is actually as easy as they claim. Highly recommend!',
+                verified: true,
+              },
             ].map((review, index) => (
               <motion.div
                 key={index}
@@ -297,9 +312,7 @@ export function HomePage() {
               whileHover={{ x: '0%' }}
               transition={{ duration: 0.5 }}
             />
-            <span className="relative z-10 text-white">
-              Shop Now - Free Shipping
-            </span>
+            <span className="relative z-10 text-white">Shop Now - Free Shipping</span>
           </motion.button>
 
           <motion.div

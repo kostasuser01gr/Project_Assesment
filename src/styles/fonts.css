@@ -31,7 +31,10 @@
 }
 
 .heading-3 {
-  font-family: 'Inter', -apple-system, sans-serif;
+  font-family:
+    'Inter',
+    -apple-system,
+    sans-serif;
   font-size: clamp(1.5rem, 2.5vw, 2.25rem);
   font-weight: 700;
   letter-spacing: -0.01em;
@@ -40,20 +43,29 @@
 
 /* Body Copy */
 .text-body {
-  font-family: 'Inter', -apple-system, sans-serif;
+  font-family:
+    'Inter',
+    -apple-system,
+    sans-serif;
   font-weight: 400;
   line-height: 1.7;
 }
 
 .text-body-lg {
-  font-family: 'Inter', -apple-system, sans-serif;
+  font-family:
+    'Inter',
+    -apple-system,
+    sans-serif;
   font-size: 1.125rem;
   font-weight: 400;
   line-height: 1.8;
 }
 
 .text-body-sm {
-  font-family: 'Inter', -apple-system, sans-serif;
+  font-family:
+    'Inter',
+    -apple-system,
+    sans-serif;
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.6;
@@ -61,7 +73,10 @@
 
 /* UI Elements */
 .text-label {
-  font-family: 'Inter', -apple-system, sans-serif;
+  font-family:
+    'Inter',
+    -apple-system,
+    sans-serif;
   font-size: 0.875rem;
   font-weight: 500;
   line-height: 1.4;
@@ -70,7 +85,10 @@
 }
 
 .text-button {
-  font-family: 'Inter', -apple-system, sans-serif;
+  font-family:
+    'Inter',
+    -apple-system,
+    sans-serif;
   font-size: 1rem;
   font-weight: 600;
   line-height: 1;

@@ -1,9 +1,9 @@
-import { LucideIcon } from 'lucide-react';
+import { LucideIcon } from 'lucide-react'
 
 interface TrustBadgeProps {
-  icon: LucideIcon;
-  title: string;
-  description: string;
+  icon: LucideIcon
+  title: string
+  description: string
 }
 
 export function TrustBadge({ icon: Icon, title, description }: TrustBadgeProps) {
@@ -17,5 +17,5 @@ export function TrustBadge({ icon: Icon, title, description }: TrustBadgeProps) 
         <div className="text-xs text-muted-foreground mt-0.5">{description}</div>
       </div>
     </div>
-  );
+  )
 }

@@ -410,4 +410,4 @@ For support, email support@sunninja.com or open an issue on GitHub.
 
 ---
 
-**Made with ❤️ by the Sun Ninja Team**
+**Created by Konstantinos Foskolakis — Full Stack Web Engineer**

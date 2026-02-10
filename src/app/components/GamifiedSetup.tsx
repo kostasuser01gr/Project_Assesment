@@ -17,7 +17,7 @@ const SETUP_ITEMS: DragItem[] = [
   { id: 'frame', label: 'Frame', icon: '🏗️', correctSlot: 0 },
   { id: 'fabric', label: 'Fabric', icon: '⛺', correctSlot: 1 },
   { id: 'stakes', label: 'Stakes', icon: '⚓', correctSlot: 2 },
-  { id: 'sandbags', label: 'Sand Pockets', icon: '⏳', correctSlot: 3 }
+  { id: 'sandbags', label: 'Sand Pockets', icon: '⏳', correctSlot: 3 },
 ]
 
 const AVERAGE_TIME = 47 // seconds
@@ -49,16 +49,16 @@ export const GamifiedSetup = ({ onComplete }: GamifiedSetupProps) => {
     if (allCorrect && slots.every((slot) => slot !== null)) {
       setIsComplete(true)
       setIsActive(false)
-      
+
       const finalTime = Number(time.toFixed(1))
       if (finalTime < REWARD_THRESHOLD) {
         setEarnedReward(true)
       }
-      
+
       if (bestTime === null || finalTime < bestTime) {
         setBestTime(finalTime)
       }
-      
+
       onComplete?.(finalTime)
     }
   }, [slots, time, bestTime, onComplete])
@@ -88,18 +88,18 @@ export const GamifiedSetup = ({ onComplete }: GamifiedSetupProps) => {
     // Place item in slot
     const newSlots = [...slots]
     const newItems = items.filter((item) => item.id !== draggedItem.id)
-    
+
     // Remove item from its current slot if exists
     const currentSlotIndex = slots.findIndex((slot) => slot?.id === draggedItem.id)
     if (currentSlotIndex !== -1) {
       newSlots[currentSlotIndex] = null
     }
-    
+
     // If there's an item in the target slot, return it to items
     if (newSlots[slotIndex]) {
       newItems.push(newSlots[slotIndex]!)
     }
-    
+
     newSlots[slotIndex] = draggedItem
     setSlots(newSlots)
     setItems(newItems)
@@ -112,13 +112,12 @@ export const GamifiedSetup = ({ onComplete }: GamifiedSetupProps) => {
 
   return (
     <div className="w-full max-w-4xl mx-auto p-8 quantum-glass rounded-3xl">
-      
       {/* Header */}
       <div className="text-center mb-8">
         <motion.div
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
-          transition={{ type: "spring", duration: 0.6 }}
+          transition={{ type: 'spring', duration: 0.6 }}
           className="inline-block"
         >
           <Target className="w-16 h-16 text-cyan-400 mb-4 mx-auto" />
@@ -137,9 +136,7 @@ export const GamifiedSetup = ({ onComplete }: GamifiedSetupProps) => {
       >
         <div className="inline-flex items-center gap-3 quantum-glass-dark px-6 py-3 rounded-full">
           <Timer className="w-6 h-6 text-coral-400" />
-          <span className="text-4xl font-bold text-white font-mono">
-            {time.toFixed(1)}s
-          </span>
+          <span className="text-4xl font-bold text-white font-mono">{time.toFixed(1)}s</span>
         </div>
         <div className="mt-2 text-sm text-white/60">
           Average: {AVERAGE_TIME}s {bestTime && `• Best: ${bestTime}s`}
@@ -227,20 +224,15 @@ export const GamifiedSetup = ({ onComplete }: GamifiedSetupProps) => {
               onClick={(e) => e.stopPropagation()}
               className="quantum-glass-dark p-12 rounded-3xl max-w-md text-center"
             >
-              <motion.div
-                animate={{ rotate: 360 }}
-                transition={{ duration: 1, ease: "easeInOut" }}
-              >
+              <motion.div animate={{ rotate: 360 }} transition={{ duration: 1, ease: 'easeInOut' }}>
                 <Trophy className="w-24 h-24 text-gold-400 mb-6 mx-auto" />
               </motion.div>
-              
+
               <h3 className="text-4xl font-bold text-white mb-4">
                 {earnedReward ? '🎉 Amazing!' : 'Great Job!'}
               </h3>
-              
-              <p className="text-2xl text-cyan-400 font-bold mb-4">
-                {time.toFixed(1)} seconds
-              </p>
+
+              <p className="text-2xl text-cyan-400 font-bold mb-4">{time.toFixed(1)} seconds</p>
 
               {earnedReward ? (
                 <>
@@ -249,12 +241,8 @@ export const GamifiedSetup = ({ onComplete }: GamifiedSetupProps) => {
                   </p>
                   <div className="quantum-glass p-6 rounded-2xl mb-6">
                     <Zap className="w-12 h-12 text-gold-400 mb-3 mx-auto" />
-                    <div className="text-gold-400 text-3xl font-bold mb-2">
-                      {getDiscountCode()}
-                    </div>
-                    <div className="text-white/60 text-sm">
-                      Save 10% on your order!
-                    </div>
+                    <div className="text-gold-400 text-3xl font-bold mb-2">{getDiscountCode()}</div>
+                    <div className="text-white/60 text-sm">Save 10% on your order!</div>
                   </div>
                 </>
               ) : (
@@ -273,7 +261,7 @@ export const GamifiedSetup = ({ onComplete }: GamifiedSetupProps) => {
                   <RotateCcw className="w-5 h-5 mr-2" />
                   Play Again
                 </motion.button>
-                
+
                 {earnedReward && (
                   <motion.button
                     onClick={() => {

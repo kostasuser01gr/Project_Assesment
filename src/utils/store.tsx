@@ -119,6 +119,12 @@ function appReducer(state: AppState, action: AppAction): AppState {
     }
 
     case 'CART_UPDATE_QUANTITY': {
+      // Remove item if quantity drops to 0 or below
+      if (action.payload.quantity <= 0) {
+        const newItems = state.cart.items.filter((item) => item.id !== action.payload.id)
+        const total = newItems.reduce((sum, item) => sum + item.price * item.quantity, 0)
+        return { ...state, cart: { items: newItems, total } }
+      }
       const newItems = state.cart.items.map((item) =>
         item.id === action.payload.id ? { ...item, quantity: action.payload.quantity } : item
       )
@@ -213,3 +219,6 @@ export function useApp() {
     dispatch: useAppDispatch(),
   }
 }
+
+// Alias for backwards compatibility
+export const useAppContext = useApp

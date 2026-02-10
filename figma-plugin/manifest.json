@@ -1,13 +1,15 @@
 {
-  "name": "Sun Ninja Scaffold Generator",
-  "id": "sun-ninja-scaffold-dev",
+  "name": "Sun Ninja Elite Scaffold Generator",
+  "id": "sun-ninja-scaffold-elite-v2",
   "api": "1.0.0",
   "main": "dist/code.js",
   "ui": "ui.html",
-  "editorType": [
-    "figma"
-  ],
+  "editorType": ["figma"],
   "networkAccess": {
     "allowedDomains": ["none"]
-  }
+  },
+  "capabilities": [],
+  "permissions": [],
+  "description": "TOP 1% quality scaffold generator for Sun Ninja redesign assignment - Creates complete design system with sun-glow gradients, premium components, and CRO-optimized templates.",
+  "documentAccess": "dynamic-page"
 }

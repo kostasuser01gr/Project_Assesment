@@ -26,8 +26,8 @@ export const LiveSocialProofWall = ({ posts }: LiveSocialProofWallProps) => {
 
   // Aggregate stats
   const totalLikes = posts.reduce((sum, post) => sum + post.likes, 0)
-  const countries = [...new Set(posts.map(p => p.location.split(',')[1]?.trim()))]
-  const recentPosts = posts.filter(p => p.isNew).length
+  const countries = [...new Set(posts.map((p) => p.location.split(',')[1]?.trim()))]
+  const recentPosts = posts.filter((p) => p.isNew).length
 
   return (
     <section className="py-24 relative overflow-hidden">
@@ -42,9 +42,7 @@ export const LiveSocialProofWall = ({ posts }: LiveSocialProofWallProps) => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-5xl font-bold text-white mb-4">
-              Join the Sun Ninja Community
-            </h2>
+            <h2 className="text-5xl font-bold text-white mb-4">Join the Sun Ninja Community</h2>
             <p className="text-xl text-white/60 mb-8">
               Thousands of beach lovers worldwide trust Sun Ninja
             </p>
@@ -152,10 +150,7 @@ export const LiveSocialProofWall = ({ posts }: LiveSocialProofWallProps) => {
         {/* Post Detail Modal */}
         <AnimatePresence>
           {selectedPost && (
-            <PostDetailModal
-              post={selectedPost}
-              onClose={() => setSelectedPost(null)}
-            />
+            <PostDetailModal post={selectedPost} onClose={() => setSelectedPost(null)} />
           )}
         </AnimatePresence>
       </div>
@@ -164,14 +159,14 @@ export const LiveSocialProofWall = ({ posts }: LiveSocialProofWallProps) => {
 }
 
 // Instagram-style Card
-const InstagramCard = ({ 
-  post, 
-  index, 
-  onClick 
-}: { 
+const InstagramCard = ({
+  post,
+  index,
+  onClick,
+}: {
   post: SocialPost
   index: number
-  onClick: () => void 
+  onClick: () => void
 }) => {
   const [isLiked, setIsLiked] = useState(false)
 
@@ -203,7 +198,7 @@ const InstagramCard = ({
           alt={post.caption}
           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
         />
-        
+
         {/* Hover overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
           <p className="text-white text-sm line-clamp-3">{post.caption}</p>
@@ -248,12 +243,12 @@ const InstagramCard = ({
 }
 
 // World Map with Pins
-const WorldMapWithPins = ({ 
-  posts, 
-  hoveredPin, 
-  onPinHover, 
-  onPinClick 
-}: { 
+const WorldMapWithPins = ({
+  posts,
+  hoveredPin,
+  onPinHover,
+  onPinClick,
+}: {
   posts: SocialPost[]
   hoveredPin: string | null
   onPinHover: (id: string | null) => void
@@ -285,7 +280,7 @@ const WorldMapWithPins = ({
             onClick={() => onPinClick(post)}
           >
             <MapPin className="w-6 h-6 text-pink-500 fill-pink-500 drop-shadow-lg" />
-            
+
             {/* Hover card */}
             {hoveredPin === post.id && (
               <motion.div
@@ -328,11 +323,7 @@ const PostDetailModal = ({ post, onClose }: { post: SocialPost; onClose: () => v
       >
         <div className="grid md:grid-cols-2">
           {/* Image */}
-          <img
-            src={post.image}
-            alt={post.caption}
-            className="w-full h-full object-cover"
-          />
+          <img src={post.image} alt={post.caption} className="w-full h-full object-cover" />
 
           {/* Details */}
           <div className="p-8">
@@ -376,13 +367,13 @@ const PostDetailModal = ({ post, onClose }: { post: SocialPost; onClose: () => v
 }
 
 // Live Stat Component
-const LiveStat = ({ 
-  icon: Icon, 
-  value, 
-  label, 
-  color, 
-  pulse 
-}: { 
+const LiveStat = ({
+  icon: Icon,
+  value,
+  label,
+  color,
+  pulse,
+}: {
   icon: React.ElementType
   value: string
   label: string

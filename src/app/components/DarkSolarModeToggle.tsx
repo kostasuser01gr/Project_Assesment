@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { motion } from 'framer-motion'
+import { motion } from 'motion/react'
 import { Sun, Moon } from 'lucide-react'
 
 export type ThemeMode = 'daylight' | 'sunset'
@@ -22,7 +22,7 @@ export const DarkSolarModeToggle = ({ onChange }: DarkSolarModeToggleProps) => {
 
   const applyTheme = (newMode: ThemeMode) => {
     const root = document.documentElement
-    
+
     if (newMode === 'sunset') {
       root.style.setProperty('--theme-primary', '139 92 246') // purple-500
       root.style.setProperty('--theme-secondary', '251 146 60') // orange-400
@@ -60,21 +60,21 @@ export const DarkSolarModeToggle = ({ onChange }: DarkSolarModeToggleProps) => {
           initial={false}
           animate={{
             rotate: mode === 'daylight' ? 0 : 180,
-            scale: mode === 'daylight' ? 1 : 0
+            scale: mode === 'daylight' ? 1 : 0,
           }}
-          transition={{ duration: 0.5, ease: "easeInOut" }}
+          transition={{ duration: 0.5, ease: 'easeInOut' }}
         >
           <Sun className="w-8 h-8 text-gold-400" />
         </motion.div>
-        
+
         <motion.div
           className="absolute inset-0 flex items-center justify-center"
           initial={false}
           animate={{
             rotate: mode === 'sunset' ? 0 : -180,
-            scale: mode === 'sunset' ? 1 : 0
+            scale: mode === 'sunset' ? 1 : 0,
           }}
-          transition={{ duration: 0.5, ease: "easeInOut" }}
+          transition={{ duration: 0.5, ease: 'easeInOut' }}
         >
           <Moon className="w-8 h-8 text-purple-400" />
         </motion.div>
@@ -87,12 +87,12 @@ export const DarkSolarModeToggle = ({ onChange }: DarkSolarModeToggleProps) => {
         }`}
         animate={{
           scale: [1, 1.2, 1],
-          opacity: [0.5, 0.8, 0.5]
+          opacity: [0.5, 0.8, 0.5],
         }}
         transition={{
           duration: 2,
           repeat: Infinity,
-          ease: "easeInOut"
+          ease: 'easeInOut',
         }}
       />
     </motion.button>

@@ -45,9 +45,9 @@ export const SmartSetupGuide = ({ steps }: SmartSetupGuideProps) => {
     const interval = setInterval(() => {
       const elapsed = Date.now() - startTime
       const stepProgress = Math.min((elapsed / stepDuration) * 100, 100)
-      
-      setProgress((stepIndex / steps.length) * 100 + (stepProgress / steps.length))
-      setSandLevel((stepIndex / steps.length) * 100 + (stepProgress / steps.length))
+
+      setProgress((stepIndex / steps.length) * 100 + stepProgress / steps.length)
+      setSandLevel((stepIndex / steps.length) * 100 + stepProgress / steps.length)
 
       if (stepProgress >= 100) {
         clearInterval(interval)
@@ -128,12 +128,8 @@ export const SmartSetupGuide = ({ steps }: SmartSetupGuideProps) => {
           <div className="text-cyan-400 text-sm font-semibold mb-2">
             Step {currentStep + 1} of {steps.length}
           </div>
-          <h3 className="text-white text-2xl font-bold mb-2">
-            {steps[currentStep].title}
-          </h3>
-          <p className="text-white/80 text-sm max-w-xl">
-            {steps[currentStep].description}
-          </p>
+          <h3 className="text-white text-2xl font-bold mb-2">{steps[currentStep].title}</h3>
+          <p className="text-white/80 text-sm max-w-xl">{steps[currentStep].description}</p>
         </motion.div>
 
         {/* Navigation Arrows */}
@@ -172,7 +168,7 @@ export const SmartSetupGuide = ({ steps }: SmartSetupGuideProps) => {
                 transition={{ duration: 0.1 }}
               />
             </div>
-            
+
             {/* Hourglass Bottom */}
             <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-12 h-8 border-b-4 border-l-4 border-r-4 border-white/30 rounded-b-lg overflow-hidden">
               <motion.div
@@ -205,7 +201,9 @@ export const SmartSetupGuide = ({ steps }: SmartSetupGuideProps) => {
         {/* Timer */}
         <div className="absolute top-4 right-4 flex items-center gap-2 text-white/60 text-sm">
           <Clock className="w-4 h-4" />
-          <span>{Math.round((progress / 100) * totalDuration)}s / {totalDuration}s</span>
+          <span>
+            {Math.round((progress / 100) * totalDuration)}s / {totalDuration}s
+          </span>
         </div>
       </div>
 
@@ -247,18 +245,12 @@ export const SmartSetupGuide = ({ steps }: SmartSetupGuideProps) => {
             key={index}
             onClick={() => goToStep(index)}
             className={`relative aspect-video rounded-lg overflow-hidden ${
-              currentStep === index
-                ? 'ring-4 ring-cyan-400'
-                : 'opacity-60 hover:opacity-100'
+              currentStep === index ? 'ring-4 ring-cyan-400' : 'opacity-60 hover:opacity-100'
             }`}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <img
-              src={step.image}
-              alt={step.title}
-              className="w-full h-full object-cover"
-            />
+            <img src={step.image} alt={step.title} className="w-full h-full object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
             <div className="absolute bottom-2 left-2 right-2">
               <div className="text-white text-xs font-semibold">
@@ -269,7 +261,7 @@ export const SmartSetupGuide = ({ steps }: SmartSetupGuideProps) => {
               <motion.div
                 layoutId="activeStep"
                 className="absolute inset-0 ring-4 ring-cyan-400 rounded-lg"
-                transition={{ type: "spring", duration: 0.6 }}
+                transition={{ type: 'spring', duration: 0.6 }}
               />
             )}
           </motion.button>

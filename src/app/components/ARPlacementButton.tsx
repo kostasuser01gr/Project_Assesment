@@ -6,7 +6,9 @@ interface ARPlacementButtonProps {
   productName?: string
 }
 
-export const ARPlacementButton = ({ productName = 'Sun Ninja Beach Tent' }: ARPlacementButtonProps) => {
+export const ARPlacementButton = ({
+  productName = 'Sun Ninja Beach Tent',
+}: ARPlacementButtonProps) => {
   const [showInfo, setShowInfo] = useState(false)
   const [isARSupported, setIsARSupported] = useState(false)
 
@@ -44,20 +46,20 @@ export const ARPlacementButton = ({ productName = 'Sun Ninja Beach Tent' }: ARPl
     try {
       // WebXR implementation
       interface NavigatorXR extends Navigator {
-        xr?: { 
+        xr?: {
           requestSession: (mode: string, options: Record<string, string[]>) => Promise<unknown>
         }
       }
       await (navigator as NavigatorXR).xr?.requestSession('immersive-ar', {
         requiredFeatures: ['hit-test'],
-        optionalFeatures: ['dom-overlay']
+        optionalFeatures: ['dom-overlay'],
       })
 
       // Handle AR session...
       alert('AR feature will launch here! (WebXR integration required)')
     } catch (error) {
       console.error('AR launch failed:', error)
-      
+
       // iOS USDZ fallback
       if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
         const anchor = document.createElement('a')
@@ -83,12 +85,12 @@ export const ARPlacementButton = ({ productName = 'Sun Ninja Beach Tent' }: ARPl
         <motion.div
           className="absolute inset-0 bg-gradient-to-r from-purple-500 via-pink-500 to-cyan-500 opacity-0 group-hover:opacity-100"
           animate={{
-            backgroundPosition: ['0% 50%', '100% 50%', '0% 50%']
+            backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
           }}
           transition={{
             duration: 3,
             repeat: Infinity,
-            ease: 'linear'
+            ease: 'linear',
           }}
         />
 
@@ -109,12 +111,12 @@ export const ARPlacementButton = ({ productName = 'Sun Ninja Beach Tent' }: ARPl
           animate={{
             x: ['0%', '100%'],
             y: ['0%', '100%'],
-            opacity: [0, 1, 0]
+            opacity: [0, 1, 0],
           }}
           transition={{
             duration: 2,
             repeat: Infinity,
-            repeatDelay: 1
+            repeatDelay: 1,
           }}
         />
       </motion.button>
@@ -136,9 +138,7 @@ export const ARPlacementButton = ({ productName = 'Sun Ninja Beach Tent' }: ARPl
           >
             <div className="text-center mb-6">
               <Info className="w-16 h-16 text-cyan-400 mx-auto mb-4" />
-              <h3 className="text-2xl font-bold text-white mb-2">
-                AR Placement
-              </h3>
+              <h3 className="text-2xl font-bold text-white mb-2">AR Placement</h3>
               <p className="text-white/60">
                 See how {productName} looks in your space using augmented reality
               </p>

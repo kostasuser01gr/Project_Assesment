@@ -1,10 +1,10 @@
-import { LucideIcon } from 'lucide-react';
+import { LucideIcon } from 'lucide-react'
 
 interface BenefitCardProps {
-  icon: LucideIcon;
-  title: string;
-  description: string;
-  image?: string;
+  icon: LucideIcon
+  title: string
+  description: string
+  image?: string
 }
 
 export function BenefitCard({ icon: Icon, title, description, image }: BenefitCardProps) {
@@ -12,9 +12,9 @@ export function BenefitCard({ icon: Icon, title, description, image }: BenefitCa
     <div className="bg-white border border-border rounded-2xl overflow-hidden hover:shadow-lg transition-all group diamond-card particle-container">
       {image && (
         <div className="aspect-[4/3] overflow-hidden bg-muted">
-          <img 
-            src={image} 
-            alt={title} 
+          <img
+            src={image}
+            alt={title}
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
           />
         </div>
@@ -27,5 +27,5 @@ export function BenefitCard({ icon: Icon, title, description, image }: BenefitCa
         <p className="text-sm text-muted-foreground leading-relaxed">{description}</p>
       </div>
     </div>
-  );
+  )
 }

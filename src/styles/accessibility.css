@@ -1,0 +1,164 @@
+/* ============================================================================
+   ACCESSIBILITY STYLES
+   High contrast mode, reduced motion overrides, focus management
+   ============================================================================ */
+
+/* ==========================================
+   HIGH CONTRAST MODE
+   Applied via .high-contrast class on <html>
+   ========================================== */
+
+.high-contrast {
+  --background: 0 0% 100%;
+  --foreground: 0 0% 0%;
+  --primary: 220 100% 30%;
+  --muted-foreground: 0 0% 20%;
+  --border: 0 0% 0%;
+}
+
+.high-contrast body {
+  color: #000;
+  background: #fff;
+}
+
+.high-contrast a,
+.high-contrast button {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.high-contrast img {
+  filter: contrast(1.2);
+}
+
+.high-contrast *:focus-visible {
+  outline: 3px solid #000 !important;
+  outline-offset: 3px !important;
+  box-shadow:
+    0 0 0 6px #fff,
+    0 0 0 9px #000 !important;
+}
+
+.high-contrast .bg-white\/95,
+.high-contrast .bg-white\/90 {
+  background-color: #fff !important;
+}
+
+.high-contrast .text-muted-foreground {
+  color: #333 !important;
+}
+
+.high-contrast .border-border {
+  border-color: #000 !important;
+}
+
+/* ==========================================
+   REDUCED MOTION MODE
+   Applied via .reduce-motion class on <html>
+   or via prefers-reduced-motion media query
+   ========================================== */
+
+.reduce-motion *,
+.reduce-motion *::before,
+.reduce-motion *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ==========================================
+   FOCUS MANAGEMENT
+   ========================================== */
+
+/* Skip to content link */
+.sr-only:focus {
+  clip: auto !important;
+  clip-path: none !important;
+  height: auto !important;
+  width: auto !important;
+  overflow: visible !important;
+  position: fixed !important;
+  white-space: normal !important;
+}
+
+/* Focus visible styling for all interactive elements */
+:focus-visible {
+  outline: 2px solid hsl(var(--primary, 199 89% 48%));
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Focus trap visual indicator */
+[data-focus-trap='true'] {
+  position: relative;
+}
+
+/* ==========================================
+   FONT SCALE SUPPORT
+   ========================================== */
+
+/* Ensure rem-based sizing scales properly */
+html {
+  font-size: 16px; /* Base, overridden by useFontScale hook */
+}
+
+/* Clamp line-heights for readability at larger scales */
+body {
+  line-height: 1.6;
+}
+
+/* ==========================================
+   DARK MODE ENHANCEMENTS
+   ========================================== */
+
+.dark {
+  color-scheme: dark;
+}
+
+.dark body {
+  background-color: hsl(222, 47%, 11%);
+  color: hsl(210, 40%, 96%);
+}
+
+.dark .bg-white {
+  background-color: hsl(222, 47%, 15%) !important;
+}
+
+.dark .bg-white\/95 {
+  background-color: hsla(222, 47%, 15%, 0.95) !important;
+}
+
+.dark .text-foreground,
+.dark .text-black {
+  color: hsl(210, 40%, 96%) !important;
+}
+
+.dark .border-border {
+  border-color: hsl(217, 33%, 25%) !important;
+}
+
+.dark .bg-neutral-50 {
+  background-color: hsl(222, 47%, 18%) !important;
+}
+
+.dark .bg-neutral-100 {
+  background-color: hsl(222, 47%, 20%) !important;
+}
+
+.dark .shadow-lg,
+.dark .shadow-xl,
+.dark .shadow-2xl {
+  --tw-shadow-color: rgba(0, 0, 0, 0.4);
+}

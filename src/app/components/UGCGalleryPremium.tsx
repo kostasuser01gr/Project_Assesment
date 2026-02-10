@@ -83,7 +83,7 @@ export const UGCGalleryPremium = ({ photos }: UGCGalleryProps) => {
             {[
               { label: 'Photos Shared', value: '2,847', icon: Instagram },
               { label: 'Total Likes', value: '24.8K', icon: Heart },
-              { label: 'Happy Customers', value: '10.2K', icon: MessageCircle }
+              { label: 'Happy Customers', value: '10.2K', icon: MessageCircle },
             ].map((stat, i) => (
               <motion.div
                 key={i}
@@ -110,10 +110,7 @@ export const UGCGalleryPremium = ({ photos }: UGCGalleryProps) => {
 
       {/* Lightbox modal */}
       {selectedPhoto && (
-        <UGCLightbox
-          photo={selectedPhoto}
-          onClose={() => setSelectedPhoto(null)}
-        />
+        <UGCLightbox photo={selectedPhoto} onClose={() => setSelectedPhoto(null)} />
       )}
     </div>
   )
@@ -125,7 +122,7 @@ const UGCPhotoCard = ({
   isHovered,
   onHover,
   onLeave,
-  onClick
+  onClick,
 }: {
   photo: UGCPhoto
   index: number
@@ -163,13 +160,17 @@ const UGCPhotoCard = ({
         {/* Holographic border */}
         <motion.div
           className="absolute inset-0 ring-2 ring-transparent group-hover:ring-rose-400 rounded-2xl"
-          animate={isHovered ? {
-            boxShadow: [
-              '0 0 20px rgba(244,63,94,0.5)',
-              '0 0 40px rgba(244,63,94,0.8)',
-              '0 0 20px rgba(244,63,94,0.5)'
-            ]
-          } : {}}
+          animate={
+            isHovered
+              ? {
+                  boxShadow: [
+                    '0 0 20px rgba(244,63,94,0.5)',
+                    '0 0 40px rgba(244,63,94,0.8)',
+                    '0 0 20px rgba(244,63,94,0.5)',
+                  ],
+                }
+              : {}
+          }
           transition={{ duration: 2, repeat: Infinity }}
         />
       </div>
@@ -185,9 +186,7 @@ const UGCPhotoCard = ({
           <div className="w-8 h-8 rounded-full bg-gradient-to-r from-rose-500 to-pink-500 flex items-center justify-center text-white text-xs font-bold">
             {photo.author[0]}
           </div>
-          <div className="text-white text-sm font-medium drop-shadow-lg">
-            @{photo.author}
-          </div>
+          <div className="text-white text-sm font-medium drop-shadow-lg">@{photo.author}</div>
         </div>
 
         {/* Bottom actions */}
@@ -261,11 +260,7 @@ const UGCLightbox = ({ photo, onClose }: { photo: UGCPhoto; onClose: () => void 
       >
         {/* Image */}
         <div className="aspect-square">
-          <img
-            src={photo.src}
-            alt={photo.caption}
-            className="w-full h-full object-cover"
-          />
+          <img src={photo.src} alt={photo.caption} className="w-full h-full object-cover" />
         </div>
 
         {/* Info panel */}

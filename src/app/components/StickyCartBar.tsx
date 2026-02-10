@@ -1,12 +1,12 @@
-import { ShoppingCart } from 'lucide-react';
-import { Button } from './ui/button';
-import { StarRating } from './StarRating';
+import { ShoppingCart } from 'lucide-react'
+import { Button } from './ui/button'
+import { StarRating } from './StarRating'
 
 interface StickyCartBarProps {
-  price: string;
-  rating: number;
-  reviewCount: number;
-  onAddToCart: () => void;
+  price: string
+  rating: number
+  reviewCount: number
+  onAddToCart: () => void
 }
 
 export function StickyCartBar({ price, rating, reviewCount, onAddToCart }: StickyCartBarProps) {
@@ -17,7 +17,7 @@ export function StickyCartBar({ price, rating, reviewCount, onAddToCart }: Stick
           <div className="font-semibold text-lg">{price}</div>
           <StarRating rating={rating} count={reviewCount} size="sm" showNumber={false} />
         </div>
-        <Button 
+        <Button
           onClick={onAddToCart}
           className="bg-[#ff9f1c] hover:bg-[#ff9f1c]/90 text-black font-semibold gap-2 shadow-md flex-shrink-0"
         >
@@ -26,5 +26,5 @@ export function StickyCartBar({ price, rating, reviewCount, onAddToCart }: Stick
         </Button>
       </div>
     </div>
-  );
+  )
 }

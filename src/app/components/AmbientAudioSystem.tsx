@@ -22,26 +22,26 @@ export const AmbientAudioSystem = ({ autoplayVoiceover = false }: AmbientAudioSy
       name: 'Ocean Waves',
       icon: Waves,
       color: 'text-cyan-400',
-      description: 'Gentle waves lapping on the shore'
+      description: 'Gentle waves lapping on the shore',
     },
     breeze: {
       name: 'Beach Breeze',
       icon: Wind,
       color: 'text-blue-400',
-      description: 'Soft coastal wind sounds'
+      description: 'Soft coastal wind sounds',
     },
     seagulls: {
       name: 'Seagulls',
       icon: Music,
       color: 'text-coral-400',
-      description: 'Distant calls of seabirds'
+      description: 'Distant calls of seabirds',
     },
     ambient: {
       name: 'Beach Ambience',
       icon: Volume2,
       color: 'text-purple-400',
-      description: 'Complete beach soundscape'
-    }
+      description: 'Complete beach soundscape',
+    },
   }
 
   const playVoiceover = useCallback(() => {
@@ -49,12 +49,12 @@ export const AmbientAudioSystem = ({ autoplayVoiceover = false }: AmbientAudioSy
     // For now, use Speech Synthesis API
     if ('speechSynthesis' in window) {
       const utterance = new SpeechSynthesisUtterance(
-        "Welcome to Sun Ninja. Where innovation meets the perfect beach day. Discover the tent that sets up in sixty seconds, and memories that last forever."
+        'Welcome to Sun Ninja. Where innovation meets the perfect beach day. Discover the tent that sets up in sixty seconds, and memories that last forever.'
       )
       utterance.rate = 0.9
       utterance.pitch = 1.0
       utterance.volume = volume
-      
+
       window.speechSynthesis.speak(utterance)
     }
   }, [volume])
@@ -101,7 +101,7 @@ export const AmbientAudioSystem = ({ autoplayVoiceover = false }: AmbientAudioSy
       waves: 220,
       breeze: 330,
       seagulls: 440,
-      ambient: 165
+      ambient: 165,
     }
 
     oscillator.type = 'sine'
@@ -109,7 +109,7 @@ export const AmbientAudioSystem = ({ autoplayVoiceover = false }: AmbientAudioSy
     gainNode.gain.value = volume * 0.3 // Gentle volume
 
     oscillator.start()
-    
+
     // Store reference to stop later
     audioRef.current = { pause: () => oscillator.stop() }
 
@@ -190,12 +190,8 @@ export const AmbientAudioSystem = ({ autoplayVoiceover = false }: AmbientAudioSy
                     <div className="flex items-center gap-3">
                       <Icon className={`w-6 h-6 ${sound.color}`} />
                       <div className="flex-1 text-left">
-                        <div className="text-white font-semibold text-sm">
-                          {sound.name}
-                        </div>
-                        <div className="text-white/60 text-xs">
-                          {sound.description}
-                        </div>
+                        <div className="text-white font-semibold text-sm">{sound.name}</div>
+                        <div className="text-white/60 text-xs">{sound.description}</div>
                       </div>
                       {isActive && (
                         <motion.div
@@ -211,7 +207,7 @@ export const AmbientAudioSystem = ({ autoplayVoiceover = false }: AmbientAudioSy
                               transition={{
                                 duration: 0.8,
                                 repeat: Infinity,
-                                delay: i * 0.2
+                                delay: i * 0.2,
                               }}
                             />
                           ))}

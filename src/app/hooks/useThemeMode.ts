@@ -24,7 +24,7 @@ export const useThemeMode = () => {
 
     observer.observe(document.documentElement, {
       attributes: true,
-      attributeFilter: ['data-theme']
+      attributeFilter: ['data-theme'],
     })
 
     return () => observer.disconnect()

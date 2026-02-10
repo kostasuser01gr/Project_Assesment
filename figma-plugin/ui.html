@@ -12,7 +12,7 @@
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       padding: 20px;
-      background: linear-gradient(135deg, #F6E8D5 0%, #DDEFF5 100%);
+      background: linear-gradient(135deg, #0EA5E9 0%, #FF6B6B 100%);
       min-height: 220px;
       display: flex;
       flex-direction: column;
@@ -23,13 +23,16 @@
       background: white;
       border-radius: 12px;
       padding: 24px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
     }
 
     h1 {
       font-size: 18px;
       font-weight: 700;
-      color: #0F3B4C;
+      background: linear-gradient(135deg, #0EA5E9 0%, #FF6B6B 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
       margin-bottom: 8px;
       letter-spacing: -0.02em;
     }
@@ -44,7 +47,7 @@
     button {
       width: 100%;
       padding: 14px;
-      background: linear-gradient(135deg, #FF6B5A 0%, #FFB84D 100%);
+      background: linear-gradient(135deg, #0EA5E9 0%, #FF6B6B 100%);
       color: white;
       border: none;
       border-radius: 8px;
@@ -52,12 +55,12 @@
       font-weight: 600;
       cursor: pointer;
       transition: all 0.2s ease;
-      box-shadow: 0 4px 12px rgba(255, 107, 90, 0.3);
+      box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);
     }
 
     button:hover {
       transform: translateY(-2px);
-      box-shadow: 0 6px 16px rgba(255, 107, 90, 0.4);
+      box-shadow: 0 6px 20px rgba(14, 165, 233, 0.45);
     }
 
     button:active {
@@ -67,8 +70,8 @@
     .note {
       margin-top: 16px;
       padding: 12px;
-      background: #F8FAFC;
-      border-left: 3px solid #FFB84D;
+      background: #F1F5F9;
+      border-left: 3px solid #0EA5E9;
       font-size: 12px;
       color: #475569;
       border-radius: 4px;
@@ -76,19 +79,31 @@
     }
 
     .note strong {
-      color: #0F3B4C;
+      color: #0F172A;
+    }
+    
+    .badge {
+      display: inline-block;
+      background: linear-gradient(135deg, #0EA5E9 0%, #FF6B6B 100%);
+      color: white;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      margin-left: 6px;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>🏖️ Sun Ninja Scaffold</h1>
-    <p>Generates complete file structure for PDP + Home redesign assignment</p>
+    <h1>✨ Sun Ninja Elite Scaffold<span class="badge">TOP 1%</span></h1>
+    <p>Auto-generates complete design system with sun-glow gradients, premium components, and CRO-optimized templates</p>
     
-    <button id="generateBtn">Generate Scaffold</button>
+    <button id="generateBtn">🚀 Generate Elite Scaffold</button>
     
     <div class="note">
-      <strong>Note:</strong> If you're in a Starter team file (3-page limit), create a <strong>Draft</strong> or personal file instead.
+      <strong>What you'll get:</strong> 8 pages · Sun-glow gradient system · 24 premium components · Typography scale · Shadow/glow effects · Full templates
     </div>
   </div>
 
@@ -96,7 +111,7 @@
     const generateBtn = document.getElementById('generateBtn');
     
     generateBtn.addEventListener('click', () => {
-      generateBtn.textContent = 'Generating...';
+      generateBtn.textContent = '⚡ Generating...';
       generateBtn.disabled = true;
       
       parent.postMessage({ 
@@ -105,9 +120,9 @@
       
       // Re-enable after delay
       setTimeout(() => {
-        generateBtn.textContent = 'Generate Scaffold';
+        generateBtn.textContent = '🚀 Generate Elite Scaffold';
         generateBtn.disabled = false;
-      }, 3000);
+      }, 4000);
     });
   </script>
 </body>

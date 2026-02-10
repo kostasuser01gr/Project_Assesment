@@ -13,17 +13,20 @@ export const Product3DViewer = ({ images, alt, colors }: Product3DViewerProps) =
   const [zoom, setZoom] = useState(1)
   const [selectedColor, setSelectedColor] = useState(0)
   const containerRef = useRef<HTMLDivElement>(null)
-  
+
   const x = useMotionValue(0)
   const y = useMotionValue(0)
-  
+
   const rotateX = useTransform(y, [-100, 100], [10, -10])
   const rotateY = useTransform(x, [-100, 100], [-10, 10])
 
-  const handleDrag = (_event: MouseEvent | TouchEvent | PointerEvent, info: { offset: { x: number; y: number } }) => {
+  const handleDrag = (
+    _event: MouseEvent | TouchEvent | PointerEvent,
+    info: { offset: { x: number; y: number } }
+  ) => {
     const deltaX = info.offset.x
     const imageChange = Math.floor(Math.abs(deltaX) / 50)
-    
+
     if (deltaX > 0) {
       setCurrentImageIndex((prev) => Math.min(images.length - 1, prev + imageChange))
     } else {
@@ -38,7 +41,7 @@ export const Product3DViewer = ({ images, alt, colors }: Product3DViewerProps) =
         ref={containerRef}
         className="relative aspect-square bg-gradient-to-br from-slate-50 to-slate-100 rounded-3xl overflow-hidden shadow-2xl"
         style={{
-          perspective: 1000
+          perspective: 1000,
         }}
         onMouseMove={(e) => {
           const rect = e.currentTarget.getBoundingClientRect()
@@ -60,7 +63,7 @@ export const Product3DViewer = ({ images, alt, colors }: Product3DViewerProps) =
               'linear-gradient(45deg, rgba(6,182,212,0.2), rgba(168,85,247,0.2), rgba(251,113,133,0.2))',
               'linear-gradient(90deg, rgba(168,85,247,0.2), rgba(251,113,133,0.2), rgba(6,182,212,0.2))',
               'linear-gradient(135deg, rgba(251,113,133,0.2), rgba(6,182,212,0.2), rgba(168,85,247,0.2))',
-            ]
+            ],
           }}
           transition={{ duration: 5, repeat: Infinity }}
         />
@@ -74,7 +77,7 @@ export const Product3DViewer = ({ images, alt, colors }: Product3DViewerProps) =
           style={{
             rotateX,
             rotateY,
-            scale: zoom
+            scale: zoom,
           }}
           whileTap={{ cursor: 'grabbing' }}
         >
@@ -91,13 +94,13 @@ export const Product3DViewer = ({ images, alt, colors }: Product3DViewerProps) =
           <motion.div
             className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent"
             animate={{
-              x: ['-100%', '200%']
+              x: ['-100%', '200%'],
             }}
             transition={{
               duration: 3,
               repeat: Infinity,
               ease: 'linear',
-              repeatDelay: 2
+              repeatDelay: 2,
             }}
           />
         </motion.div>
@@ -151,9 +154,7 @@ export const Product3DViewer = ({ images, alt, colors }: Product3DViewerProps) =
               whileHover={{ scale: 1.2 }}
               onClick={() => setCurrentImageIndex(index)}
               className={`w-2 h-2 rounded-full transition-all ${
-                index === currentImageIndex
-                  ? 'bg-cyan-500 w-8'
-                  : 'bg-slate-300 hover:bg-slate-400'
+                index === currentImageIndex ? 'bg-cyan-500 w-8' : 'bg-slate-300 hover:bg-slate-400'
               }`}
             />
           ))}
@@ -163,7 +164,9 @@ export const Product3DViewer = ({ images, alt, colors }: Product3DViewerProps) =
       {/* Color selector */}
       {colors && colors.length > 0 && (
         <div className="mt-6">
-          <div className="text-sm font-medium text-slate-700 mb-3">Color: {colors[selectedColor].name}</div>
+          <div className="text-sm font-medium text-slate-700 mb-3">
+            Color: {colors[selectedColor].name}
+          </div>
           <div className="flex gap-3">
             {colors.map((color, index) => (
               <motion.button
@@ -204,14 +207,14 @@ export const Product3DViewer = ({ images, alt, colors }: Product3DViewerProps) =
           <motion.div
             className="h-full bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600"
             style={{
-              width: `${(currentImageIndex / (images.length - 1)) * 100}%`
+              width: `${(currentImageIndex / (images.length - 1)) * 100}%`,
             }}
             animate={{
               boxShadow: [
                 '0 0 10px rgba(6,182,212,0.5)',
                 '0 0 20px rgba(6,182,212,0.8)',
-                '0 0 10px rgba(6,182,212,0.5)'
-              ]
+                '0 0 10px rgba(6,182,212,0.5)',
+              ],
             }}
             transition={{ duration: 2, repeat: Infinity }}
           />

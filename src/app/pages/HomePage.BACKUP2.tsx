@@ -1,22 +1,22 @@
-import { Header } from '../components/Header';
-import { Footer } from '../components/Footer';
-import { StarRating } from '../components/StarRating';
-import { TrustBadge } from '../components/TrustBadge';
-import { Button } from '../components/ui/button';
-import { Link } from 'react-router';
-import { motion } from 'motion/react';
-import { 
-  ArrowRight, 
-  Sun, 
-  Wind, 
-  Zap, 
-  Shield, 
-  Truck, 
+import { Header } from '../components/Header'
+import { Footer } from '../components/Footer'
+import { StarRating } from '../components/StarRating'
+import { TrustBadge } from '../components/TrustBadge'
+import { Button } from '../components/ui/button'
+import { Link } from 'react-router'
+import { motion } from 'motion/react'
+import {
+  ArrowRight,
+  Sun,
+  Wind,
+  Zap,
+  Shield,
+  Truck,
   RotateCcw,
   CheckCircle2,
   Play,
-  Star
-} from 'lucide-react';
+  Star,
+} from 'lucide-react'
 
 export function HomePage() {
   return (
@@ -27,9 +27,9 @@ export function HomePage() {
       <section className="relative overflow-hidden">
         {/* Background Image with Overlay */}
         <div className="absolute inset-0 z-0 holographic-overlay">
-          <img 
-            src="/images/beach/hero-main.jpg" 
-            alt="Beach background" 
+          <img
+            src="/images/beach/hero-main.jpg"
+            alt="Beach background"
             className="w-full h-full object-cover quantum-shadow"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-transparent"></div>
@@ -37,7 +37,7 @@ export function HomePage() {
 
         {/* Content */}
         <div className="relative z-10 container mx-auto px-4 py-24 md:py-32">
-          <motion.div 
+          <motion.div
             className="max-w-2xl"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -51,14 +51,15 @@ export function HomePage() {
             <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight quantum-text-glow holographic-text">
               Your Perfect Beach Day Starts Here
             </h1>
-            
+
             <p className="text-xl text-white/90 mb-8 leading-relaxed">
-              Premium beach shelters that set up in 60 seconds. Maximum shade, superior ventilation, unbeatable protection.
+              Premium beach shelters that set up in 60 seconds. Maximum shade, superior ventilation,
+              unbeatable protection.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 mb-8">
               <Link to="/products/sun-ninja-tents">
-                <Button 
+                <Button
                   size="lg"
                   className="w-full sm:w-auto text-black font-semibold text-lg px-8 py-6 gap-2 quantum-button magnetic-quantum"
                 >
@@ -66,7 +67,7 @@ export function HomePage() {
                   <ArrowRight className="w-5 h-5" />
                 </Button>
               </Link>
-              <Button 
+              <Button
                 size="lg"
                 variant="outline"
                 className="w-full sm:w-auto bg-white/10 backdrop-blur-sm text-white border-white/30 hover:bg-white/20 px-8 py-6 gap-2"
@@ -99,26 +100,10 @@ export function HomePage() {
       <section className="bg-white border-y border-border py-6">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            <TrustBadge 
-              icon={Truck} 
-              title="Free Shipping" 
-              description="On all orders $50+"
-            />
-            <TrustBadge 
-              icon={RotateCcw} 
-              title="Easy Returns" 
-              description="30-day guarantee"
-            />
-            <TrustBadge 
-              icon={Shield} 
-              title="2-Year Warranty" 
-              description="Quality backed"
-            />
-            <TrustBadge 
-              icon={Sun} 
-              title="UPF 50+" 
-              description="Max UV protection"
-            />
+            <TrustBadge icon={Truck} title="Free Shipping" description="On all orders $50+" />
+            <TrustBadge icon={RotateCcw} title="Easy Returns" description="30-day guarantee" />
+            <TrustBadge icon={Shield} title="2-Year Warranty" description="Quality backed" />
+            <TrustBadge icon={Sun} title="UPF 50+" description="Max UV protection" />
           </div>
         </div>
       </section>
@@ -127,7 +112,9 @@ export function HomePage() {
       <section className="py-16 md:py-24 scroll-fade-in">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <span className="text-sm font-semibold text-primary uppercase tracking-wide">Best Seller</span>
+            <span className="text-sm font-semibold text-primary uppercase tracking-wide">
+              Best Seller
+            </span>
             <h2 className="text-3xl md:text-5xl font-bold mt-2 mb-4 holographic-text">
               The Sun Ninja Beach Tent
             </h2>
@@ -139,9 +126,9 @@ export function HomePage() {
           <div className="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
             <div className="relative">
               <div className="aspect-square rounded-2xl overflow-hidden bg-muted quantum-shadow transform-3d">
-                <img 
+                <img
                   src="https://images.unsplash.com/photo-1600403506000-62e42b6e3238?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiZWFjaCUyMHRlbnQlMjBzaGFkZSUyMG9jZWFufGVufDF8fHx8MTc3MDQ1MzQxMHww&ixlib=rb-4.1.0&q=80&w=1080"
-                  alt="Sun Ninja Beach Tent" 
+                  alt="Sun Ninja Beach Tent"
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -158,7 +145,9 @@ export function HomePage() {
               <div>
                 <h3 className="text-2xl font-bold mb-3">Premium Beach Shelter</h3>
                 <p className="text-muted-foreground leading-relaxed">
-                  The ultimate beach companion with instant pop-up setup, UPF 50+ protection, and superior ventilation. Perfect for families who want to maximize their time in the sun—safely.
+                  The ultimate beach companion with instant pop-up setup, UPF 50+ protection, and
+                  superior ventilation. Perfect for families who want to maximize their time in the
+                  sun—safely.
                 </p>
               </div>
 
@@ -169,7 +158,9 @@ export function HomePage() {
                   </div>
                   <div>
                     <div className="font-semibold">60-Second Setup</div>
-                    <div className="text-sm text-muted-foreground">Pop-up design, no assembly required</div>
+                    <div className="text-sm text-muted-foreground">
+                      Pop-up design, no assembly required
+                    </div>
                   </div>
                 </div>
 
@@ -179,7 +170,9 @@ export function HomePage() {
                   </div>
                   <div>
                     <div className="font-semibold">UPF 50+ Protection</div>
-                    <div className="text-sm text-muted-foreground">Blocks 98% of harmful UV rays</div>
+                    <div className="text-sm text-muted-foreground">
+                      Blocks 98% of harmful UV rays
+                    </div>
                   </div>
                 </div>
 
@@ -189,7 +182,9 @@ export function HomePage() {
                   </div>
                   <div>
                     <div className="font-semibold">Superior Ventilation</div>
-                    <div className="text-sm text-muted-foreground">Mesh windows for cooling airflow</div>
+                    <div className="text-sm text-muted-foreground">
+                      Mesh windows for cooling airflow
+                    </div>
                   </div>
                 </div>
               </div>
@@ -200,7 +195,7 @@ export function HomePage() {
               </div>
 
               <Link to="/products/sun-ninja-tents" className="block">
-                <Button 
+                <Button
                   size="lg"
                   className="w-full text-black font-semibold py-6 gap-2 quantum-button magnetic-quantum"
                 >
@@ -217,9 +212,7 @@ export function HomePage() {
       <section className="bg-secondary py-16 md:py-24 scroll-slide-left">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-5xl font-bold mb-4">
-              Beyond the Beach
-            </h2>
+            <h2 className="text-3xl md:text-5xl font-bold mb-4">Beyond the Beach</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               While designed for the beach, Sun Ninja tents excel in any outdoor setting
             </p>
@@ -227,35 +220,39 @@ export function HomePage() {
 
           <div className="grid md:grid-cols-3 gap-6">
             <div className="group relative overflow-hidden rounded-2xl aspect-[4/3] cursor-pointer">
-              <img 
+              <img
                 src="https://images.unsplash.com/photo-1714412192114-61dca8f15f68?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0cm9waWNhbCUyMHBhcmFkaXNlJTIwYmVhY2h8ZW58MXx8fHwxNzcwNDUzNTA3fDA&ixlib=rb-4.1.0&q=80&w=1080"
-                alt="Beach days" 
+                alt="Beach days"
                 className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
               <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
                 <h3 className="text-2xl font-bold mb-2">Beach Days</h3>
-                <p className="text-sm text-white/90">Ultimate sun protection for endless coastal adventures</p>
+                <p className="text-sm text-white/90">
+                  Ultimate sun protection for endless coastal adventures
+                </p>
               </div>
             </div>
 
             <div className="group relative overflow-hidden rounded-2xl aspect-[4/3] cursor-pointer card-premium">
-              <img 
+              <img
                 src="https://images.unsplash.com/photo-1755003842792-9d2b7ad08862?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwYXJrJTIwcGljbmljJTIwZmFtaWx5fGVufDF8fHx8MTc3MDQ1MzUwOHww&ixlib=rb-4.1.0&q=80&w=1080"
-                alt="Park picnics" 
+                alt="Park picnics"
                 className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
               <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
                 <h3 className="text-2xl font-bold mb-2">Park Picnics</h3>
-                <p className="text-sm text-white/90">Instant shade for family gatherings and outdoor meals</p>
+                <p className="text-sm text-white/90">
+                  Instant shade for family gatherings and outdoor meals
+                </p>
               </div>
             </div>
 
             <div className="group relative overflow-hidden rounded-2xl aspect-[4/3] cursor-pointer card-premium">
-              <img 
+              <img
                 src="https://images.unsplash.com/photo-1666599972599-7350e0c75479?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxvdXRkb29yJTIwY2FtcGluZyUyMG5hdHVyZXxlbnwxfHx8fDE3NzA0NTM1MDd8MA&ixlib=rb-4.1.0&q=80&w=1080"
-                alt="Outdoor events" 
+                alt="Outdoor events"
                 className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
@@ -272,9 +269,7 @@ export function HomePage() {
       <section id="how-it-works" className="py-16 md:py-24 scroll-fade-in">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-5xl font-bold mb-4">
-              Setup in 60 Seconds
-            </h2>
+            <h2 className="text-3xl md:text-5xl font-bold mb-4">Setup in 60 Seconds</h2>
             <p className="text-lg text-muted-foreground">
               No complicated assembly. No frustration. Just instant shade.
             </p>
@@ -313,11 +308,7 @@ export function HomePage() {
           </div>
 
           <div className="text-center mt-12">
-            <Button 
-              variant="outline"
-              size="lg"
-              className="gap-2"
-            >
+            <Button variant="outline" size="lg" className="gap-2">
               <Play className="w-5 h-5" />
               Watch Setup Video
             </Button>
@@ -336,7 +327,7 @@ export function HomePage() {
             <p className="text-xl text-muted-foreground mb-8">
               Based on 2,847 verified reviews from happy customers
             </p>
-            
+
             <div className="grid md:grid-cols-3 gap-6 mb-8">
               <div className="bg-white rounded-2xl p-6 shadow-sm card-premium">
                 <div className="text-4xl font-bold text-primary mb-2">50K+</div>
@@ -366,14 +357,13 @@ export function HomePage() {
       <section className="py-16 md:py-24">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto bg-gradient-to-br from-primary to-[#0052a3] rounded-3xl p-8 md:p-16 text-white text-center">
-            <h2 className="text-3xl md:text-5xl font-bold mb-6">
-              Transform Your Beach Days
-            </h2>
+            <h2 className="text-3xl md:text-5xl font-bold mb-6">Transform Your Beach Days</h2>
             <p className="text-xl mb-8 text-white/90 max-w-2xl mx-auto">
-              Join 50,000+ families enjoying safer, more comfortable outdoor adventures. Free shipping on all orders.
+              Join 50,000+ families enjoying safer, more comfortable outdoor adventures. Free
+              shipping on all orders.
             </p>
             <Link to="/products/sun-ninja-tents">
-              <Button 
+              <Button
                 size="lg"
                 className="text-black font-semibold text-lg px-12 py-6 gap-2 quantum-button magnetic-quantum"
               >
@@ -387,5 +377,5 @@ export function HomePage() {
 
       <Footer />
     </div>
-  );
+  )
 }

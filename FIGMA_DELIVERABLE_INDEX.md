@@ -9,9 +9,11 @@
 ## 📚 CORE DOCUMENTATION (4 Αρχεία)
 
 ### 1. 📐 [FIGMA_LUXURY_DESIGN_SYSTEM.md](./FIGMA_LUXURY_DESIGN_SYSTEM.md)
+
 **Το κύριο αρχείο specifications** - 1,900+ γραμμές
 
 **Περιεχόμενα**:
+
 - ✅ Πλήρης Figma file structure (8 σελίδες: Cover, Audit, Style, Desktop/Mobile layouts)
 - ✅ Design tokens (χρώματα, τυπογραφία, spacing, shadows, effects)
 - ✅ 10 core components με πλήρη specs (Quantum Button, Glass Card, 360° Viewer, κλπ.)
@@ -25,9 +27,11 @@
 ---
 
 ### 2. ✍️ [FIGMA_COPY_GUIDELINES.md](./FIGMA_COPY_GUIDELINES.md)
+
 **Content strategy & copywriting** - 1,100+ γραμμές
 
 **Περιεχόμενα**:
+
 - ✅ Core messaging principles (outcome-focused, emotional, luxury)
 - ✅ Section-by-section copy για όλες τις σελίδες
 - ✅ 50+ headlines, CTAs, microcopy (έτοιμα για copy-paste)
@@ -42,9 +46,11 @@
 ---
 
 ### 3. 💻 [FIGMA_DEVELOPER_HANDOFF.md](./FIGMA_DEVELOPER_HANDOFF.md)
+
 **Technical implementation guide** - 1,400+ γραμμές
 
 **Περιεχόμενα**:
+
 - ✅ Tailwind CSS config με όλα τα tokens
 - ✅ 8 production-ready React + TypeScript components (με πλήρη κώδικα)
 - ✅ Framer Motion animation specs
@@ -58,9 +64,11 @@
 ---
 
 ### 4. 🎨 [FIGMA_IMPLEMENTATION_GUIDE.md](./FIGMA_IMPLEMENTATION_GUIDE.md)
+
 **Step-by-step Figma build instructions** - 1,800+ γραμμές
 
 **Περιεχόμενα**:
+
 - ✅ Setup guide (fonts, icons, plugins)
 - ✅ Page-by-page build instructions με screenshots placeholders
 - ✅ Exact frame sizes, colors, typography settings
@@ -75,9 +83,11 @@
 ---
 
 ### 5. 📊 [FIGMA_EXECUTION_SUMMARY.md](./FIGMA_EXECUTION_SUMMARY.md)
+
 **Executive summary & roadmap** - 1,200+ γραμμές (αυτό το αρχείο)
 
 **Περιεχόμενα**:
+
 - ✅ Project overview & goals
 - ✅ What has been delivered
 - ✅ WOW features highlights
@@ -94,10 +104,12 @@
 ## 🎯 ΠΩΣ ΝΑ ΞΕΚΙΝΗΣΕΙΣ
 
 ### Βήμα 1: Διάβασε την Σύνοψη (15 λεπτά)
+
 📖 Άνοιξε το [FIGMA_EXECUTION_SUMMARY.md](./FIGMA_EXECUTION_SUMMARY.md)  
 🎯 Κατανόησε το vision, τους στόχους, το ROI
 
 ### Βήμα 2: Κατέβασε & Εγκατέστησε Fonts (10 λεπτά)
+
 📝 **Playfair Display** (luxury headlines): [Download](https://fonts.google.com/specimen/Playfair+Display)  
 📝 **Inter** (body text): [Download](https://fonts.google.com/specimen/Inter)  
 📝 **Montserrat** (UI & CTAs): [Download](https://fonts.google.com/specimen/Montserrat)
@@ -105,31 +117,38 @@
 Κατέβασε weights: 400, 500, 600, 700 για κάθε font. Εγκατέστησε και κάνε restart το Figma.
 
 ### Βήμα 3: Ετοιμασία Assets (15 λεπτά)
+
 📁 Έχεις ήδη **46 φωτογραφίες** στο `/public/images/beach/`  
 ✅ Τσέκαρε ότι είναι όλες διαθέσιμες  
 ✅ Αν λείπουν, αντικατάστησέ τες με παρόμοιες
 
 ### Βήμα 4: Άνοιξε το Figma Implementation Guide (2-3 ώρες)
+
 📖 Άνοιξε το [FIGMA_IMPLEMENTATION_GUIDE.md](./FIGMA_IMPLEMENTATION_GUIDE.md)  
 🎨 Ξεκίνα με **Page 1: Cover** (30 λεπτά)  
 🎨 Συνέχισε με **Page 3: Style Direction** (1 ώρα) - αυτό θέτει τη visual κατεύθυνση  
 🎨 Μετά χτίσε **Pages 4-7** (Home & PDP) - κύριο περιεχόμενο
 
 ### Βήμα 5: Χρησιμοποίησε τα Copy Guidelines (ongoing)
+
 📖 Άνοιξε το [FIGMA_COPY_GUIDELINES.md](./FIGMA_COPY_GUIDELINES.md) σε άλλο παράθυρο  
 ✂️ Copy-paste headlines, CTAs, review text καθώς χτίζεις τις σελίδες  
 ✅ Όλα τα κείμενα είναι outcome-focused και έτοιμα προς χρήση
 
 ### Βήμα 6: Τσέκαρε το Design System για Details (ongoing)
+
 📖 Άνοιξε το [FIGMA_LUXURY_DESIGN_SYSTEM.md](./FIGMA_LUXURY_DESIGN_SYSTEM.md)  
 🔍 Χρησιμοποίησέ το ως **αναφορά** για:
+
 - Exact color codes (Ocean-500: #0EA5E9, κλπ.)
 - Typography scales (H1: 64px, H2: 48px, κλπ.)
 - Component specifications (padding, border-radius, shadows)
 - Animation timings (300ms ease-out, κλπ.)
 
 ### Βήμα 7: Prototype Interactions (1-2 ώρες)
+
 🔗 Μόλις οι σελίδες είναι έτοιμες, πρόσθεσε **5-6 key interactions**:
+
 1. Hero scroll reveal (fade-in-up)
 2. Button hover (quantum glow)
 3. Product card hover (lift + image zoom)
@@ -138,6 +157,7 @@
 6. Accordion expand/collapse
 
 ### Βήμα 8: Export & Handoff (30 λεπτά)
+
 📤 Export assets (images, icons, color tokens)  
 📝 Πρόσθεσε annotations για developers  
 🔗 Share Figma link με "Can view" permissions  
@@ -147,13 +167,13 @@
 
 ## ⏱️ ΧΡΟΝΙΚΗ ΕΚΤΙΜΗΣΗ
 
-| Φάση | Χρόνος | Περιγραφή |
-|------|--------|-----------|
-| **Προετοιμασία** | 40 λεπτά | Fonts, assets, διάβασμα docs |
-| **Figma Build** | 13.5 ώρες | 8 σελίδες + components + prototype |
-| **Review & Iterate** | 2 ώρες | Feedback, αλλαγές |
-| **Developer Handoff** | 1 ώρα | Meeting, Q&A |
-| **ΣΥΝΟΛΟ** | **~17 ώρες** | Έτοιμο Figma file, έτοιμο για dev |
+| Φάση                  | Χρόνος       | Περιγραφή                          |
+| --------------------- | ------------ | ---------------------------------- |
+| **Προετοιμασία**      | 40 λεπτά     | Fonts, assets, διάβασμα docs       |
+| **Figma Build**       | 13.5 ώρες    | 8 σελίδες + components + prototype |
+| **Review & Iterate**  | 2 ώρες       | Feedback, αλλαγές                  |
+| **Developer Handoff** | 1 ώρα        | Meeting, Q&A                       |
+| **ΣΥΝΟΛΟ**            | **~17 ώρες** | Έτοιμο Figma file, έτοιμο για dev  |
 
 ---
 
@@ -179,6 +199,7 @@
 Μόλις το site πάει live, track αυτά τα metrics:
 
 ### Quantitative (GA4 + Hotjar)
+
 - **Conversion Rate**: Target +12-18% (από 2.5% → 2.9%+)
 - **Time on Page**: Target 2-3 λεπτά (από ~1:20)
 - **Scroll Depth**: Target 60%+ φτάνουν final CTA
@@ -187,6 +208,7 @@
 - **LCP (Load Speed)**: Target <3s
 
 ### Qualitative (Surveys)
+
 - "Premium brand" perception: 85%+
 - "Easy to navigate": 4.7+ stars
 - Customer reviews mention "luxury", "professional"
@@ -198,6 +220,7 @@
 ## 🚀 IMPLEMENTATION ROADMAP
 
 ### Phase 1: MVP (Weeks 1-2)
+
 ✅ Figma file complete  
 ✅ Home page (desktop + mobile) με static hero  
 ✅ Product grid + quantum buttons  
@@ -209,6 +232,7 @@
 ---
 
 ### Phase 2: Enhancements (Weeks 3-4)
+
 ✅ 360° product viewer  
 ✅ Setup guide animation  
 ✅ UGC gallery με lightbox  
@@ -220,6 +244,7 @@
 ---
 
 ### Phase 3: Premium (Weeks 5-6)
+
 ✅ Hero video (or advanced animation)  
 ✅ Magnetic hover effects  
 ✅ Performance optimization (WebP, lazy-load)  
@@ -231,6 +256,7 @@
 ---
 
 ### Phase 4: Post-Launch (Ongoing)
+
 ✅ Monitor conversions (+12-18% target)  
 ✅ A/B test results  
 ✅ Real UGC upload feature  
@@ -258,24 +284,31 @@
 Κράτα αυτά τα 7 principles σε κάθε απόφαση:
 
 ### 1. 🎯 Outcome Over Features
+
 "Relax all day without sunburn" > "UPF 50+ fabric"
 
 ### 2. ❤️ Emotional Resonance
+
 Speak to dreams, remove fears, tap into desires
 
 ### 3. 🛡️ Trust Maximization
+
 Social proof at every decision point
 
 ### 4. 🚀 Frictionless Conversion
+
 Reduce clicks, eliminate confusion, obvious CTAs
 
 ### 5. ⚡ Performance is Design
+
 Fast = converts. Slow = fails. Optimize ruthlessly.
 
 ### 6. ♿ Accessibility is Luxury
+
 Inclusive = respectful = top 1%
 
 ### 7. 📊 Data-Informed Iterations
+
 Launch → Measure → Refine → Repeat
 
 ---
@@ -288,7 +321,7 @@ Launch → Measure → Refine → Repeat
 2. **Χρησιμοποίησε το Design System ως reference**: Exact specs για κάθε στοιχείο
 3. **Δες τα visual diagrams**: User journey & component architecture (στο summary)
 4. **Ακολούθησε τα examples**: Κάθε component έχει code example
-5. **Ρώτα στο GitHub Copilot**: "How do I implement the Quantum Button hover effect?"
+5. **Check the Design System**: Reference exact specs for the Quantum Button hover effect
 
 ---
 
@@ -297,6 +330,7 @@ Launch → Measure → Refine → Repeat
 Πριν θεωρήσεις το project complete:
 
 ### Figma
+
 - [ ] Όλες οι 8 σελίδες δημιουργημένες
 - [ ] Components με variants (buttons, cards, badges)
 - [ ] Text styles & color styles εφαρμοσμένα
@@ -307,6 +341,7 @@ Launch → Measure → Refine → Repeat
 - [ ] Figma link shared
 
 ### Development
+
 - [ ] Tailwind config με tokens
 - [ ] 8+ components implemented
 - [ ] Home & PDP pages functional
@@ -317,6 +352,7 @@ Launch → Measure → Refine → Repeat
 - [ ] Analytics setup (GA4, events)
 
 ### Content
+
 - [ ] Όλα τα copy από guidelines
 - [ ] Outcome-focused messaging
 - [ ] Customer reviews (6+ samples)
@@ -324,6 +360,7 @@ Launch → Measure → Refine → Repeat
 - [ ] SEO metadata
 
 ### Testing
+
 - [ ] Cross-browser (Chrome, Safari, Firefox)
 - [ ] Mobile devices (iOS, Android)
 - [ ] Screen reader test

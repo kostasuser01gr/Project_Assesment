@@ -8,14 +8,12 @@ export function useMediaQuery(query: string): boolean {
 
   useEffect(() => {
     const media = window.matchMedia(query)
-    if (media.matches !== matches) {
-      setMatches(media.matches)
-    }
+    setMatches(media.matches)
 
-    const listener = () => setMatches(media.matches)
+    const listener = (e: MediaQueryListEvent) => setMatches(e.matches)
     media.addEventListener('change', listener)
     return () => media.removeEventListener('change', listener)
-  }, [matches, query])
+  }, [query])
 
   return matches
 }
@@ -26,16 +24,22 @@ export function useIntersectionObserver(
   options?: IntersectionObserverInit
 ): IntersectionObserverEntry | undefined {
   const [entry, setEntry] = useState<IntersectionObserverEntry>()
+  const { root, rootMargin, threshold } = options || {}
 
   useEffect(() => {
     const node = ref?.current
     if (!node) return
 
-    const observer = new IntersectionObserver(([entry]) => setEntry(entry), options)
+    const observer = new IntersectionObserver(([entry]) => setEntry(entry), {
+      root,
+      rootMargin,
+      threshold,
+    })
     observer.observe(node)
 
     return () => observer.disconnect()
-  }, [ref, options])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [ref, root, rootMargin, JSON.stringify(threshold)])
 
   return entry
 }
@@ -120,13 +124,20 @@ export function useAsync<T, E = string>(asyncFunction: () => Promise<T>, immedia
   const [status, setStatus] = useState<'idle' | 'pending' | 'success' | 'error'>('idle')
   const [value, setValue] = useState<T | null>(null)
   const [error, setError] = useState<E | null>(null)
+  const asyncFnRef = useRef(asyncFunction)
+
+  // Keep ref up to date without triggering re-renders
+  useEffect(() => {
+    asyncFnRef.current = asyncFunction
+  }, [asyncFunction])
 
   const execute = useCallback(() => {
     setStatus('pending')
     setValue(null)
     setError(null)
 
-    return asyncFunction()
+    return asyncFnRef
+      .current()
       .then((response) => {
         setValue(response)
         setStatus('success')
@@ -135,7 +146,7 @@ export function useAsync<T, E = string>(asyncFunction: () => Promise<T>, immedia
         setError(error)
         setStatus('error')
       })
-  }, [asyncFunction])
+  }, [])
 
   useEffect(() => {
     if (immediate) {

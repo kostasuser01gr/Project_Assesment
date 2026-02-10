@@ -9,19 +9,19 @@ interface Interactive360ViewerProps {
   sizes?: { name: string; dimensions: string }[]
 }
 
-export const Interactive360Viewer = ({ 
-  images, 
+export const Interactive360Viewer = ({
+  images,
   alt,
   colors = [
     { name: 'Ocean Blue', hex: '#0EA5E9', images },
     { name: 'Coral Sunset', hex: '#FB923C', images },
-    { name: 'Sandy Beige', hex: '#F5E6D3', images }
+    { name: 'Sandy Beige', hex: '#F5E6D3', images },
   ],
   sizes = [
     { name: 'Standard', dimensions: '8ft × 8ft' },
     { name: 'Large', dimensions: '10ft × 10ft' },
-    { name: 'XL Family', dimensions: '12ft × 12ft' }
-  ]
+    { name: 'XL Family', dimensions: '12ft × 12ft' },
+  ],
 }: Interactive360ViewerProps) => {
   const [currentFrame, setCurrentFrame] = useState(0)
   const [selectedColor, setSelectedColor] = useState(0)
@@ -31,7 +31,7 @@ export const Interactive360Viewer = ({
   const [dragStartX, setDragStartX] = useState(0)
   const [rotation, setRotation] = useState(0)
   const [isSpinning, setIsSpinning] = useState(false)
-  
+
   const activeImages = colors[selectedColor]?.images || images
   const totalFrames = activeImages.length
 
@@ -41,7 +41,7 @@ export const Interactive360Viewer = ({
     const autoSpin = setInterval(() => {
       setCurrentFrame((prev) => (prev + 1) % totalFrames)
     }, 100)
-    
+
     setTimeout(() => {
       clearInterval(autoSpin)
       setIsSpinning(false)
@@ -57,10 +57,10 @@ export const Interactive360Viewer = ({
 
   const handleMouseMove = (e: React.MouseEvent) => {
     if (!isDragging) return
-    
+
     const deltaX = e.clientX - dragStartX
     const frameDelta = Math.floor(deltaX / 20)
-    
+
     if (frameDelta !== 0) {
       setCurrentFrame((prev) => (prev + frameDelta + totalFrames) % totalFrames)
       setDragStartX(e.clientX)
@@ -73,8 +73,12 @@ export const Interactive360Viewer = ({
   }
 
   return (
-    <div className={`relative ${isFullscreen ? 'fixed inset-0 z-50 bg-black/95 flex items-center justify-center' : ''}`}>
-      <div className={`relative ${isFullscreen ? 'w-full max-w-6xl h-full max-h-screen p-8' : 'w-full aspect-square'}`}>
+    <div
+      className={`relative ${isFullscreen ? 'fixed inset-0 z-50 bg-black/95 flex items-center justify-center' : ''}`}
+    >
+      <div
+        className={`relative ${isFullscreen ? 'w-full max-w-6xl h-full max-h-screen p-8' : 'w-full aspect-square'}`}
+      >
         {/* Main 360 Viewer */}
         <motion.div
           className="relative w-full h-full rounded-2xl overflow-hidden quantum-glass cursor-grab active:cursor-grabbing"
@@ -93,9 +97,9 @@ export const Interactive360Viewer = ({
                 'radial-gradient(circle at 50% 50%, rgba(6, 182, 212, 0.2) 0%, transparent 70%)',
                 'radial-gradient(circle at 60% 40%, rgba(6, 182, 212, 0.2) 0%, transparent 70%)',
                 'radial-gradient(circle at 40% 60%, rgba(6, 182, 212, 0.2) 0%, transparent 70%)',
-              ]
+              ],
             }}
-            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+            transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
           />
 
           {/* Product Image */}
@@ -116,13 +120,13 @@ export const Interactive360Viewer = ({
           <motion.div
             className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
             animate={{
-              x: ['-100%', '200%']
+              x: ['-100%', '200%'],
             }}
             transition={{
               duration: 2,
               repeat: Infinity,
               repeatDelay: 3,
-              ease: "easeInOut"
+              ease: 'easeInOut',
             }}
           />
 
@@ -135,7 +139,9 @@ export const Interactive360Viewer = ({
               exit={{ opacity: 0, y: -10 }}
             >
               <RotateCw className="w-4 h-4 animate-spin" />
-              <span className="text-sm font-medium">{isDragging ? 'Drag to rotate' : 'Auto-spinning...'}</span>
+              <span className="text-sm font-medium">
+                {isDragging ? 'Drag to rotate' : 'Auto-spinning...'}
+              </span>
             </motion.div>
           )}
 
@@ -190,7 +196,7 @@ export const Interactive360Viewer = ({
                     <motion.div
                       layoutId="colorSelector"
                       className="absolute inset-0 rounded-xl quantum-glow"
-                      transition={{ type: "spring", duration: 0.6 }}
+                      transition={{ type: 'spring', duration: 0.6 }}
                     />
                   )}
                 </motion.button>
@@ -223,7 +229,7 @@ export const Interactive360Viewer = ({
                     <motion.div
                       layoutId="sizeSelector"
                       className="absolute inset-0 rounded-xl quantum-glow-coral"
-                      transition={{ type: "spring", duration: 0.6 }}
+                      transition={{ type: 'spring', duration: 0.6 }}
                     />
                   )}
                 </motion.button>
