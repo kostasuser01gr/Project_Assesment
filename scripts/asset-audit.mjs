@@ -1,131 +1,158 @@
 #!/usr/bin/env node
 
-import { readdirSync, statSync } from 'fs';
-import { join } from 'path';
+/**
+ * Asset Audit Script
+ * Scans public/assets/photos/** and generates comprehensive report
+ */
+
+import { readdirSync, statSync, existsSync } from 'fs';
+import { join, extname } from 'path';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
-
-const ASSETS_ROOT = join(__dirname, '../public/assets/photos');
-const LEGACY_ROOT = join(__dirname, '../public/images/beach');
+const ROOT_DIR = join(__dirname, '..');
+const ASSETS_DIR = join(ROOT_DIR, 'public/assets/photos');
+const LEGACY_DIR = join(ROOT_DIR, 'public/images/beach');
 
 const CATEGORIES = ['hero', 'product', 'gallery', 'setup', 'ugc'];
+const IMAGE_EXTENSIONS = ['.jpg', '.jpeg', '.png', '.webp'];
 
-function getFilesInDir(dir, extensions = ['.jpg', '.jpeg', '.png', '.webp']) {
-  try {
-    const items = readdirSync(dir);
-    return items.filter(item => {
-      const ext = item.substring(item.lastIndexOf('.')).toLowerCase();
-      return extensions.includes(ext);
-    }).map(file => {
-      const stats = statSync(join(dir, file));
-      return {
-        name: file,
-        size: stats.size,
-        path: join(dir, file)
-      };
-    });
-  } catch (err) {
-    return [];
-  }
-}
-
-function formatBytes(bytes) {
-  if (bytes === 0) return '0 B';
-  const k = 1024;
-  const sizes = ['B', 'KB', 'MB'];
-  const i = Math.floor(Math.log(bytes) / Math.log(k));
-  return Math.round(bytes / Math.pow(k, i) * 100) / 100 + ' ' + sizes[i];
-}
-
-console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
 console.log('🔍 ASSET AUDIT - Sun Ninja Project');
-console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n');
+console.log('═'.repeat(60));
+console.log('');
 
-// Check new structure
-console.log('📦 NEW ASSET STRUCTURE (public/assets/photos/):\n');
-let totalNewFiles = 0;
-let totalNewSize = 0;
-
-CATEGORIES.forEach(cat => {
-  const dir = join(ASSETS_ROOT, cat);
-  const files = getFilesInDir(dir);
-  totalNewFiles += files.length;
-  const catSize = files.reduce((sum, f) => sum + f.size, 0);
-  totalNewSize += catSize;
+// Scan function
+function scanDirectory(dir) {
+  if (!existsSync(dir)) return [];
   
-  console.log(`  ${cat.toUpperCase()}:`);
-  console.log(`    Files: ${files.length}`);
-  console.log(`    Size: ${formatBytes(catSize)}`);
-  if (files.length > 0) {
-    console.log(`    Samples: ${files.slice(0, 3).map(f => f.name).join(', ')}`);
+  const files = [];
+  const items = readdirSync(dir);
+  
+  for (const item of items) {
+    const fullPath = join(dir, item);
+    const stat = statSync(fullPath);
+    
+    if (stat.isDirectory()) {
+      files.push(...scanDirectory(fullPath));
+    } else if (IMAGE_EXTENSIONS.includes(extname(item).toLowerCase())) {
+      files.push({
+        name: item,
+        path: fullPath,
+        size: stat.size,
+        sizeKB: Math.round(stat.size / 1024),
+      });
+    }
   }
-  console.log('');
-});
+  
+  return files;
+}
 
-console.log(`  TOTAL: ${totalNewFiles} files, ${formatBytes(totalNewSize)}\n`);
+// Scan each category
+const categoryStats = {};
+let totalFiles = 0;
+let totalSize = 0;
 
-// Check legacy structure
-console.log('📁 LEGACY STRUCTURE (public/images/beach/):\n');
-const legacyFiles = getFilesInDir(LEGACY_ROOT);
-const legacySize = legacyFiles.reduce((sum, f) => sum + f.size, 0);
+console.log('📊 CATEGORY BREAKDOWN');
+console.log('─'.repeat(60));
 
-console.log(`  Files: ${legacyFiles.length}`);
-console.log(`  Size: ${formatBytes(legacySize)}\n`);
+for (const category of CATEGORIES) {
+  const categoryDir = join(ASSETS_DIR, category);
+  const files = scanDirectory(categoryDir);
+  
+  const size = files.reduce((sum, f) => sum + f.size, 0);
+  categoryStats[category] = {
+    count: files.length,
+    size,
+    sizeKB: Math.round(size / 1024),
+    sizeMB: (size / 1024 / 1024).toFixed(2),
+    files
+  };
+  
+  totalFiles += files.length;
+  totalSize += size;
+  
+  console.log(`  ${category.toUpperCase().padEnd(10)} │ ${files.length} files │ ${categoryStats[category].sizeMB} MB`);
+}
+
+console.log('─'.repeat(60));
+console.log(`  TOTAL      │ ${totalFiles} files │ ${(totalSize / 1024 / 1024).toFixed(2)} MB`);
+console.log('');
+
+// Check legacy images
+console.log('📁 LEGACY IMAGES (public/images/beach)');
+console.log('─'.repeat(60));
+if (existsSync(LEGACY_DIR)) {
+  const legacyFiles = scanDirectory(LEGACY_DIR);
+  console.log(`  Found ${legacyFiles.length} legacy files (${(legacyFiles.reduce((s, f) => s + f.size, 0) / 1024 / 1024).toFixed(2)} MB)`);
+  console.log(`  ℹ️  These should be organized into /assets/photos categories`);
+} else {
+  console.log(`  ✓ No legacy directory`);
+}
+console.log('');
 
 // Top 20 largest files
-console.log('📊 TOP 20 LARGEST FILES:\n');
-const allFiles = [...getFilesInDir(LEGACY_ROOT), 
-                  ...CATEGORIES.flatMap(cat => getFilesInDir(join(ASSETS_ROOT, cat)))];
-const sorted = allFiles.sort((a, b) => b.size - a.size).slice(0, 20);
+const allFiles = Object.values(categoryStats).flatMap(c => c.files);
+const sorted = [...allFiles].sort((a, b) => b.size - a.size).slice(0, 20);
 
-sorted.forEach((file, idx) => {
-  const shortPath = file.path.split('public/')[1] || file.path;
-  console.log(`  ${idx + 1}. ${file.name} - ${formatBytes(file.size)}`);
-  console.log(`     ${shortPath}`);
-});
-
-console.log('\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
-console.log('💡 SUGGESTED PICKS FOR FIGMA');
-console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n');
-
-console.log('Minimum Required:');
-console.log('  Hero:    2 images  (main hero + alternate)');
-console.log('  Product: 3 images  (main + detail angles)');
-console.log('  Gallery: 8 images  (lifestyle variety)');
-console.log('  Setup:   3 images  (step-by-step process)');
-console.log('  UGC:     6 images  (authentic customer photos)');
-console.log('');
-console.log('Optimal Range:');
-console.log('  Gallery: 8-12 images');
-console.log('  UGC:     6-12 images');
-console.log('');
-
-// Auto-suggest from legacy
-console.log('📌 AUTO-SUGGESTED FROM LEGACY FILES:\n');
-
-const suggestions = {
-  hero: legacyFiles.filter(f => f.name.includes('hero')).slice(0, 2),
-  product: legacyFiles.filter(f => f.name.includes('product')).slice(0, 3),
-  gallery: legacyFiles.filter(f => f.name.includes('gallery')).slice(0, 10),
-  setup: legacyFiles.filter(f => f.name.includes('setup')).slice(0, 3),
-  ugc: legacyFiles.filter(f => f.name.includes('ugc')).slice(0, 8)
-};
-
-Object.entries(suggestions).forEach(([cat, files]) => {
-  console.log(`  ${cat.toUpperCase()}:`);
-  files.forEach(f => console.log(`    - ${f.name}`));
+if (sorted.length > 0) {
+  console.log('📦 TOP 20 LARGEST FILES');
+  console.log('─'.repeat(60));
+  sorted.forEach((file, i) => {
+    console.log(`  ${(i + 1).toString().padStart(2)}. ${file.name.padEnd(40)} ${file.sizeKB.toString().padStart(6)} KB`);
+  });
   console.log('');
-});
+}
 
-console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
-console.log('✅ AUDIT COMPLETE');
-console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n');
+// Suggested picks
+console.log('✨ SUGGESTED PICKS FOR FIGMA');
+console.log('─'.repeat(60));
+console.log(`  Hero:    ${categoryStats.hero.count >= 2 ? '✓' : '⚠️'} ${categoryStats.hero.count}/2 minimum (showing above-fold impact)`);
+console.log(`  Product: ${categoryStats.product.count >= 3 ? '✓' : '⚠️'} ${categoryStats.product.count}/3 minimum (main + angles)`);
+console.log(`  Gallery: ${categoryStats.gallery.count >= 8 ? '✓' : '⚠️'} ${categoryStats.gallery.count}/8-12 recommended`);
+console.log(`  Setup:   ${categoryStats.setup.count >= 3 ? '✓' : '⚠️'} ${categoryStats.setup.count}/3 minimum (3-step process)`);
+console.log(`  UGC:     ${categoryStats.ugc.count >= 6 ? '✓' : '⚠️'} ${categoryStats.ugc.count}/6-12 recommended (social proof grid)`);
+console.log('');
 
-console.log('Next Steps:');
-console.log('1. Run: bash scripts/organize_photos.sh');
-console.log('2. Review organized assets in public/assets/photos/');
-console.log('3. Update photoManager.ts to use new structure');
+// Recommendations
+console.log('💡 RECOMMENDATIONS');
+console.log('─'.repeat(60));
+
+const recommendations = [];
+
+if (totalFiles === 0) {
+  recommendations.push('⚠️  No images found in /public/assets/photos');
+  recommendations.push('   Run: bash scripts/import_figma_import_photos.sh');
+}
+
+if (categoryStats.hero.count < 2) {
+  recommendations.push('⚠️  Need at least 2 hero images (primary + alternate)');
+}
+
+if (categoryStats.product.count < 3) {
+  recommendations.push('⚠️  Need at least 3 product images (main + detail shots)');
+}
+
+if (categoryStats.gallery.count < 8) {
+  recommendations.push('⚠️  Need 8-12 gallery images for lifestyle showcase');
+}
+
+if (categoryStats.setup.count < 3) {
+  recommendations.push('⚠️  Need 3 setup images for "How It Works" section');
+}
+
+if (categoryStats.ugc.count < 6) {
+  recommendations.push('⚠️  Need 6-12 UGC images for social proof grid');
+}
+
+if (recommendations.length === 0) {
+  console.log('  ✓ All image requirements met!');
+} else {
+  recommendations.forEach(r => console.log(`  ${r}`));
+}
+
+console.log('');
+console.log('═'.repeat(60));
+console.log('✓ Audit complete');
 console.log('');
